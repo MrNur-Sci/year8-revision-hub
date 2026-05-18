@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Science Revision Hub</title>
+<style>
+:root{
+  --bg:#f4f8fc;
+  --panel:#ffffff;
+  --ink:#14213d;
+  --muted:#526176;
+  --line:#d8e8f5;
+  --blue:#2563eb;
+  --blue-soft:#eaf2ff;
+  --green:#16a34a;
+  --green-soft:#eaf8ef;
+  --purple:#6d5dfc;
+  --purple-soft:#f0efff;
+  --orange:#d97706;
+  --orange-soft:#fff4e5;
+  --shadow:0 10px 26px rgba(20,33,61,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.5;
+}
+.hero{
+  background:linear-gradient(135deg,#1e3a8a,#2563eb,#0f766e);
+  color:white;
+  padding:42px 20px 46px;
+  text-align:center;
+}
+.hero-inner{
+  max-width:980px;
+  margin:0 auto;
+}
+.hero h1{
+  margin:0 0 10px;
+  font-size:clamp(32px,5vw,52px);
+  letter-spacing:-.04em;
+}
+.hero p{
+  max-width:760px;
+  margin:0 auto;
+  font-size:18px;
+  font-weight:700;
+  opacity:.96;
+}
+main{
+  max-width:1180px;
+  margin:0 auto;
+  padding:28px 18px 52px;
+}
+.notice{
+  background:#fff8ed;
+  border:1px solid #ffd7a3;
+  color:#7c2d12;
+  border-radius:18px;
+  padding:16px 18px;
+  font-size:17px;
+  font-weight:800;
+  margin:14px 0 28px;
+}
+.section{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  padding:24px;
+  margin:22px 0;
+}
+.section-header{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:16px;
+  align-items:center;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  background:var(--blue-soft);
+  border:1px solid var(--line);
+}
+.section h2{
+  margin:0;
+  font-size:clamp(26px,3vw,38px);
+  letter-spacing:-.03em;
+}
+.section p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-weight:700;
+}
+.count{
+  background:var(--green-soft);
+  color:#166534;
+  border:1px solid #86efac;
+  border-radius:999px;
+  padding:8px 14px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.topic-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+.card{
+  background:#fbfdff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  min-height:210px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px rgba(20,33,61,.10);
+  border-color:#b9d8f0;
+}
+.card-top{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.mini-icon{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  background:#eef6ff;
+  border:1px solid var(--line);
+  flex:0 0 auto;
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:22px;
+  line-height:1.18;
+  letter-spacing:-.02em;
+}
+.card .desc{
+  color:#26364d;
+  font-size:15px;
+  font-weight:500;
+  margin:0 0 12px;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:10px 0 16px;
+}
+.tag{
+  border:1px solid #86efac;
+  background:var(--green-soft);
+  color:#166534;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:12px;
+  font-weight:800;
+}
+.open{
+  display:block;
+  text-align:center;
+  background:#16a34a;
+  color:white;
+  text-decoration:none;
+  border-radius:999px;
+  padding:11px 14px;
+  font-weight:900;
+}
+.open:hover{background:#15803d}
+.section.bio .icon,.section.bio .mini-icon{background:#ecfdf5}
+.section.chem .icon,.section.chem .mini-icon{background:#fff7ed}
+.section.phys .icon,.section.phys .mini-icon{background:#eff6ff}
+.section.skills .icon,.section.skills .mini-icon{background:#f0efff}
+.footer-note{
+  text-align:center;
+  color:var(--muted);
+  font-weight:700;
+  padding:24px 0 0;
+}
+@media(max-width:920px){
+  .topic-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  main{padding:22px 12px 40px}
+  .section{padding:18px}
+  .section-header{grid-template-columns:auto 1fr}
+  .count{grid-column:1 / -1; justify-self:start}
+  .topic-grid{grid-template-columns:1fr}
+  .hero{padding:34px 16px 38px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Year 8 Science Revision Hub</h1>
+    <p>Interactive revision pages for key Year 8 science topics. Use each page to revise, practise and check your understanding.</p>
+  </div>
+</header>
+
+<main>
+  <div class="notice">Choose a subject section below. Each page includes teaching notes, interactive models and check-for-understanding questions.</div>
+
+  <section class="section skills">
+    <div class="section-header">
+      <div class="icon">🔬</div>
+      <div>
+        <h2>Working Scientifically</h2>
+        <p>Core science skills used across Biology, Chemistry and Physics.</p>
+      </div>
+      <div class="count">1 topic</div>
+    </div>
+    <div class="topic-grid">
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">🔬</div>
+            <div>
+              <h3>Introduction to Science</h3>
+              <p class="desc">Lab safety, variables, scientific method, equipment and working scientifically.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Working scientifically</span><span class="tag">KS3</span></div>
+        </div>
+        <a class="open" href="introduction-science.html">Open topic</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section bio">
+    <div class="section-header">
+      <div class="icon">🧬</div>
+      <div>
+        <h2>Biology</h2>
+        <p>Living organisms, inheritance, respiration, digestion and reproduction.</p>
+      </div>
+      <div class="count">3 topics</div>
+    </div>
+    <div class="topic-grid">
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">🧬</div>
+            <div>
+              <h3>Evolution and Inheritance</h3>
+              <p class="desc">DNA, genes, chromosomes, inheritance, mutation, natural selection and extinction.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Biology</span><span class="tag">Genes</span></div>
+        </div>
+        <a class="open" href="evolution-inheritance.html">Open topic</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">👶</div>
+            <div>
+              <h3>Variation and Human Reproduction</h3>
+              <p class="desc">Reproductive organs, menstrual cycle, fertilisation, pregnancy, infertility and variation.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Biology</span><span class="tag">Reproduction</span></div>
+        </div>
+        <a class="open" href="variation-human-reproduction.html">Open topic</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">🫁</div>
+            <div>
+              <h3>Respiration, Breathing and Digestion</h3>
+              <p class="desc">Aerobic and anaerobic respiration, breathing, gas exchange, nutrients, enzymes and digestion.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Biology</span><span class="tag">Organ systems</span></div>
+        </div>
+        <a class="open" href="respiration-breathing-digestion.html">Open topic</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section chem">
+    <div class="section-header">
+      <div class="icon">⚗️</div>
+      <div>
+        <h2>Chemistry</h2>
+        <p>Chemical reactions, metals, acids, indicators and energy changes.</p>
+      </div>
+      <div class="count">2 topics</div>
+    </div>
+    <div class="topic-grid">
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">🧪</div>
+            <div>
+              <h3>Metals and Acids</h3>
+              <p class="desc">Properties of metals, metals reacting with acids, displacement, oxidation, indicators and neutralisation.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Chemistry</span><span class="tag">Reactions</span></div>
+        </div>
+        <a class="open" href="metals-acids.html">Open topic</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">🔥</div>
+            <div>
+              <h3>Chemical Energy and Types of Reactions</h3>
+              <p class="desc">Exothermic and endothermic reactions, reaction profiles, combustion, catalysts and thermal decomposition.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Chemistry</span><span class="tag">Energy changes</span></div>
+        </div>
+        <a class="open" href="chemical-energy-reactions.html">Open topic</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section phys">
+    <div class="section-header">
+      <div class="icon">⚡</div>
+      <div>
+        <h2>Physics</h2>
+        <p>Energy, forces, pressure, heating, cooling and calculations.</p>
+      </div>
+      <div class="count">3 topics</div>
+    </div>
+    <div class="topic-grid">
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">⚡</div>
+            <div>
+              <h3>Energy Stores, Transfers, Efficiency and Energy Use</h3>
+              <p class="desc">Energy stores, pathways, Sankey diagrams, efficiency and renewable energy resources.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Physics</span><span class="tag">Energy</span></div>
+        </div>
+        <a class="open" href="energy-transfer.html">Open topic</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">🌡️</div>
+            <div>
+              <h3>Work, Heating and Cooling</h3>
+              <p class="desc">Work done, heating and cooling, conduction, convection, radiation and insulation.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Physics</span><span class="tag">Calculations</span></div>
+        </div>
+        <a class="open" href="work-heating-cooling.html">Open topic</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-top">
+            <div class="mini-icon">🚗</div>
+            <div>
+              <h3>Contact Forces and Pressure</h3>
+              <p class="desc">Contact forces, deformation, friction, pressure, fluid pressure and atmospheric pressure.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Physics</span><span class="tag">Forces</span></div>
+        </div>
+        <a class="open" href="forces-pressure.html">Open topic</a>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="footer-note">Tip: start with the subject you find hardest, then use the CFU questions to check progress.</div>
+</main>
+</body>
+</html>
