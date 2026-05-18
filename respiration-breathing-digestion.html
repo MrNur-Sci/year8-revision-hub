@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Respiration, Breathing and Digestion</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
+.hero{background:linear-gradient(135deg,#10133f,#16a34a);color:white;text-align:center;padding:44px 18px}.hero h1{font-size:42px;margin:8px 0}.hero p{font-size:18px;font-weight:800}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:20}.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1120px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}.task,.quiz-card,.card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.controls,.output{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}.control,.output div{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}.control strong,.output strong{display:block;font-size:22px;color:#172554}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.red{background:#ef4444;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff}
+input[type=range]{width:100%}.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{text-align:left;background:white;border:2px solid #d7ecff}.correct{background:#dcfce7!important;border-color:#22c55e!important}.wrong{background:#fff1f2!important;border-color:#ef4444!important}
+.feedback{font-weight:900;margin-top:10px}.ok{color:#15803d}.no{color:#dc2626}.calc-input{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.calc-input input{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:150px}
+textarea{width:100%;min-height:78px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}.label{font:bold 14px Arial;fill:#172554}.big{font:bold 18px Arial;fill:#172554}.small{font:bold 12px Arial;fill:#172554}
+.molecule{animation:float 1.4s infinite alternate}.fast .molecule{animation-duration:.45s}@keyframes float{to{transform:translate(8px,-8px)}}
+.diffuse{animation:diffuse 1.8s infinite linear}@keyframes diffuse{from{opacity:.2;transform:translate(0,0)}50%{opacity:1}to{opacity:.2;transform:translate(45px,-20px)}}
+.lung{transition:transform .45s}.pulse{animation:pulse .7s infinite alternate}@keyframes pulse{to{transform:scale(1.08)}}
+.food{transition:transform .8s}.enzymeDot{animation:vib .25s infinite alternate}@keyframes vib{to{transform:translate(4px,-3px)}}
+.mini-check{background:#f0fdf4;border:2px solid #86efac;border-radius:18px;padding:14px;margin-top:14px}.mini-check h3{margin:0 0 8px;color:#166534}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}.secure{background:#ecfdf5;border:2px solid #86efac}.build{background:#eef6ff;border:2px solid #93c5fd}.stretch{background:#fff7ed;border:2px solid #fed7aa}.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+@media(max-width:850px){.two,.grid,.controls,.output,.choice-grid{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+
+/* QUALITY PATCH */
+.barFill{transition:height .45s,y .45s,fill .3s}
+.organHotspot{cursor:pointer;transition:opacity .2s}.organHotspot:hover{opacity:.75}
+.pathPulse{animation:pathPulse .8s infinite alternate}@keyframes pathPulse{to{stroke-width:18;opacity:.75}}
+.gasParticle{animation:gasMove 1.8s infinite linear}@keyframes gasMove{from{opacity:.15;transform:translate(0,0)}50%{opacity:1}to{opacity:.15;transform:translate(70px,-8px)}}
+.co2Particle{animation:co2Move 1.8s infinite linear}@keyframes co2Move{from{opacity:.15;transform:translate(0,0)}50%{opacity:1}to{opacity:.15;transform:translate(-70px,8px)}}
+.matchCol{display:grid;grid-template-columns:1fr 1fr;gap:12px}.matchItem{background:white;border:2px solid #d7ecff;border-radius:14px;padding:12px;font-weight:900}
+.organInfo{background:#eef6ff;border:2px solid #93c5fd;border-radius:16px;padding:14px;font-weight:900}
+
+/* SECOND QA PATCH */
+.rbc{fill:#ef4444;stroke:#7f1d1d;stroke-width:3}
+.o2{fill:#38bdf8}.co2{fill:#94a3b8}
+.gasMoveO2{animation:o2toBlood 1.8s infinite linear}
+.gasMoveCO2{animation:co2toAlveolus 1.8s infinite linear}
+@keyframes o2toBlood{from{opacity:.15;transform:translate(0,0)}50%{opacity:1}to{opacity:.15;transform:translate(120px,25px)}}
+@keyframes co2toAlveolus{from{opacity:.15;transform:translate(0,0)}50%{opacity:1}to{opacity:.15;transform:translate(-120px,-20px)}}
+.matchSvg text{font:bold 14px Arial;fill:#172554}.matchNode{cursor:pointer}.matchNode rect{fill:white;stroke:#d7ecff;stroke-width:3}.matchNode:hover rect{stroke:#22c55e}
+.digestOrgan{cursor:pointer;transition:opacity .2s}.digestOrgan:hover{opacity:.78}
+.activeOrgan{filter:drop-shadow(0 0 8px #22c55e)}
+.enzymeCurve{fill:none;stroke:#22c55e;stroke-width:7;stroke-linecap:round}
+.testTube{fill:white;stroke:#172554;stroke-width:5}
+
+/* DIGESTIVE IMAGE OVERLAY PATCH */
+.digestWrap{position:relative;max-width:520px;margin:0 auto;background:white;border:2px solid #d7ecff;border-radius:20px;overflow:hidden}
+.digestImg{width:100%;display:block}
+.hotspot{position:absolute;border:3px solid rgba(34,197,94,.0);border-radius:999px;cursor:pointer;transition:.2s;background:rgba(34,197,94,.0)}
+.hotspot:hover{border-color:rgba(34,197,94,.85);background:rgba(34,197,94,.15)}
+.hotspot.active{border-color:#22c55e;background:rgba(34,197,94,.20);box-shadow:0 0 14px #22c55e}
+.foodBolus{position:absolute;width:18px;height:18px;border-radius:50%;background:#ef4444;border:3px solid #172554;transition:left .75s,top .75s;z-index:5}
+.routeLine{position:absolute;inset:0;pointer-events:none;z-index:3}
+.routeLine path{fill:none;stroke:#ef4444;stroke-width:5;stroke-linecap:round;stroke-dasharray:10 8;opacity:.75}
+.organInfo{background:#eef6ff;border:2px solid #93c5fd;border-radius:16px;padding:14px;font-weight:900}
+
+/* DIGESTIVE IMAGE FIX PATCH */
+.digestWrap{
+  position:relative;
+  width:100%;
+  max-width:430px;
+  margin:0 auto;
+  background:white;
+  border:2px solid #d7ecff;
+  border-radius:20px;
+  overflow:hidden;
+}
+.digestImg{
+  width:100%;
+  height:auto;
+  display:block;
+  position:relative;
+  z-index:1;
+}
+.routeLine{display:none!important}
+.hotspot{
+  position:absolute;
+  border:3px solid rgba(34,197,94,0);
+  border-radius:18px;
+  cursor:pointer;
+  transition:.2s;
+  background:rgba(34,197,94,0);
+  z-index:4;
+}
+.hotspot:hover{
+  border-color:rgba(34,197,94,.9);
+  background:rgba(34,197,94,.16);
+}
+.hotspot.active{
+  border-color:#22c55e;
+  background:rgba(34,197,94,.20);
+  box-shadow:0 0 14px #22c55e;
+}
+.foodBolus{
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#ef4444;
+  border:3px solid #172554;
+  transition:left .65s,top .65s;
+  z-index:6;
+  transform:translate(-50%,-50%);
+}
+
+</style>
+</head>
+<body>
+<header class="hero"><h1>Respiration, Breathing and Digestion</h1><p>Aerobic and anaerobic respiration, lungs, gas exchange, nutrients, digestion, enzymes and food tests.</p></header>
+<nav class="nav"><a href="index.html">🏠 Home</a><a href="#aerobic">Aerobic</a><a href="#anaerobic">Anaerobic</a><a href="#lungs">Lungs</a><a href="#gas">Gas Exchange</a><a href="#nutrients">Nutrients</a><a href="#digestion">Digestion</a><a href="#enzymes">Enzymes</a><a href="#foodtests">Food Tests</a><a href="#quiz">CFU</a></nav>
+
+<section id="aerobic"><h2>1. Aerobic Respiration</h2>
+<div class="task"><p><b>glucose + oxygen → carbon dioxide + water</b>. Energy is released for movement, warmth and cell processes.</p>
+<div class="controls"><div class="control">Exercise level <strong id="exerciseT">rest</strong><input id="exercise" type="range" min="0" max="3" value="0" oninput="updateRespiration()"></div><div class="control">Oxygen demand<strong id="oxygenDemand">low</strong></div><div class="control">Energy release<strong id="energyOut">low</strong></div></div>
+<div class="two">
+<svg viewBox="0 0 700 330" aria-label="aerobic respiration model">
+<rect x="260" y="115" width="180" height="110" rx="28" fill="#dcfce7" stroke="#172554" stroke-width="5"/>
+<text x="350" y="170" text-anchor="middle" class="big">cell</text>
+<g id="respMolecules">
+<circle class="molecule" cx="120" cy="110" r="18" fill="#f59e0b"/><text x="120" y="115" text-anchor="middle" class="small">glucose</text>
+<circle class="molecule" cx="130" cy="220" r="15" fill="#38bdf8"/><text x="130" y="225" text-anchor="middle" class="small">O₂</text>
+<circle class="molecule" cx="565" cy="110" r="16" fill="#94a3b8"/><text x="565" y="115" text-anchor="middle" class="small">CO₂</text>
+<circle class="molecule" cx="565" cy="220" r="15" fill="#38bdf8"/><text x="565" y="225" text-anchor="middle" class="small">H₂O</text>
+</g>
+<line x1="155" y1="110" x2="255" y2="145" stroke="#22c55e" stroke-width="7" marker-end="url(#arr)"/>
+<line x1="155" y1="220" x2="255" y2="190" stroke="#22c55e" stroke-width="7" marker-end="url(#arr)"/>
+<line x1="445" y1="145" x2="540" y2="110" stroke="#ef4444" stroke-width="7" marker-end="url(#arr)"/>
+<line x1="445" y1="190" x2="540" y2="220" stroke="#ef4444" stroke-width="7" marker-end="url(#arr)"/>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#172554"/></marker></defs>
+<text id="respLabel" x="350" y="60" text-anchor="middle" class="big">More exercise = faster respiration</text>
+</svg>
+<div><div class="output"><div>Glucose use<strong id="glucoseUse">low</strong></div><div>Oxygen use<strong id="oxygenUse">low</strong></div><div>CO₂ made<strong id="co2Made">low</strong></div></div><div class="info">Cells respire faster during exercise because muscles need more energy.</div></div>
+</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>Which gas is needed for aerobic respiration?</p><button class="choice" onclick="choice(this,true,'aeroCheck','Correct: oxygen is needed.')">Oxygen</button><button class="choice" onclick="choice(this,false,'aeroCheck','Not quite. Carbon dioxide is a product.')">Carbon dioxide</button><div id="aeroCheck" class="feedback"></div></div>
+</section>
+
+
+<section id="anaerobic"><h2>2. Anaerobic Respiration and Fermentation</h2>
+<div class="task"><p>Anaerobic respiration happens when there is not enough oxygen. In humans, lactic acid builds up. In yeast, fermentation produces ethanol and carbon dioxide.</p>
+<div class="controls">
+<div class="control">Organism<strong id="anaType">human muscle</strong><button class="blue" onclick="ana='human';updateAnaerobic()">Human</button><button class="orange" onclick="ana='yeast';updateAnaerobic()">Yeast</button></div>
+<div class="control">Oxygen level <strong id="anaOxyT">low</strong><input id="anaOxy" type="range" min="0" max="3" value="1" oninput="updateAnaerobic()"></div>
+<div class="control">Run<br><button class="green" onclick="runAnaerobic()">Run model</button><button class="ghost" onclick="resetAnaerobic()">Reset</button></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 720 360" aria-label="anaerobic respiration bar model">
+<rect x="80" y="70" width="160" height="225" rx="18" fill="#eef6ff" stroke="#172554" stroke-width="5"/>
+<rect x="290" y="70" width="160" height="225" rx="18" fill="#eef6ff" stroke="#172554" stroke-width="5"/>
+<rect x="500" y="70" width="160" height="225" rx="18" fill="#eef6ff" stroke="#172554" stroke-width="5"/>
+
+<rect id="oxygenBar" class="barFill" x="120" y="220" width="80" height="60" rx="10" fill="#38bdf8"/>
+<rect id="lacticBar" class="barFill" x="330" y="170" width="80" height="110" rx="10" fill="#ef4444"/>
+<rect id="energyBar" class="barFill" x="540" y="215" width="80" height="65" rx="10" fill="#f59e0b"/>
+
+<text x="160" y="320" text-anchor="middle" class="label">oxygen</text>
+<text id="productBarLabel" x="370" y="320" text-anchor="middle" class="label">lactic acid</text>
+<text x="580" y="320" text-anchor="middle" class="label">energy released</text>
+
+<text id="anaEquation" x="360" y="40" text-anchor="middle" class="big">glucose → lactic acid + less energy</text>
+</svg>
+<div>
+<div class="output">
+<div>Oxygen available<strong id="oxygenBarT">low</strong></div>
+<div id="productTitle">Lactic acid build-up<strong id="lacticT">high</strong></div>
+<div>Energy released<strong id="anaEnergyT">low</strong></div>
+</div>
+<div class="info" id="anaInfo">When oxygen is low, more lactic acid builds up in muscles.</div>
+</div>
+</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>As oxygen availability increases in muscles, lactic acid build-up should...</p><button class="choice" onclick="choice(this,true,'anaCheck','Correct: more oxygen means less anaerobic respiration, so less lactic acid.')">decrease</button><button class="choice" onclick="choice(this,false,'anaCheck','Not quite. Low oxygen causes more lactic acid build-up.')">increase</button><div id="anaCheck" class="feedback"></div></div>
+</section>
+
+
+
+<section id="lungs"><h2>3. The Respiratory System</h2>
+<div class="task"><p>This bell-jar model shows how breathing works. When the diaphragm moves down, chest volume increases, pressure decreases and air moves into the lungs.</p>
+<div class="controls">
+<div class="control">Breathing phase<strong id="breathT">inhale</strong><button class="blue" onclick="breath='in';updateBreathing()">Inhale</button><button class="orange" onclick="breath='out';updateBreathing()">Exhale</button></div>
+<div class="control">Breathing rate<strong id="rateT">normal</strong><input id="breathRate" type="range" min="1" max="3" value="1" oninput="updateBreathing()"></div>
+<div class="control">Reset<br><button class="ghost" onclick="resetBreathing()">Reset</button></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 700 400" aria-label="bell jar breathing simulation">
+<rect x="180" y="65" width="340" height="250" rx="34" fill="#f8fbff" stroke="#172554" stroke-width="6"/>
+<line x1="350" y1="25" x2="350" y2="115" stroke="#172554" stroke-width="14" stroke-linecap="round"/>
+<line x1="350" y1="115" x2="280" y2="155" stroke="#172554" stroke-width="8"/>
+<line x1="350" y1="115" x2="420" y2="155" stroke="#172554" stroke-width="8"/>
+
+<ellipse id="leftLung" cx="275" cy="210" rx="58" ry="78" fill="#bae6fd" stroke="#172554" stroke-width="5"/>
+<ellipse id="rightLung" cx="425" cy="210" rx="58" ry="78" fill="#bae6fd" stroke="#172554" stroke-width="5"/>
+
+<path id="diaphragm" d="M205 300 Q350 342 495 300" fill="none" stroke="#ef4444" stroke-width="10" stroke-linecap="round"/>
+<line id="airArrow" x1="350" y1="10" x2="350" y2="85" stroke="#22c55e" stroke-width="8" marker-end="url(#breathHead)"/>
+<defs><marker id="breathHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker></defs>
+
+<text id="breathLabel" x="350" y="370" text-anchor="middle" class="big">Inhale: diaphragm contracts and moves down</text>
+</svg>
+<div>
+<div class="output">
+<div>Chest volume<strong id="chestVolT">increases</strong></div>
+<div>Pressure inside<strong id="pressureInsideT">decreases</strong></div>
+<div>Air movement<strong id="airMoveT">air enters</strong></div>
+</div>
+<div class="info">Key idea: breathing happens because the diaphragm changes chest volume, which changes pressure and moves air in or out.</div>
+</div>
+</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>During inhalation, pressure inside the chest...</p><button class="choice" onclick="choice(this,true,'lungCheck','Correct: pressure decreases, so air moves in.')">decreases</button><button class="choice" onclick="choice(this,false,'lungCheck','Not quite. Increasing volume lowers pressure.')">increases</button><div id="lungCheck" class="feedback"></div></div>
+</section>
+
+
+
+
+<section id="gas"><h2>4. Gas Exchange</h2>
+<div class="task"><p>Gas exchange happens in the alveoli. Oxygen diffuses from the air in the alveolus into the blood. Carbon dioxide diffuses from the blood into the alveolus. Red blood cells carry oxygen away.</p>
+<div class="controls">
+<div class="control">O₂ in alveolus<strong id="alveOxyT">high</strong><input id="alveOxy" type="range" min="1" max="3" value="3" oninput="updateGas()"></div>
+<div class="control">CO₂ in blood<strong id="bloodCo2T">high</strong><input id="bloodCo2" type="range" min="1" max="3" value="3" oninput="updateGas()"></div>
+<div class="control">Run<br><button class="green" onclick="runGas()">Show exchange</button><button class="ghost" onclick="resetGas()">Reset</button></div>
+</div>
+<svg viewBox="0 0 780 430" aria-label="alveolus and capillary gas exchange with red blood cells">
+<defs>
+<marker id="o2Head" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#38bdf8"/></marker>
+<marker id="co2Head" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/></marker>
+</defs>
+
+<circle cx="245" cy="215" r="125" fill="#fef3c7" stroke="#172554" stroke-width="6"/>
+<text x="245" y="205" text-anchor="middle" class="big">Alveolus</text>
+<text x="245" y="230" text-anchor="middle" class="label">air space</text>
+
+<path d="M420 105 C540 55 700 95 700 210 C700 330 540 370 420 315 C365 290 365 130 420 105" fill="#fee2e2" stroke="#7f1d1d" stroke-width="8"/>
+<text x="575" y="78" text-anchor="middle" class="label">capillary with red blood cells</text>
+
+<ellipse class="rbc" cx="500" cy="155" rx="30" ry="18"/>
+<ellipse class="rbc" cx="605" cy="205" rx="30" ry="18"/>
+<ellipse class="rbc" cx="520" cy="285" rx="30" ry="18"/>
+
+<line x1="335" y1="170" x2="458" y2="160" stroke="#38bdf8" stroke-width="8" marker-end="url(#o2Head)"/>
+<line x1="458" y1="270" x2="335" y2="245" stroke="#94a3b8" stroke-width="8" marker-end="url(#co2Head)"/>
+<text x="365" y="145" class="label">O₂ into blood</text>
+<text x="350" y="285" class="label">CO₂ into alveolus</text>
+
+<g id="gasDots"></g>
+<text id="gasLabel" x="390" y="398" text-anchor="middle" class="big">Diffusion: particles move from high to low concentration</text>
+</svg></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>What do red blood cells carry away from the alveoli?</p><button class="choice" onclick="choice(this,true,'gasCheck','Correct: red blood cells carry oxygen away.')">Oxygen</button><button class="choice" onclick="choice(this,false,'gasCheck','Not quite. Carbon dioxide moves from blood into the alveoli.')">Carbon dioxide into the body</button><div id="gasCheck" class="feedback"></div></div>
+</section>
+
+
+
+
+
+
+<section id="nutrients"><h2>5. Nutrients and Unbalanced Diet</h2>
+<div class="task">
+<p><b>Nutrients have different jobs.</b> First learn the correct pairs, then complete the quick check.</p>
+
+<div class="grid">
+<div class="card"><h3>Carbohydrates</h3><p>Main energy source.</p></div>
+<div class="card"><h3>Protein</h3><p>Growth and repair.</p></div>
+<div class="card"><h3>Lipids</h3><p>Energy store and insulation.</p></div>
+<div class="card"><h3>Fibre</h3><p>Helps food move through the gut.</p></div>
+<div class="card"><h3>Water</h3><p>Transport and chemical reactions.</p></div>
+<div class="card"><h3>Vitamins & minerals</h3><p>Keep the body healthy, e.g. bones, blood and immunity.</p></div>
+</div>
+
+<div class="card">
+<h3>Traditional matching practice</h3>
+<p>The functions are scrambled. Click a nutrient, then click the correct matching function to draw a line.</p>
+<svg class="matchSvg" viewBox="0 0 900 470" aria-label="nutrient matching practice arranged side by side">
+<g id="matchLines"></g>
+
+<g class="matchNode" onclick="selectNut('carb')" id="node_carb"><rect x="40" y="45" width="270" height="50" rx="14"/><text x="65" y="77">Carbohydrates</text></g>
+<g class="matchNode" onclick="matchFunc('gut')" id="func_gut"><rect x="540" y="45" width="310" height="50" rx="14"/><text x="565" y="77">Helps food move through the gut</text></g>
+
+<g class="matchNode" onclick="selectNut('protein')" id="node_protein"><rect x="40" y="110" width="270" height="50" rx="14"/><text x="65" y="142">Protein</text></g>
+<g class="matchNode" onclick="matchFunc('energy')" id="func_energy"><rect x="540" y="110" width="310" height="50" rx="14"/><text x="565" y="142">Main energy source</text></g>
+
+<g class="matchNode" onclick="selectNut('lipid')" id="node_lipid"><rect x="40" y="175" width="270" height="50" rx="14"/><text x="65" y="207">Lipids</text></g>
+<g class="matchNode" onclick="matchFunc('healthy')" id="func_healthy"><rect x="540" y="175" width="310" height="50" rx="14"/><text x="565" y="207">Keep the body healthy</text></g>
+
+<g class="matchNode" onclick="selectNut('fibre')" id="node_fibre"><rect x="40" y="240" width="270" height="50" rx="14"/><text x="65" y="272">Fibre</text></g>
+<g class="matchNode" onclick="matchFunc('store')" id="func_store"><rect x="540" y="240" width="310" height="50" rx="14"/><text x="565" y="272">Energy store and insulation</text></g>
+
+<g class="matchNode" onclick="selectNut('water')" id="node_water"><rect x="40" y="305" width="270" height="50" rx="14"/><text x="65" y="337">Water</text></g>
+<g class="matchNode" onclick="matchFunc('transport')" id="func_transport"><rect x="540" y="305" width="310" height="50" rx="14"/><text x="565" y="337">Transport and chemical reactions</text></g>
+
+<g class="matchNode" onclick="selectNut('vitamins')" id="node_vitamins"><rect x="40" y="370" width="270" height="50" rx="14"/><text x="65" y="402">Vitamins & minerals</text></g>
+<g class="matchNode" onclick="matchFunc('growth')" id="func_growth"><rect x="540" y="370" width="310" height="50" rx="14"/><text x="565" y="402">Growth and repair</text></g>
+</svg>
+<button class="ghost" onclick="resetNutrientMatch()">Reset lines</button>
+<div id="nutF" class="feedback"></div>
+</div>
+</div>
+
+<div class="mini-check"><h3>Check your understanding</h3><p>Which nutrient is mainly used for growth and repair?</p><button class="choice" onclick="choice(this,true,'nutCheck','Correct: protein.')">Protein</button><button class="choice" onclick="choice(this,false,'nutCheck','Not quite. Protein is used for growth and repair.')">Fibre</button><div id="nutCheck" class="feedback"></div></div>
+</section>
+
+
+
+
+
+
+
+
+<section id="digestion"><h2>6. The Digestive System</h2>
+<div class="task"><p>Use the real digestive-system diagram. Click an organ or press “Next stage” to follow the journey of digestion and absorption, including the support organs that help digestion.</p>
+<div class="controls">
+<div class="control">Current organ<strong id="foodPosT">mouth</strong></div>
+<div class="control">Journey of digestion<br><button class="green" onclick="moveFood()">Next stage</button><button class="ghost" onclick="resetFood()">Reset</button></div>
+<div class="control">Process<strong id="processT">chewing + saliva</strong></div>
+</div>
+
+<div class="two">
+<div class="digestWrap" aria-label="interactive digestive system image">
+<img class="digestImg" src="digestive-system.png" alt="Digestive system diagram">
+<div id="food" class="foodBolus" style="left:38%;top:24%;"></div>
+
+<button class="hotspot" id="mouthPath" onclick="setDigestStage(0)" title="Mouth" style="left:22%;top:18%;width:27%;height:10%;"></button>
+<button class="hotspot" id="oesPath" onclick="setDigestStage(1)" title="Oesophagus" style="left:43%;top:28%;width:13%;height:24%;"></button>
+<button class="hotspot" id="stomPath" onclick="setDigestStage(2)" title="Stomach" style="left:50%;top:55%;width:22%;height:10%;"></button>
+<button class="hotspot" id="smallPath" onclick="setDigestStage(3)" title="Small intestine" style="left:39%;top:68%;width:32%;height:17%;"></button>
+<button class="hotspot" id="largePath" onclick="setDigestStage(4)" title="Large intestine" style="left:31%;top:61%;width:49%;height:28%;"></button>
+<button class="hotspot" id="rectumPath" onclick="setDigestStage(5)" title="Rectum and anus" style="left:52%;top:86%;width:18%;height:9%;"></button>
+<button class="hotspot" id="liverPath" onclick="setDigestStage(6)" title="Liver" style="left:31%;top:52%;width:27%;height:10%;"></button>
+<button class="hotspot" id="gallPath" onclick="setDigestStage(7)" title="Gall bladder" style="left:43%;top:58%;width:8%;height:7%;"></button>
+<button class="hotspot" id="pancreasPath" onclick="setDigestStage(8)" title="Pancreas" style="left:54%;top:63%;width:21%;height:6%;"></button>
+</div>
+
+<div class="organInfo">
+<h3 id="organTitle">Mouth</h3>
+<p id="organText">Food is chewed. Saliva contains amylase, an enzyme that starts breaking down starch.</p>
+<p><strong>Journey:</strong> mouth → oesophagus → stomach → liver/gall bladder/pancreas support digestion → small intestine absorption → large intestine → rectum/anus.</p>
+<p><strong>Important:</strong> food does not pass through the liver, gall bladder or pancreas. They release substances that help digestion in the small intestine.</p>
+</div>
+</div></div>
+
+
+<div class="mini-check"><h3>Check your understanding</h3><p>Does food pass through the liver, gall bladder or pancreas?</p><button class="choice" onclick="choice(this,true,'supportCheck','Correct: food does not pass through them; they release bile or enzymes to help digestion.')">No, they support digestion</button><button class="choice" onclick="choice(this,false,'supportCheck','Not quite. They help digestion, but food does not pass through them.')">Yes, food passes through them</button><div id="supportCheck" class="feedback"></div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>Where are most digested food molecules absorbed?</p><button class="choice" onclick="choice(this,true,'digCheck','Correct: the small intestine absorbs digested food.')">Small intestine</button><button class="choice" onclick="choice(this,false,'digCheck','Not quite. The stomach starts digestion but absorption mainly occurs in the small intestine.')">Stomach</button><div id="digCheck" class="feedback"></div></div>
+</section>
+
+
+
+
+
+
+
+<section id="enzymes"><h2>7. Enzymes in Digestion</h2>
+<div class="task"><p>Enzymes are biological catalysts. They have optimum conditions. Temperature and pH affect activity in different ways, so this model shows two separate graphs.</p>
+<div class="controls">
+<div class="control">Temperature <strong id="enzTempT">37 °C</strong><input id="enzTemp" type="range" min="0" max="80" value="37" oninput="updateEnzyme()"></div>
+<div class="control">pH <strong id="enzPhT">7</strong><input id="enzPh" type="range" min="1" max="14" value="7" oninput="updateEnzyme()"></div>
+<div class="control">Overall activity<strong id="enzActT">high</strong></div>
+</div>
+
+<div class="two">
+<svg viewBox="0 0 660 360" aria-label="enzyme activity against temperature graph">
+<text x="330" y="30" text-anchor="middle" class="big">Effect of temperature on enzyme activity</text>
+<line x1="80" y1="300" x2="600" y2="300" stroke="#172554" stroke-width="5"/>
+<line x1="80" y1="300" x2="80" y2="55" stroke="#172554" stroke-width="5"/>
+<text x="260" y="342" class="label">Independent variable: temperature / °C</text>
+<text x="20" y="205" class="label" transform="rotate(-90 20 205)">Activity / %</text>
+<text x="70" y="322" class="small">0</text><text x="205" y="322" class="small">20</text><text x="335" y="322" class="small">40</text><text x="465" y="322" class="small">60</text><text x="590" y="322" class="small">80</text>
+<text x="45" y="305" class="small">0</text><text x="38" y="185" class="small">50</text><text x="30" y="70" class="small">100</text>
+<path id="tempCurve" class="enzymeCurve" d="M80 292 C150 270 235 150 320 80 C365 110 410 210 600 292"/>
+<circle id="tempPoint" cx="320" cy="80" r="11" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<line id="tempCursor" x1="320" y1="80" x2="320" y2="300" stroke="#ef4444" stroke-width="3" stroke-dasharray="7 7"/>
+<text x="315" y="65" class="small">optimum ≈ 37 °C</text>
+</svg>
+
+<svg viewBox="0 0 660 360" aria-label="enzyme activity against pH graph">
+<text x="330" y="30" text-anchor="middle" class="big">Effect of pH on enzyme activity</text>
+<line x1="80" y1="300" x2="600" y2="300" stroke="#172554" stroke-width="5"/>
+<line x1="80" y1="300" x2="80" y2="55" stroke="#172554" stroke-width="5"/>
+<text x="285" y="342" class="label">Independent variable: pH</text>
+<text x="20" y="205" class="label" transform="rotate(-90 20 205)">Activity / %</text>
+<text x="75" y="322" class="small">1</text><text x="190" y="322" class="small">4</text><text x="315" y="322" class="small">7</text><text x="435" y="322" class="small">10</text><text x="575" y="322" class="small">14</text>
+<text x="45" y="305" class="small">0</text><text x="38" y="185" class="small">50</text><text x="30" y="70" class="small">100</text>
+<path id="phCurve" class="enzymeCurve" d="M80 292 C170 280 230 180 320 80 C410 180 480 280 600 292"/>
+<circle id="phPoint" cx="320" cy="80" r="11" fill="#7c3aed" stroke="#172554" stroke-width="3"/>
+<line id="phCursor" x1="320" y1="80" x2="320" y2="300" stroke="#7c3aed" stroke-width="3" stroke-dasharray="7 7"/>
+<text x="300" y="65" class="small">optimum pH varies by enzyme</text>
+</svg>
+</div>
+
+<div class="two">
+<svg viewBox="0 0 640 260" aria-label="enzyme substrate model">
+<path d="M250 100 C300 55 360 60 395 110 C360 170 290 175 250 125 Z" fill="#a7f3d0" stroke="#172554" stroke-width="5"/>
+<circle id="substrate" cx="345" cy="110" r="28" fill="#f59e0b" stroke="#172554" stroke-width="4"/>
+<text x="320" y="205" text-anchor="middle" class="big">enzyme + substrate</text>
+<text id="enzCondition" x="320" y="235" text-anchor="middle" class="label">optimum conditions</text>
+</svg>
+<div class="info" id="enzInfo">Dependent variable: enzyme activity. Temperature and pH are independent variables when investigated separately.</div>
+</div>
+</div>
+
+<div class="mini-check"><h3>Check your understanding</h3><p>If investigating pH, what is the independent variable?</p><button class="choice" onclick="choice(this,true,'enzCheck','Correct: pH is the independent variable when you change it.')">pH</button><button class="choice" onclick="choice(this,false,'enzCheck','Not quite. Enzyme activity is the dependent variable.')">Enzyme activity</button><div id="enzCheck" class="feedback"></div></div>
+</section>
+
+
+
+
+<section id="foodtests"><h2>8. Optional Food Tests Practical</h2>
+<div class="task"><p>Food tests help identify nutrients. Learn the reagent and the positive result for each test.</p>
+<div class="controls">
+<div class="control">Test <strong id="testT">starch</strong><button class="blue" onclick="test='starch';updateFoodTest()">Starch</button><button class="orange" onclick="test='glucose';updateFoodTest()">Glucose</button><button class="green" onclick="test='protein';updateFoodTest()">Protein</button><button class="red" onclick="test='lipid';updateFoodTest()">Lipid</button></div>
+<div class="control">Reagent<strong id="reagentT">iodine</strong></div>
+<div class="control">Positive result<strong id="resultT">blue-black</strong></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 700 300" aria-label="food test practical">
+<rect x="290" y="80" width="120" height="170" rx="28" class="testTube"/>
+<rect id="testLiquid" x="305" y="165" width="90" height="70" fill="#cbd5e1"/>
+<path d="M455 60 L510 115 L490 135 L435 80 Z" fill="#dbeafe" stroke="#172554" stroke-width="5"/>
+<circle id="drop" cx="420" cy="145" r="0" fill="#38a7ff"/>
+<text id="testLabel" x="350" y="45" text-anchor="middle" class="big">Iodine test for starch</text>
+</svg>
+<div class="card">
+<h3>Memory table</h3>
+<ul>
+<li><b>Starch</b>: iodine → blue-black</li>
+<li><b>Glucose</b>: Benedict’s + heat → brick red</li>
+<li><b>Protein</b>: Biuret → purple</li>
+<li><b>Lipid</b>: ethanol emulsion → cloudy white</li>
+</ul>
+<button class="green" onclick="runFoodTest()">Add reagent</button><button class="ghost" onclick="resetFoodTest()">Reset</button>
+</div>
+</div><div class="info" id="testInfo">Starch test: iodine turns blue-black if starch is present.</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>Which test is used for lipids?</p><button class="choice" onclick="choice(this,true,'foodCheck','Correct: ethanol emulsion test identifies lipids.')">Ethanol emulsion</button><button class="choice" onclick="choice(this,false,'foodCheck','Not quite. Benedict’s tests for glucose.')">Benedict’s</button><div id="foodCheck" class="feedback"></div></div>
+</section>
+
+
+<section id="quiz"><h2>9. CFU: 20 Questions</h2>
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Aerobic respiration needs...</p><button class="choice" onclick="quiz(this,true,'q1')">oxygen</button><button class="choice" onclick="quiz(this,false,'q1')">ethanol</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. Respiration releases...</p><button class="choice" onclick="quiz(this,true,'q2')">energy</button><button class="choice" onclick="quiz(this,false,'q2')">starch</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. Gas exchange happens in the...</p><button class="choice" onclick="quiz(this,true,'q3')">alveoli</button><button class="choice" onclick="quiz(this,false,'q3')">oesophagus</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. Protein is needed for...</p><button class="choice" onclick="quiz(this,true,'q4')">growth and repair</button><button class="choice" onclick="quiz(this,false,'q4')">testing starch</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. Enzymes are...</p><button class="choice" onclick="quiz(this,true,'q5')">biological catalysts</button><button class="choice" onclick="quiz(this,false,'q5')">organs</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. Iodine tests for...</p><button class="choice" onclick="quiz(this,true,'q6')">starch</button><button class="choice" onclick="quiz(this,false,'q6')">protein</button><div id="q6" class="feedback"></div></div>
+</div>
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. A student breathes 18 times in 1 minute. How many breaths in 5 minutes?</p><div class="calc-input"><input id="calc7"><button class="green" onclick="checkCalc('calc7',90,'q7','Correct: 18 × 5 = 90 breaths.')">Check</button></div><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. Heart rate increases from 70 to 110 bpm. Calculate the increase.</p><div class="calc-input"><input id="calc8"><button class="green" onclick="checkCalc('calc8',40,'q8','Correct: 110 − 70 = 40 bpm.')">Check</button></div><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. Convert 2 minutes to seconds.</p><div class="calc-input"><input id="calc9"><button class="green" onclick="checkCalc('calc9',120,'q9','Correct: 2 minutes = 120 seconds.')">Check</button></div><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. 30 breaths in 2 minutes. Calculate breaths per minute.</p><div class="calc-input"><input id="calc10"><button class="green" onclick="checkCalc('calc10',15,'q10','Correct: 30 ÷ 2 = 15 breaths per minute.')">Check</button></div><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. Which product is made by yeast fermentation?</p><button class="choice" onclick="quiz(this,true,'q11')">carbon dioxide</button><button class="choice" onclick="quiz(this,false,'q11')">oxygen</button><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. Which organ absorbs most digested food?</p><button class="choice" onclick="quiz(this,true,'q12')">small intestine</button><button class="choice" onclick="quiz(this,false,'q12')">mouth</button><div id="q12" class="feedback"></div></div>
+</div>
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. Explain why breathing rate increases during exercise.</p><textarea id="stretch13"></textarea><button class="green" onclick="checkText('stretch13','q13',['oxygen','energy'],'Good: more oxygen is needed for respiration to release energy.','Model answer: During exercise, muscles need more energy. Breathing rate increases to bring in more oxygen for aerobic respiration and remove more carbon dioxide.')">Check</button><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. Explain one adaptation of alveoli.</p><textarea id="stretch14"></textarea><button class="green" onclick="checkText('stretch14','q14',['surface area'],'Good: alveoli have a large surface area.','Model answer: Alveoli have a large surface area and thin walls, so oxygen and carbon dioxide can diffuse quickly.')">Check</button><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain what happens if enzymes get too hot.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkText('stretch15','q15',['denature'],'Good: high temperature can denature enzymes.','Model answer: If enzymes get too hot, they denature. Their active site changes shape, so the substrate no longer fits and activity decreases.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Explain why fibre is needed in the diet.</p><textarea id="stretch16"></textarea><button class="green" onclick="checkText('stretch16','q16',['move','gut'],'Good: fibre helps food move through the gut.','Model answer: Fibre helps food move through the gut and prevents constipation. It is not mainly used for energy.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Suggest one control variable in a food test practical.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkText('stretch17','q17',['volume'],'Good: volume of reagent/sample is a valid control variable.','Model answer: One control variable is the volume of food sample or reagent used. This keeps the test fair.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. Explain why digestion is needed.</p><textarea id="stretch18"></textarea><button class="green" onclick="checkText('stretch18','q18',['small','absorbed'],'Good: large molecules are broken into small soluble molecules that can be absorbed.','Model answer: Digestion breaks large insoluble food molecules into small soluble molecules so they can be absorbed into the blood.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Compare aerobic and anaerobic respiration.</p><textarea id="stretch19"></textarea><button class="green" onclick="checkText('stretch19','q19',['oxygen','less energy'],'Good: aerobic uses oxygen; anaerobic releases less energy.','Model answer: Aerobic respiration uses oxygen and releases more energy. Anaerobic respiration does not use oxygen and releases less energy; in muscles it produces lactic acid.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. Why should a practical be repeated?</p><textarea id="stretch20"></textarea><button class="green" onclick="checkText('stretch20','q20',['reliable'],'Good: repeats improve reliability and help identify anomalies.','Model answer: Repeating a practical improves reliability because you can calculate a mean and identify anomalies.')">Check</button><div id="q20" class="feedback"></div></div>
+</div><div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
+
+<script>
+let ana='human',breath='in',foodStep=0,test='starch',quizScore=0,answered={};
+function el(id){return document.getElementById(id)}
+function choice(btn,c,fid,msg){let p=btn.closest('.mini-check')||btn.closest('.task')||btn.closest('.quiz-card');p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));btn.classList.add(c?'correct':'wrong');el(fid).textContent=msg;el(fid).className='feedback '+(c?'ok':'no')}
+
+
+let selectedNut=null, matchedPairs={};
+const correctNut={carb:'energy',protein:'growth',lipid:'store',fibre:'gut',water:'transport',vitamins:'healthy'};
+const nutY={carb:70,protein:135,lipid:200,fibre:265,water:330,vitamins:395};
+const funcY={gut:70,energy:135,healthy:200,store:265,transport:330,growth:395};
+function selectNut(n){selectedNut=n;el('nutF').textContent='Selected: '+n+'. Now click the matching function.';el('nutF').className='feedback'}
+function matchFunc(f){
+if(!selectedNut){el('nutF').textContent='Click a nutrient first.';return}
+let ok=correctNut[selectedNut]===f;
+if(ok){matchedPairs[selectedNut]=f;drawNutLines();let done=Object.keys(matchedPairs).length;el('nutF').textContent=done===6?'All correct matches completed.':'Correct match added.';el('nutF').className='feedback ok'}
+else{el('nutF').textContent='Not quite. Try again.';el('nutF').className='feedback no'}
+selectedNut=null;
+}
+function drawNutLines(){
+let g=el('matchLines');g.innerHTML='';
+Object.entries(matchedPairs).forEach(([n,f])=>{g.innerHTML+=`<line x1="310" y1="${nutY[n]}" x2="540" y2="${funcY[f]}" stroke="#22c55e" stroke-width="5" stroke-linecap="round"/>`})
+}
+function resetNutrientMatch(){selectedNut=null;matchedPairs={};el('matchLines').innerHTML='';el('nutF').textContent='';el('nutF').className='feedback'}
+
+function updateRespiration(){let e=+el('exercise').value;let words=['rest','walking','jogging','sprinting'];let lvl=['low','medium','high','very high'][e];el('exerciseT').textContent=words[e];el('oxygenDemand').textContent=lvl;el('energyOut').textContent=lvl;el('glucoseUse').textContent=lvl;el('oxygenUse').textContent=lvl;el('co2Made').textContent=lvl;el('respMolecules').setAttribute('class',e>1?'fast':'');el('respLabel').textContent=e>1?'Exercise increases respiration rate':'More exercise = faster respiration'}
+
+function updateAnaerobic(){
+let o=+el('anaOxy').value;
+let oxyWords=['none','low','medium','high'];
+el('anaOxyT').textContent=oxyWords[o];
+el('anaType').textContent=ana==='human'?'human muscle':'yeast';
+let oxygenHeight=[25,70,120,170][o];
+let oxygenY=280-oxygenHeight;
+let productHeight=ana==='human'?[180,135,75,35][o]:[35,70,120,165][o];
+let productY=280-productHeight;
+let energyHeight=[35,50,80,120][o];
+let energyY=280-energyHeight;
+el('oxygenBar').setAttribute('height',oxygenHeight);el('oxygenBar').setAttribute('y',oxygenY);
+el('lacticBar').setAttribute('height',productHeight);el('lacticBar').setAttribute('y',productY);
+el('energyBar').setAttribute('height',energyHeight);el('energyBar').setAttribute('y',energyY);
+el('oxygenBarT').textContent=oxyWords[o];
+el('lacticT').textContent=productHeight>130?'high':productHeight>70?'medium':'low';
+el('anaEnergyT').textContent=energyHeight>90?'medium':'low';
+if(ana==='human'){
+el('productBarLabel').textContent='lactic acid';el('productTitle').firstChild.textContent='Lactic acid build-up';
+el('anaEquation').textContent='glucose → lactic acid + less energy';
+el('anaInfo').textContent='Low oxygen causes more anaerobic respiration, so lactic acid increases.';
+}else{
+el('productBarLabel').textContent='CO₂ / ethanol';el('productTitle').firstChild.textContent='Fermentation products';
+el('anaEquation').textContent='glucose → ethanol + carbon dioxide';
+el('anaInfo').textContent='In yeast, fermentation produces ethanol and carbon dioxide. More sugar/active yeast gives more CO₂.';
+}
+}
+function runAnaerobic(){['oxygenBar','lacticBar','energyBar'].forEach(id=>el(id).classList.add('pulse'));setTimeout(()=>['oxygenBar','lacticBar','energyBar'].forEach(id=>el(id).classList.remove('pulse')),1400)}
+function resetAnaerobic(){ana='human';el('anaOxy').value=1;updateAnaerobic()}
+
+
+function updateBreathing(){
+let r=+el('breathRate').value;
+el('rateT').textContent=r===1?'normal':r===2?'fast':'very fast';
+el('breathT').textContent=breath==='in'?'inhale':'exhale';
+let scale=breath==='in'?1.15:.86;
+el('leftLung').setAttribute('transform',`translate(${275*(1-scale)} ${210*(1-scale)}) scale(${scale})`);
+el('rightLung').setAttribute('transform',`translate(${425*(1-scale)} ${210*(1-scale)}) scale(${scale})`);
+el('diaphragm').setAttribute('d',breath==='in'?'M205 315 Q350 352 495 315':'M205 285 Q350 250 495 285');
+el('airArrow').setAttribute('y1',breath==='in'?10:95);
+el('airArrow').setAttribute('y2',breath==='in'?85:10);
+el('chestVolT').textContent=breath==='in'?'increases':'decreases';
+el('pressureInsideT').textContent=breath==='in'?'decreases':'increases';
+el('airMoveT').textContent=breath==='in'?'air enters':'air leaves';
+el('breathLabel').textContent=breath==='in'?'Inhale: volume increases, pressure decreases, air enters':'Exhale: volume decreases, pressure increases, air leaves';
+}
+function resetBreathing(){breath='in';el('breathRate').value=1;updateBreathing()}
+
+
+
+function updateGas(){
+let o=+el('alveOxy').value,c=+el('bloodCo2').value;
+el('alveOxyT').textContent=['','low','medium','high'][o];
+el('bloodCo2T').textContent=['','low','medium','high'][c];
+el('gasLabel').textContent=`O₂ concentration gradient: ${o}/3 • CO₂ concentration gradient: ${c}/3`;
+}
+function runGas(){
+let g=el('gasDots');g.innerHTML='';
+let o=+el('alveOxy').value,c=+el('bloodCo2').value;
+for(let i=0;i<o*4;i++){g.innerHTML+=`<circle class="gasMoveO2 o2" cx="${285+i*8}" cy="${135+i*6}" r="7"/>`}
+for(let i=0;i<c*4;i++){g.innerHTML+=`<circle class="gasMoveCO2 co2" cx="${535+i*8}" cy="${240-i*5}" r="7"/>`}
+}
+function resetGas(){el('gasDots').innerHTML='';updateGas()}
+
+
+
+
+const digStages=[
+['38%','24%','mouth','chewing + saliva','Mouth','Food is chewed. Saliva contains amylase, an enzyme that starts breaking down starch.'],
+['48%','39%','oesophagus','peristalsis / transport','Oesophagus','Muscles push food down to the stomach by waves of contraction called peristalsis.'],
+['59%','60%','stomach','acid + enzymes','Stomach','Food is churned with acid and enzymes. Protein digestion begins here.'],
+['54%','75%','small intestine','digestion + absorption','Small intestine','Enzymes complete digestion here. Small soluble food molecules are absorbed into the blood through the walls of the small intestine.'],
+['38%','72%','large intestine','water absorption','Large intestine','Water is absorbed from undigested food, forming faeces.'],
+['55%','90%','rectum/anus','storage + removal','Rectum and anus','Faeces are stored in the rectum and removed through the anus.'],
+['42%','56%','liver','bile production','Liver','The liver makes bile. Bile helps neutralise stomach acid and helps break large fat droplets into smaller droplets. Food does not pass through the liver.'],
+['46%','61%','gall bladder','stores bile','Gall bladder','The gall bladder stores bile made by the liver and releases it into the small intestine to help digestion. Food does not pass through the gall bladder.'],
+['62%','65%','pancreas','enzyme production','Pancreas','The pancreas makes digestive enzymes that are released into the small intestine to help break down food. Food does not pass through the pancreas.']
+];
+function setDigestStage(n){
+foodStep=n;
+let s=digStages[n];
+el('food').style.left=s[0];el('food').style.top=s[1];
+el('foodPosT').textContent=s[2];el('processT').textContent=s[3];
+el('organTitle').textContent=s[4];el('organText').textContent=s[5];
+['mouthPath','oesPath','stomPath','smallPath','largePath','rectumPath','liverPath','gallPath','pancreasPath'].forEach(id=>el(id).classList.remove('active'));
+let ids=['mouthPath','oesPath','stomPath','smallPath','largePath','rectumPath','liverPath','gallPath','pancreasPath'];
+el(ids[n]).classList.add('active');
+}
+function moveFood(){
+/* Journey includes support-organ teaching stops.
+   Food does not pass through liver/gall bladder/pancreas; they support digestion before absorption in the small intestine. */
+let journey=[0,1,2,6,7,8,3,4,5];
+let current=journey.indexOf(foodStep);
+let next=journey[(current===-1?0:(current+1)%journey.length)];
+setDigestStage(next);
+}
+function resetFood(){setDigestStage(0)}
+
+
+
+
+
+
+function updateEnzyme(){
+let temp=+el('enzTemp').value, ph=+el('enzPh').value;
+el('enzTempT').textContent=temp+' °C';
+el('enzPhT').textContent=ph;
+
+// Temperature: gradual rise to optimum then sharp fall after about 40 °C due to denaturing.
+let tempAct;
+if(temp<=37){ tempAct = Math.max(0, Math.round((temp/37)*100)); }
+else { tempAct = Math.max(0, Math.round(100 - ((temp-37)/43)*100)); }
+
+// pH: bell-shaped curve around pH 7 for this simplified digestive enzyme model.
+let phAct = Math.max(0, Math.round(100 - Math.abs(ph-7)*(100/6)));
+let overall = Math.round((tempAct*phAct)/100);
+
+el('enzActT').textContent=overall>70?'high':overall>30?'medium':'low';
+
+// temperature graph point
+let tx=80+(temp/80)*520;
+let ty=300-(tempAct/100)*220;
+el('tempPoint').setAttribute('cx',tx);el('tempPoint').setAttribute('cy',ty);
+el('tempCursor').setAttribute('x1',tx);el('tempCursor').setAttribute('x2',tx);el('tempCursor').setAttribute('y1',ty);
+
+// pH graph point
+let px=80+((ph-1)/13)*520;
+let py=300-(phAct/100)*220;
+el('phPoint').setAttribute('cx',px);el('phPoint').setAttribute('cy',py);
+el('phCursor').setAttribute('x1',px);el('phCursor').setAttribute('x2',px);el('phCursor').setAttribute('y1',py);
+
+el('substrate').setAttribute('fill',overall>70?'#22c55e':overall>30?'#f59e0b':'#ef4444');
+el('enzCondition').textContent=overall>70?'near optimum':overall>30?'reduced activity':'very low activity / denatured risk';
+el('enzInfo').textContent=`Temperature activity: ${tempAct}%. pH activity: ${phAct}%. Overall model activity: ${overall}%.`;
+}
+
+function updateFoodTest(){
+let data={
+starch:['iodine','blue-black','Iodine test for starch','#1e3a8a','Starch test: iodine turns blue-black if starch is present.'],
+glucose:["Benedict’s + heat",'brick red',"Benedict’s test for glucose",'#dc2626','Glucose test: Benedict’s turns brick red after heating if glucose is present.'],
+protein:['Biuret','purple','Biuret test for protein','#7c3aed','Protein test: Biuret turns purple if protein is present.'],
+lipid:['ethanol emulsion','cloudy white','Ethanol emulsion test for lipids','#f8fafc','Lipid test: ethanol emulsion gives a cloudy white layer if lipids are present.']
+}[test];
+el('testT').textContent=test;el('reagentT').textContent=data[0];el('resultT').textContent=data[1];el('testLabel').textContent=data[2];el('testLiquid').setAttribute('fill','#cbd5e1');el('testInfo').textContent=data[4];
+}
+function runFoodTest(){
+let data={starch:'#1e3a8a',glucose:'#dc2626',protein:'#7c3aed',lipid:'#f8fafc'}[test];
+el('testLiquid').setAttribute('fill',data);
+el('drop').setAttribute('r',10);
+if(test==='lipid'){el('testLiquid').setAttribute('stroke','#94a3b8');el('testLiquid').setAttribute('stroke-width','4')}
+setTimeout(()=>el('drop').setAttribute('r',0),600)
+}
+function resetFoodTest(){el('testLiquid').setAttribute('fill','#cbd5e1');el('testLiquid').removeAttribute('stroke');el('drop').setAttribute('r',0)}
+
+function quiz(btn,c,fid){if(answered[fid])return;answered[fid]=true;btn.classList.add(c?'correct':'wrong');el(fid).textContent=c?'Correct.':'Not quite.';el(fid).className='feedback '+(c?'ok':'no');if(c)quizScore++;el('quizScore').textContent=quizScore}
+function checkCalc(inputId,ans,fid,msg){if(answered[fid])return;let v=Number(el(inputId).value);let c=Math.abs(v-ans)<.01;el(fid).textContent=c?msg:('Not quite. Correct method: '+msg.replace('Correct: ','')).replace('Correct method: Correct: ','Correct method: ');el(fid).className='feedback '+(c?'ok':'no');if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}}
+function checkText(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.every(w=>t.includes(w));
+el(fid).textContent=c?msg:(model || 'Not quite. Model answer: use the key science terms from the lesson.');
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}
+}
+window.onload=function(){updateRespiration();updateAnaerobic();updateBreathing();updateGas();resetFood();updateEnzyme();updateFoodTest()}
+</script>
+</body></html>
