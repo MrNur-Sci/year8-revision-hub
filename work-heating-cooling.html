@@ -2,69 +2,509 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Year 8 Work, Heating and Cooling</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
-.hero{background:linear-gradient(135deg,#10133f,#f97316);color:white;text-align:center;padding:52px 20px}
-.hero h1{font-size:46px;margin:8px 0}.hero p{font-size:19px;font-weight:800}
-.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;padding:10px;text-align:center;z-index:10}
-.nav a{display:inline-block;margin:4px;padding:9px 13px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
-section{max-width:1120px;margin:20px auto;background:white;padding:30px;border-radius:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
-h2{font-size:32px;color:#172554;margin:0 0 10px}.card,.task,.quiz-card{border:2px solid #d7ecff;border-radius:22px;padding:18px;background:#f8fbff;margin:15px 0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-button{border:0;border-radius:999px;padding:11px 15px;font-weight:900;cursor:pointer;margin:4px}.blue{background:#38a7ff;color:white}.green{background:#22c55e;color:white}.orange{background:#f59e0b;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff}
-.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{text-align:left;background:white;border:2px solid #d7ecff;color:#102033}.correct{background:#dcfce7!important;border-color:#22c55e!important}.wrong{background:#fff1f2!important;border-color:#ef4444!important}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
+.hero{background:linear-gradient(135deg,#10133f,#2563eb,#f97316);color:white;text-align:center;padding:46px 18px}
+.hero h1{font-size:42px;margin:0 0 10px}.hero p{font-size:18px;font-weight:800;max-width:920px;margin:auto}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:30}
+.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1120px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}
+.task,.quiz-card,.card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.controls,.output{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.control,.output div{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}
+.control strong,.output strong{display:block;font-size:21px;color:#172554}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}
+.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.red{background:#ef4444;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff;color:#102033}
+.toggleBtn{background:#eef6ff;border:2px solid #d7ecff;color:#102033}.toggleBtn.on{background:#22c55e;color:white;border-color:#22c55e}
+input[type=range]{width:100%}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}
+.label{font:bold 14px Arial;fill:#172554}.big{font:bold 18px Arial;fill:#172554}.small{font:bold 12px Arial;fill:#172554}
+.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.choice{text-align:left;background:white;border:2px solid #d7ecff;color:#102033}
+.correct{background:#dcfce7!important;border-color:#22c55e!important}.wrong{background:#fff1f2!important;border-color:#ef4444!important}
 .feedback{font-weight:900;margin-top:10px}.ok{color:#15803d}.no{color:#dc2626}
-.controls,.output{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.control,.output div{background:white;border:2px solid #d7ecff;border-radius:18px;padding:13px;text-align:center;font-weight:900}.output strong,.control strong{display:block;font-size:23px;color:#172554;margin:5px 0}
-input[type=range]{width:100%}.calc-input{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}.calc-input input{padding:12px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:150px}
-textarea{width:100%;min-height:82px;border:2px solid #d7ecff;border-radius:16px;padding:12px;font-size:16px}.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:18px;padding:13px;font-weight:900;color:#7c2d12}
-.sim{height:250px;background:white;border:2px solid #d7ecff;border-radius:22px;position:relative;overflow:hidden}.box{position:absolute;left:40px;bottom:55px;font-size:52px;transition:left .6s}.floor{position:absolute;left:20px;right:20px;bottom:42px;height:8px;background:#94a3b8;border-radius:999px}.arrow{position:absolute;font-size:34px;top:116px;left:120px;transition:left .6s}
-.particles{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:22px}.dot{width:22px;height:22px;border-radius:50%;background:#f97316;margin:auto}.vibrate .dot{animation:vib .35s infinite alternate}.vibrate.fast .dot{animation-duration:.12s}@keyframes vib{from{transform:translate(0,0)}to{transform:translate(5px,-4px)}}
-.current{position:absolute;width:110px;height:110px;border:7px solid #38a7ff;border-radius:50%;border-left-color:transparent;animation:spin 1.4s linear infinite;left:calc(50% - 55px);top:70px}@keyframes spin{to{transform:rotate(360deg)}}
-.ray{position:absolute;height:6px;background:#f97316;border-radius:999px;left:90px;right:90px}.ray:nth-child(1){top:75px}.ray:nth-child(2){top:120px}.ray:nth-child(3){top:165px}.sankey{height:160px;position:relative;background:white;border:2px solid #d7ecff;border-radius:18px}.useful{position:absolute;left:40px;top:50px;height:30px;background:#22c55e;border-radius:999px}.waste{position:absolute;left:40px;top:95px;height:30px;background:#ef4444;border-radius:999px}
-.quiz-band{padding:18px;border-radius:20px;margin:18px 0}.secure{background:#ecfdf5;border:2px solid #86efac}.build{background:#eef6ff;border:2px solid #93c5fd}.stretch{background:#fff7ed;border:2px solid #fed7aa}.quiz-score{font-size:22px;font-weight:900;padding:16px;background:#eef6ff;border-radius:18px}
-@media(max-width:850px){.grid,.two,.controls,.output,.choice-grid{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:36px}}
-</style></head><body>
-<header class="hero"><h1>Work, Heating and Cooling</h1><p>Work done, thermal energy transfer, insulation, efficiency and heating graphs.</p></header>
-<nav class="nav"><a href="index.html">🏠 Home</a><a href="#work">Work done</a><a href="#transfer">Heat transfer</a><a href="#insulation">Insulation</a><a href="#efficiency">Efficiency</a><a href="#quiz">CFU</a></nav>
+.calc-input{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.calc-input input{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:150px}
+textarea{width:100%;min-height:80px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}.secure{background:#ecfdf5;border:2px solid #86efac}.build{background:#eef6ff;border:2px solid #93c5fd}.stretch{background:#fff7ed;border:2px solid #fed7aa}
+.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+.particle{transition:fill .35s,opacity .35s}.shakeSlow{animation:shakeSlow .5s infinite alternate}.shakeMed{animation:shakeMed .28s infinite alternate}.shakeFast{animation:shakeFast .14s infinite alternate}
+@keyframes shakeSlow{to{transform:translate(1.5px,0)}}@keyframes shakeMed{to{transform:translate(4px,0)}}@keyframes shakeFast{to{transform:translate(7px,0)}}
+@keyframes pulse{to{opacity:.35;stroke-width:4}}
+.energyLink{animation:pulse .65s infinite alternate}
+.heatArrow{stroke:#ef4444;stroke-width:7;fill:none;stroke-linecap:round}
+.coolArrow{stroke:#2563eb;stroke-width:7;fill:none;stroke-linecap:round}
+.reducedArrow{stroke:#94a3b8;stroke-width:4;fill:none;stroke-linecap:round;stroke-dasharray:8 8;opacity:.45}
+.graphLine{fill:none;stroke:#22c55e;stroke-width:6;stroke-linecap:round}
+#boxGroup{transition:transform .7s ease}
+#person{transition:transform .7s ease}
+.radiationRay{stroke:#ef4444;stroke-width:6;fill:none;stroke-linecap:round}
+.reflectRay{stroke:#94a3b8;stroke-width:6;fill:none;stroke-linecap:round;stroke-dasharray:8 8}
+@media(max-width:850px){.two,.controls,.output,.choice-grid{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="hero"><h1>Work, Heating and Cooling</h1><p>Stable interactive revision: work done, heating water, conduction, convection, radiation and insulation.</p></header>
+<nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="#work">Work Done</a>
+<a href="#heating">Heating Water</a>
+<a href="#conduction">Conduction</a>
+<a href="#convection">Convection</a>
+<a href="#radiation">Radiation</a>
+<a href="#insulation">Insulation</a>
+<a href="#quiz">CFU</a>
+</nav>
 
-<section><h2>1. Key Ideas</h2><div class="grid"><div class="card"><h3>Work done</h3><p>Work is done when a force moves an object through a distance.</p></div><div class="card"><h3>Heating</h3><p>Heating transfers energy from hotter objects to cooler surroundings.</p></div><div class="card"><h3>Insulation</h3><p>Insulation reduces unwanted energy transfer.</p></div></div></section>
+<section id="work"><h2>1. Work Done</h2>
+<div class="task">
+<p><b>Work done = force × distance.</b> Work is done when a force makes an object move in the direction of the force. Work done is measured in joules, J.</p>
+<div class="controls">
+<div class="control">Pushing force <strong id="forceT">20 N</strong><input id="forceSlider" type="range" min="0" max="100" value="20" oninput="updateWork()"></div>
+<div class="control">Distance moved <strong id="distT">3 m</strong><input id="distSlider" type="range" min="0" max="10" value="3" oninput="updateWork()"></div>
+<div class="control">Work done<strong id="workT">60 J</strong><button class="green" onclick="pushBox()">Push</button><button class="ghost" onclick="resetWork()">Reset</button></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 700 300" aria-label="person pushing a box">
+<defs><marker id="redHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker><marker id="blueHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker><marker id="greyHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/></marker></defs>
+<line x1="60" y1="235" x2="640" y2="235" stroke="#172554" stroke-width="4"/>
+<g id="boxGroup"><rect x="300" y="155" width="110" height="75" rx="12" fill="#f59e0b" stroke="#172554" stroke-width="5"/><line x1="240" y1="192" x2="295" y2="192" stroke="#ef4444" stroke-width="7" marker-end="url(#redHead)"/><text x="245" y="177" class="label">pushing force</text></g>
+<g id="person"><circle cx="190" cy="125" r="20" fill="#bae6fd" stroke="#172554" stroke-width="4"/><line x1="190" y1="145" x2="190" y2="205" stroke="#172554" stroke-width="5"/><line x1="190" y1="165" x2="240" y2="190" stroke="#172554" stroke-width="5"/><line x1="190" y1="205" x2="165" y2="235" stroke="#172554" stroke-width="5"/><line x1="190" y1="205" x2="215" y2="235" stroke="#172554" stroke-width="5"/></g>
+<line id="distanceLine" x1="300" y1="260" x2="405" y2="260" stroke="#2563eb" stroke-width="5" marker-end="url(#blueHead)"/>
+<text id="distanceLabel" x="355" y="285" text-anchor="middle" class="label">distance = 3 m</text>
+</svg>
+<div class="info" id="workInfo">Calculation: W = 20 × 3 = 60 J. Press Push to see the movement.</div>
+</div>
+</div>
+</section>
 
-<section id="work"><h2>2. Work Done Simulation</h2><p><strong>Equation:</strong> work done = force × distance</p>
-<div class="task"><div class="controls"><div class="control">Force <strong id="forceT">50 N</strong><input id="force" type="range" min="10" max="200" step="10" value="50" oninput="updateWork()"></div><div class="control">Distance <strong id="distanceT">4 m</strong><input id="distance" type="range" min="1" max="20" value="4" oninput="updateWork()"></div><div class="control">Run<br><button class="green" onclick="runBox()">Push box</button></div></div>
-<div class="two"><div><div class="sim"><div class="floor"></div><div class="arrow" id="pushArrow">➡️</div><div class="box" id="box">📦</div></div></div><div><div class="output"><div>Force<strong id="forceOut">50 N</strong></div><div>Distance<strong id="distanceOut">4 m</strong></div><div>Work done<strong id="workOut">200 J</strong></div></div><div class="info">Rearranging: force = work done ÷ distance, and distance = work done ÷ force.</div></div></div></div>
-<div class="task"><h3>Rearranging practice</h3><p>A student does 300 J of work moving a box 6 m. Calculate the force.</p><div class="calc-input"><input id="forceCalc" placeholder="N"><button class="green" onclick="checkCalc('forceCalc',50,'forceCalcF','Correct: force = work ÷ distance = 300 ÷ 6 = 50 N.')">Check</button></div><div id="forceCalcF" class="feedback"></div></div></section>
+<section id="heating"><h2>2. Heating Water: Temperature, Kinetic Energy and Internal Energy</h2>
+<div class="task">
+<p>This model shows <b>water being heated from -20 °C to 120 °C</b>. Move the temperature slider. The particles and graph cursor update together. When temperature increases, particle kinetic energy increases. During melting/boiling, temperature and kinetic energy stay constant, but internal energy increases because particle arrangement changes.</p>
+<div class="info" style="margin-top:12px">
+<b>Key idea:</b> At the <b>melting point/freezing point</b>, water changes between solid ice and liquid water. 
+At the <b>boiling point/condensation point</b>, water changes between liquid water and gas/steam. 
+During these flat parts of the graph, the temperature stays constant, so average particle kinetic energy stays constant. 
+Energy is still being transferred, but it increases internal energy by changing the arrangement of particles.
+</div>
 
-<section id="transfer"><h2>3. Heating and Cooling Transfers</h2>
-<div class="grid"><div class="task"><h3>Conduction</h3><p>Particles vibrate and pass energy along a solid.</p><div id="particleBox" class="sim particles"></div><button class="orange" onclick="heatParticles()">Heat metal</button><button class="ghost" onclick="coolParticles()">Cool</button></div><div class="task"><h3>Convection</h3><p>Warm fluid rises and cool fluid sinks.</p><div class="sim"><div class="current"></div></div></div><div class="task"><h3>Radiation</h3><p>Infrared radiation can travel through empty space.</p><div class="sim"><div class="ray"></div><div class="ray"></div><div class="ray"></div></div></div></div>
-<div class="task"><h3>Quick check</h3><p>Which heat transfer can happen through a vacuum?</p><div class="choice-grid"><button class="choice" onclick="choice(this,true,'radF','Correct: radiation does not need particles.')">Radiation</button><button class="choice" onclick="choice(this,false,'radF','Conduction needs particles touching.')">Conduction</button><button class="choice" onclick="choice(this,false,'radF','Convection needs a fluid.')">Convection</button><button class="choice" onclick="choice(this,false,'radF','Insulation is not a transfer method.')">Insulation</button></div><div id="radF" class="feedback"></div></div></section>
+<div class="controls">
+<div class="control">Temperature <strong id="waterTempT">-20 °C</strong><input id="waterTemp" type="range" min="-20" max="120" value="-20" step="5" oninput="updateHeating()"></div>
+<div class="control">Stage<strong id="waterStageT">ice warming</strong></div>
+<div class="control">Energy idea<strong id="energyExplainT">kinetic energy increasing</strong><button class="ghost" onclick="resetHeating()">Reset</button></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 720 420" aria-label="water heating apparatus">
+<defs><marker id="redHead2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+<rect x="250" y="95" width="220" height="180" rx="24" fill="none" stroke="#172554" stroke-width="6"/>
+<rect id="waterFill" x="270" y="175" width="180" height="80" fill="#bfdbfe" opacity=".85"/>
+<rect x="205" y="50" width="300" height="34" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/><text x="355" y="72" text-anchor="middle" class="label">water/ice being heated</text>
+<g id="waterParticles"></g>
+<rect x="295" y="300" width="130" height="20" rx="8" fill="#475569"/>
+<path d="M360 297 C325 250 355 230 365 190 C410 245 398 270 370 297 Z" fill="#f97316" stroke="#9a3412" stroke-width="3"/>
+<line x1="475" y1="145" x2="575" y2="92" stroke="#ef4444" stroke-width="6" marker-end="url(#redHead2)"/>
+<rect x="480" y="38" width="210" height="34" rx="12" fill="white" stroke="#fecaca" stroke-width="2"/><text x="585" y="60" text-anchor="middle" class="label">energy transferred</text>
+<text id="particleExplanation" x="360" y="375" text-anchor="middle" class="big">Ice particles vibrate more as temperature rises.</text>
+</svg>
 
-<section id="insulation"><h2>4. Insulation Investigation</h2><p>Choose insulation and compare final temperature after 10 minutes.</p>
-<div class="task"><div class="controls"><div class="control">Material<strong id="matT">none</strong><button class="ghost" onclick="setMat('none')">None</button><button class="blue" onclick="setMat('wool')">Wool</button><button class="orange" onclick="setMat('foil')">Foil</button></div><div class="control">Start temperature<strong>80 °C</strong></div><div class="control">Test<br><button class="green" onclick="runInsulation()">Run</button></div></div><div class="output"><div>Temp after 10 min<strong id="finalTemp">-</strong></div><div>Energy lost<strong id="energyLost">-</strong></div><div>Best use<strong id="bestUse">-</strong></div></div><div class="info" id="insMsg">Wool traps air and reduces conduction/convection. Foil reflects radiation.</div></div></section>
+<svg viewBox="0 0 720 450" aria-label="heating curve graph">
+<defs>
+<marker id="annoHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+<path d="M0,0 L0,6 L9,3 z" fill="#172554"/>
+</marker>
+</defs>
+<line x1="85" y1="360" x2="645" y2="360" stroke="#172554" stroke-width="5"/>
+<line x1="85" y1="360" x2="85" y2="70" stroke="#172554" stroke-width="5"/>
+<text x="350" y="420" text-anchor="middle" class="label">Energy transferred / time</text>
+<text x="25" y="245" class="label" transform="rotate(-90 25 245)">Temperature / °C</text>
 
-<section id="efficiency"><h2>5. Efficiency and Sankey Diagrams</h2><p><strong>Efficiency = useful energy output ÷ total energy input × 100</strong></p>
-<div class="task"><div class="controls"><div class="control">Input energy <strong id="inputT">100 J</strong><input id="inputE" type="range" min="50" max="500" step="50" value="100" oninput="updateEff()"></div><div class="control">Useful energy <strong id="usefulT">40 J</strong><input id="usefulE" type="range" min="10" max="400" step="10" value="40" oninput="updateEff()"></div><div class="control">Efficiency<strong id="effOut">40%</strong></div></div><div class="sankey"><div id="usefulBar" class="useful"></div><div id="wasteBar" class="waste"></div></div></div>
-<div class="task"><h3>Unit conversion</h3><p>A heater transfers 2.5 kJ of energy. Convert this to joules.</p><div class="calc-input"><input id="kjCalc" placeholder="J"><button class="green" onclick="checkCalc('kjCalc',2500,'kjF','Correct: 2.5 kJ = 2500 J.')">Check</button></div><div id="kjF" class="feedback"></div></div></section>
+<text x="54" y="365" class="small">-20</text>
+<text x="66" y="263" class="small">0</text>
+<text x="50" y="205" class="small">50</text>
+<text x="42" y="132" class="small">100</text>
 
-<section id="quiz"><h2>Final Check</h2><p>Secure It → Build It → Stretch It.</p>
-<div class="quiz-band secure"><h3>Secure It</h3><div class="quiz-card"><p>1. Work done is measured in...</p><button class="choice" onclick="quiz(this,true,'q1')">joules</button><button class="choice" onclick="quiz(this,false,'q1')">newtons</button><div id="q1" class="feedback"></div></div><div class="quiz-card"><p>2. Convection happens in...</p><button class="choice" onclick="quiz(this,true,'q2')">fluids</button><button class="choice" onclick="quiz(this,false,'q2')">vacuum only</button><div id="q2" class="feedback"></div></div><div class="quiz-card"><p>3. Radiation transfers energy by...</p><button class="choice" onclick="quiz(this,true,'q3')">infrared waves</button><button class="choice" onclick="quiz(this,false,'q3')">touch only</button><div id="q3" class="feedback"></div></div><div class="quiz-card"><p>4. Insulation reduces...</p><button class="choice" onclick="quiz(this,true,'q4')">energy transfer</button><button class="choice" onclick="quiz(this,false,'q4')">gravity</button><div id="q4" class="feedback"></div></div></div>
-<div class="quiz-band build"><h3>Build It</h3><div class="quiz-card"><p>5. Calculate work done: force = 40 N, distance = 5 m.</p><div class="calc-input"><input id="calc5" placeholder="J"><button class="green" onclick="checkCalc('calc5',200,'q5','Correct: 40 × 5 = 200 J.')">Check</button></div><div id="q5" class="feedback"></div></div><div class="quiz-card"><p>6. Rearrange: work = 240 J, force = 60 N. Calculate distance.</p><div class="calc-input"><input id="calc6" placeholder="m"><button class="green" onclick="checkCalc('calc6',4,'q6','Correct: distance = work ÷ force = 240 ÷ 60 = 4 m.')">Check</button></div><div id="q6" class="feedback"></div></div><div class="quiz-card"><p>7. Convert 0.75 kJ to J.</p><div class="calc-input"><input id="calc7" placeholder="J"><button class="green" onclick="checkCalc('calc7',750,'q7','Correct: 0.75 kJ = 750 J.')">Check</button></div><div id="q7" class="feedback"></div></div><div class="quiz-card"><p>8. A shiny surface reduces...</p><button class="choice" onclick="quiz(this,true,'q8')">radiation absorption</button><button class="choice" onclick="quiz(this,false,'q8')">mass</button><div id="q8" class="feedback"></div></div></div>
-<div class="quiz-band stretch"><h3>Stretch It</h3><div class="quiz-card"><p>9. A machine has 500 J input and 125 J useful output. Calculate efficiency.</p><div class="calc-input"><input id="calc9" placeholder="%"><button class="green" onclick="checkCalc('calc9',25,'q9','Correct: 125 ÷ 500 × 100 = 25%.')">Check</button></div><div id="q9" class="feedback"></div></div><div class="quiz-card"><p>10. Explain why wool is a good insulator.</p><textarea id="stretch10"></textarea><button class="green" onclick="checkText('stretch10','q10',['air','conduction'],'Good: trapped air reduces conduction and convection.')">Check</button><div id="q10" class="feedback"></div></div><div class="quiz-card"><p>11. Explain why convection currents form.</p><textarea id="stretch11"></textarea><button class="green" onclick="checkText('stretch11','q11',['warm','rises'],'Good: warm fluid becomes less dense and rises.')">Check</button><div id="q11" class="feedback"></div></div><div class="quiz-card"><p>12. 3.2 kJ is transferred in 8 s. Calculate energy transferred per second in J/s.</p><div class="calc-input"><input id="calc12" placeholder="J/s"><button class="green" onclick="checkCalc('calc12',400,'q12','Correct: 3.2 kJ = 3200 J; 3200 ÷ 8 = 400 J/s.')">Check</button></div><div id="q12" class="feedback"></div></div></div>
-<div class="quiz-score">Score: <span id="quizScore">0</span>/12</div></section>
+<!-- Heating curve -->
+<polyline points="100,342 205,245 315,245 455,130 600,130 650,95" class="graphLine"/>
+
+<!-- Cursor, kept clear of labels -->
+<circle id="heatCursor" cx="100" cy="342" r="12" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<line id="heatCursorLine" x1="100" y1="342" x2="100" y2="360" stroke="#ef4444" stroke-width="3" stroke-dasharray="7 7"/>
+
+<!-- Annotation boxes placed away from the graph line and cursor -->
+<rect x="95" y="170" width="250" height="48" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text x="220" y="190" text-anchor="middle" class="small">melting/freezing point</text>
+<text x="220" y="207" text-anchor="middle" class="small">0 °C: solid ⇄ liquid</text>
+<line x1="220" y1="218" x2="260" y2="245" stroke="#172554" stroke-width="3" marker-end="url(#annoHead)"/>
+
+<rect x="430" y="45" width="255" height="48" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text x="557" y="65" text-anchor="middle" class="small">boiling/condensation point</text>
+<text x="557" y="82" text-anchor="middle" class="small">100 °C: liquid ⇄ gas</text>
+<line x1="557" y1="93" x2="520" y2="130" stroke="#172554" stroke-width="3" marker-end="url(#annoHead)"/>
+
+<text x="360" y="36" text-anchor="middle" class="big">Heating curve for water</text>
+</svg>
+</div>
+<div class="info" id="heatingInfo">Ice is warming from below 0 °C. Temperature is increasing, so average particle kinetic energy is increasing.</div>
+</div>
+</section>
+
+<section id="conduction"><h2>3. Conduction</h2>
+<div class="task">
+<p><b>Conduction</b> transfers thermal energy through solids. Particles in a solid stay in fixed positions. They vibrate and pass energy to neighbouring particles. Metals are good conductors; wood is a poor conductor.</p>
+<div class="controls">
+<div class="control">Material<strong id="rodMaterialT">metal</strong><button class="blue" onclick="rodMaterial='metal';updateConduction()">Metal</button><button class="orange" onclick="rodMaterial='wood';updateConduction()">Wood</button></div>
+<div class="control">Heat input<strong id="rodHeatT">medium</strong><input id="rodHeat" type="range" min="1" max="3" value="2" oninput="updateConduction()"></div>
+<div class="control">Observation<strong id="conductionObs">energy spreads far along the metal</strong><button class="ghost" onclick="resetConduction()">Reset</button></div>
+</div>
+<svg viewBox="0 0 920 390" aria-label="conduction simulation">
+<rect id="rod" x="125" y="150" width="670" height="86" rx="18" fill="#cbd5e1" stroke="#172554" stroke-width="5"/>
+<path d="M82 276 C55 230 85 205 100 155 C145 210 138 245 105 276 Z" fill="#f97316" stroke="#9a3412" stroke-width="3"/>
+<text x="92" y="315" text-anchor="middle" class="label">heat source</text>
+<g id="energyTrail"></g>
+<g id="particleRow"></g>
+<text x="460" y="72" text-anchor="middle" class="big">Energy is passed from particle to particle</text>
+<text x="460" y="345" text-anchor="middle" class="label">Particles vibrate side-to-side; energy is passed along the solid.</text>
+</svg>
+<div class="info" id="conductionInfo">Metal transfers thermal energy quickly because it is a good conductor.</div>
+</div>
+</section>
+
+<section id="convection"><h2>4. Convection</h2>
+<div class="task">
+<p><b>Convection</b> happens in fluids: liquids and gases. Hot air expands, becomes less dense and rises. Cooler, denser air sinks to replace it.</p>
+<div class="controls">
+<div class="control">Heat source<strong id="convHeatT">on</strong><button class="green" onclick="convOn=true;updateConvection()">On</button><button class="ghost" onclick="convOn=false;updateConvection()">Off</button></div>
+<div class="control">Red arrow<strong>hot air rises</strong></div>
+<div class="control">Blue arrows<strong>cool air sinks</strong><button class="ghost" onclick="resetConvection()">Reset</button></div>
+</div>
+<svg viewBox="0 0 850 430" aria-label="convection currents">
+<defs><marker id="redHead4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker><marker id="blueHead4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker></defs>
+<rect x="110" y="75" width="630" height="260" rx="32" fill="#eef6ff" stroke="#172554" stroke-width="5"/>
+<rect x="330" y="330" width="190" height="24" rx="8" fill="#ef4444"/>
+<text x="425" y="388" text-anchor="middle" class="label">heater</text>
+<path id="hotArrow" d="M425 315 C425 260 425 205 425 135" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round" marker-end="url(#redHead4)"/>
+<path id="coolArrowLeft" d="M260 125 C210 175 210 250 305 308" stroke="#2563eb" stroke-width="8" fill="none" stroke-linecap="round" marker-end="url(#blueHead4)"/>
+<path id="coolArrowRight" d="M590 125 C640 175 640 250 545 308" stroke="#2563eb" stroke-width="8" fill="none" stroke-linecap="round" marker-end="url(#blueHead4)"/>
+<rect x="465" y="130" width="170" height="42" rx="14" fill="white" stroke="#fecaca" stroke-width="3"/><text x="550" y="157" text-anchor="middle" class="label">hot air rises</text>
+<rect x="145" y="205" width="170" height="42" rx="14" fill="white" stroke="#bfdbfe" stroke-width="3"/><text x="230" y="232" text-anchor="middle" class="label">cool air sinks</text>
+<rect x="535" y="205" width="170" height="42" rx="14" fill="white" stroke="#bfdbfe" stroke-width="3"/><text x="620" y="232" text-anchor="middle" class="label">cool air sinks</text>
+</svg>
+<div class="info" id="convInfo">A convection current forms because warm air rises and cooler air sinks.</div>
+</div>
+</section>
+
+<section id="radiation"><h2>5. Radiation Practical</h2>
+<div class="task">
+<p><b>Radiation</b> transfers thermal energy by infrared waves. It does not need particles. Dark, matt surfaces are good absorbers and emitters. Light, shiny surfaces reflect more radiation.</p>
+<div class="controls">
+<div class="control">Surface<strong id="surfaceT">black matt</strong><button class="red" onclick="surface='black';updateRadiation()">Black matt</button><button class="ghost" onclick="surface='shiny';updateRadiation()">Shiny silver</button></div>
+<div class="control">Absorption<strong id="absorbT">high</strong></div>
+<div class="control">Temperature rise<strong id="tempRiseT">large</strong><button class="ghost" onclick="resetRadiation()">Reset</button></div>
+</div>
+<svg viewBox="0 0 850 360" aria-label="radiation absorption practical">
+<defs><marker id="redHead5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker><marker id="greyHead5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/></marker></defs>
+<circle cx="150" cy="175" r="55" fill="#f97316" stroke="#9a3412" stroke-width="5"/><text x="150" y="260" text-anchor="middle" class="label">infrared source</text>
+<path d="M210 145 C290 120 350 120 430 145" class="radiationRay" marker-end="url(#redHead5)"/>
+<path d="M210 175 C290 175 350 175 430 175" class="radiationRay" marker-end="url(#redHead5)"/>
+<path d="M210 205 C290 230 350 230 430 205" class="radiationRay" marker-end="url(#redHead5)"/>
+<rect id="radiationSurface" x="450" y="110" width="130" height="130" rx="18" fill="#111827" stroke="#172554" stroke-width="5"/>
+<path id="reflectedRay" d="M580 145 C660 110 705 110 760 135" class="reflectRay" marker-end="url(#greyHead5)" opacity=".15"/>
+<text id="surfaceLabel" x="515" y="285" text-anchor="middle" class="big">black matt absorbs more infrared</text>
+</svg>
+<div class="info" id="radInfo">Black matt surfaces absorb more infrared radiation, so their temperature increases more quickly.</div>
+</div>
+</section>
+
+<section id="insulation"><h2>6. House Heat Loss and Insulation</h2>
+<div class="task">
+<p>Heat can be lost through the roof, walls, windows, doors and floor. Toggle each insulation method to see which heat-loss arrows are reduced.</p>
+<div class="controls">
+<div class="control">Toggle insulation<strong id="insSummaryT">none selected</strong><button id="loftBtn" class="toggleBtn" onclick="toggleIns('loft')">Loft</button><button id="wallBtn" class="toggleBtn" onclick="toggleIns('wall')">Walls</button><button id="windowBtn" class="toggleBtn" onclick="toggleIns('window')">Windows</button></div>
+<div class="control">Reduced heat loss<strong id="mainLossT">none yet</strong></div>
+<div class="control">Key<strong>red = more loss<br>grey = reduced</strong><button class="ghost" onclick="resetInsulation()">Reset</button></div>
+</div>
+<svg viewBox="0 0 930 540" aria-label="house heat loss">
+<defs>
+<marker id="redHead6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker>
+<marker id="greyHead6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/></marker>
+</defs>
+
+<!-- Key placed in top-left free space -->
+<rect x="35" y="28" width="300" height="44" rx="14" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text id="insulationLabel" x="185" y="56" text-anchor="middle" class="label">Red arrows show where heat is escaping</text>
+
+<!-- House -->
+<rect x="315" y="245" width="310" height="175" fill="#fde68a" stroke="#172554" stroke-width="5"/>
+<polygon points="270,245 470,120 670,245" fill="#b45309" stroke="#172554" stroke-width="5"/>
+<rect x="440" y="325" width="70" height="95" fill="#92400e"/>
+<rect x="535" y="292" width="55" height="55" fill="#bae6fd" stroke="#172554" stroke-width="5"/>
+<rect x="350" y="292" width="55" height="55" fill="#bae6fd" stroke="#172554" stroke-width="5"/>
+
+<!-- Arrows deliberately separated from label boxes -->
+<path id="roofLoss" d="M545 168 C590 120 625 85 670 50" class="heatArrow" marker-end="url(#redHead6)"/>
+<path id="wallLossL" d="M315 330 C245 330 205 320 160 300" class="heatArrow" marker-end="url(#redHead6)"/>
+<path id="wallLossR" d="M625 330 C695 330 735 320 780 300" class="heatArrow" marker-end="url(#redHead6)"/>
+<path id="winLossL" d="M378 292 C320 255 270 235 225 215" class="heatArrow" marker-end="url(#redHead6)"/>
+<path id="winLossR" d="M562 292 C615 255 665 235 715 215" class="heatArrow" marker-end="url(#redHead6)"/>
+<path id="doorLoss" d="M475 325 C475 285 505 260 540 232" class="heatArrow" marker-end="url(#redHead6)"/>
+<path id="floorLoss" d="M475 420 C475 455 475 485 475 520" class="heatArrow" marker-end="url(#redHead6)"/>
+
+<!-- Label boxes outside arrow paths and correctly assigned -->
+<rect x="700" y="35" width="150" height="34" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text x="775" y="57" text-anchor="middle" class="label">roof / loft</text>
+
+<rect x="55" y="335" width="120" height="34" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text x="115" y="357" text-anchor="middle" class="label">walls</text>
+
+<rect x="742" y="194" width="130" height="34" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text x="807" y="216" text-anchor="middle" class="label">windows</text>
+
+<!-- Door label now next to the door arrow, not in the window area -->
+<rect x="555" y="265" width="95" height="34" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text x="602" y="287" text-anchor="middle" class="label">door</text>
+
+<rect x="520" y="488" width="95" height="34" rx="12" fill="white" stroke="#d7ecff" stroke-width="2"/>
+<text x="567" y="510" text-anchor="middle" class="label">floor</text>
+</svg>
+<div class="info" id="insInfo">Loft insulation reduces roof heat loss. Cavity wall insulation reduces wall heat loss. Double glazing reduces heat loss through windows.</div>
+</div>
+</section>
+
+<section id="quiz"><h2>7. CFU: 20 Questions</h2>
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Which equation is used for work done?</p><button class="choice" onclick="quiz(this,true,'q1','Correct: work done = force × distance.','Model answer: Work done = force × distance.')">work done = force × distance</button><button class="choice" onclick="quiz(this,false,'q1','Correct: work done = force × distance.','Model answer: Work done = force × distance.')">work done = mass × speed</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. What is the unit for work done?</p><button class="choice" onclick="quiz(this,true,'q2','Correct: work done is measured in joules.','Model answer: The unit for work done is the joule, J.')">joule, J</button><button class="choice" onclick="quiz(this,false,'q2','Correct: work done is measured in joules.','Model answer: The unit for work done is the joule, J.')">newton, N</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. Thermal energy transfer through solids by particle vibrations is...</p><button class="choice" onclick="quiz(this,true,'q3','Correct: conduction.','Model answer: Conduction transfers thermal energy through solids by particle vibrations.')">conduction</button><button class="choice" onclick="quiz(this,false,'q3','Correct: conduction.','Model answer: Conduction transfers thermal energy through solids by particle vibrations.')">convection</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. Thermal energy transfer by movement of fluids is...</p><button class="choice" onclick="quiz(this,true,'q4','Correct: convection.','Model answer: Convection transfers thermal energy by the movement of liquids or gases.')">convection</button><button class="choice" onclick="quiz(this,false,'q4','Correct: convection.','Model answer: Convection transfers thermal energy by the movement of liquids or gases.')">radiation</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. Thermal radiation transfers energy by...</p><button class="choice" onclick="quiz(this,true,'q5','Correct: infrared waves.','Model answer: Thermal radiation transfers energy by infrared waves and does not need particles.')">infrared waves</button><button class="choice" onclick="quiz(this,false,'q5','Correct: infrared waves.','Model answer: Thermal radiation transfers energy by infrared waves and does not need particles.')">moving particles only</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. Insulation is used to reduce...</p><button class="choice" onclick="quiz(this,true,'q6','Correct: thermal energy transfer.','Model answer: Insulation reduces thermal energy transfer from a warmer place to a cooler place.')">thermal energy transfer</button><button class="choice" onclick="quiz(this,false,'q6','Correct: thermal energy transfer.','Model answer: Insulation reduces thermal energy transfer from a warmer place to a cooler place.')">mass</button><div id="q6" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. A 20 N force moves a box 3 m. Calculate the work done.</p><div class="calc-input"><input id="calc7"><button class="green" onclick="checkCalc('calc7',60,'q7','Correct: W = F × d = 20 × 3 = 60 J.')">Check</button></div><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. 150 J of work moves a box 5 m. Calculate the force.</p><div class="calc-input"><input id="calc8"><button class="green" onclick="checkCalc('calc8',30,'q8','Correct: F = W ÷ d = 150 ÷ 5 = 30 N.')">Check</button></div><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. A 40 N force does 200 J of work. Calculate the distance moved.</p><div class="calc-input"><input id="calc9"><button class="green" onclick="checkCalc('calc9',5,'q9','Correct: d = W ÷ F = 200 ÷ 40 = 5 m.')">Check</button></div><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. Convert 250 cm to metres.</p><div class="calc-input"><input id="calc10"><button class="green" onclick="checkCalc('calc10',2.5,'q10','Correct: 250 cm ÷ 100 = 2.5 m.')">Check</button></div><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. A force of 12 N moves an object 50 cm. Calculate the work done.</p><div class="calc-input"><input id="calc11"><button class="green" onclick="checkCalc('calc11',6,'q11','Correct: 50 cm = 0.5 m, so W = 12 × 0.5 = 6 J.')">Check</button></div><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. The temperature drops from 80 °C to 55 °C. Calculate the temperature decrease.</p><div class="calc-input"><input id="calc12"><button class="green" onclick="checkCalc('calc12',25,'q12','Correct: 80 − 55 = 25 °C.')">Check</button></div><div id="q12" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. Explain why kinetic energy is constant during a change of state.</p><textarea id="stretch13"></textarea><button class="green" onclick="checkText('stretch13','q13',['temperature','constant'],'Good: temperature stays constant during the change of state.','Model answer: During a change of state, temperature stays constant, so average particle kinetic energy stays constant. Energy increases internal energy by changing the arrangement of particles.')">Check</button><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. Explain why metal feels colder than wood at the same room temperature.</p><textarea id="stretch14"></textarea><button class="green" onclick="checkText('stretch14','q14',['conducts','thermal'],'Good: metal conducts thermal energy away faster.','Model answer: Metal is a better thermal conductor than wood, so it transfers thermal energy away from your hand faster. This makes it feel colder.')">Check</button><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain how convection currents form in a heated room.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkText('stretch15','q15',['less dense','rises'],'Good: hot air becomes less dense and rises.','Model answer: Air near a heater warms up, expands and becomes less dense, so it rises. Cooler, denser air sinks to replace it, forming a convection current.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Explain why shiny foil can reduce heat loss by radiation.</p><textarea id="stretch16"></textarea><button class="green" onclick="checkText('stretch16','q16',['reflects','radiation'],'Good: shiny surfaces reflect infrared radiation.','Model answer: Shiny foil reflects infrared radiation back towards the warm object, reducing heat loss by radiation.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Explain why loft insulation reduces heat loss.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkText('stretch17','q17',['trapped air'],'Good: trapped air reduces thermal energy transfer.','Model answer: Loft insulation traps air. Air is a poor conductor, so conduction is reduced. Trapped air also reduces convection currents.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. A heating curve has a flat section. What does this show?</p><textarea id="stretch18"></textarea><button class="green" onclick="checkText('stretch18','q18',['change of state'],'Good: the flat section shows a change of state.','Model answer: A flat section shows a change of state. Temperature and kinetic energy stay constant, but internal energy increases as particle arrangement changes.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Suggest two methods to reduce heat loss from a house.</p><textarea id="stretch19"></textarea><button class="green" onclick="checkText('stretch19','q19',['insulation','double'],'Good: insulation and double glazing reduce heat loss.','Model answer: Heat loss can be reduced using loft insulation, cavity wall insulation, double glazing, draught excluders or reflective foil behind radiators.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. Why should a practical investigation be repeated?</p><textarea id="stretch20"></textarea><button class="green" onclick="checkText('stretch20','q20',['reliable'],'Good: repeats improve reliability.','Model answer: Repeating a practical improves reliability because you can calculate a mean and identify anomalous results.')">Check</button><div id="q20" class="feedback"></div></div>
+</div>
+<div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
 
 <script>
-let mat='none',quizScore=0,answered={};function el(id){return document.getElementById(id)}
-function choice(btn,correct,fid,msg){let p=btn.closest('.task')||btn.closest('.quiz-card');p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));btn.classList.add(correct?'correct':'wrong');el(fid).textContent=msg;el(fid).className='feedback '+(correct?'ok':'no')}
-function updateWork(){let f=+el('force').value,d=+el('distance').value;el('forceT').textContent=f+' N';el('distanceT').textContent=d+' m';el('forceOut').textContent=f+' N';el('distanceOut').textContent=d+' m';el('workOut').textContent=(f*d)+' J'}
-function runBox(){let d=+el('distance').value;el('box').style.left=(40+d*18)+'px';el('pushArrow').style.left=(120+d*18)+'px'}
-function heatParticles(){el('particleBox').className='sim particles vibrate fast'}function coolParticles(){el('particleBox').className='sim particles vibrate'}
-function setMat(m){mat=m;el('matT').textContent=m}
-function runInsulation(){let temp={none:42,wool:63,foil:56}[mat];el('finalTemp').textContent=temp+' °C';el('energyLost').textContent=(80-temp)+' °C drop';el('bestUse').textContent=mat==='wool'?'trapping air':mat==='foil'?'reflecting radiation':'poor insulation'}
-function updateEff(){let i=+el('inputE').value,u=+el('usefulE').value;if(u>i){u=i;el('usefulE').value=u}let e=Math.round(u/i*100),w=i-u;el('inputT').textContent=i+' J';el('usefulT').textContent=u+' J';el('effOut').textContent=e+'%';el('usefulBar').style.width=(u/i*500)+'px';el('wasteBar').style.width=(w/i*500)+'px'}
-function scoreOnce(fid,c){if(answered[fid])return;answered[fid]=true;if(c){quizScore++;el('quizScore').textContent=quizScore}}
-function quiz(btn,c,fid){if(answered[fid])return;answered[fid]=true;btn.classList.add(c?'correct':'wrong');el(fid).textContent=c?'Correct.':'Not quite.';el(fid).className='feedback '+(c?'ok':'no');if(c)quizScore++;el('quizScore').textContent=quizScore}
-function checkCalc(inputId,ans,fid,msg){if(answered[fid])return;let v=Number(el(inputId).value);let c=Math.abs(v-ans)<.05;el(fid).textContent=c?msg:'Not quite. Check the equation and units.';el(fid).className='feedback '+(c?'ok':'no');scoreOnce(fid,c)}
-function checkText(inputId,fid,words,msg){if(answered[fid])return;let t=el(inputId).value.toLowerCase();let c=words.every(w=>t.includes(w));el(fid).textContent=c?msg:'Add more key science words.';el(fid).className='feedback '+(c?'ok':'no');scoreOnce(fid,c)}
-window.onload=function(){for(let i=0;i<32;i++){let d=document.createElement('div');d.className='dot';el('particleBox').appendChild(d)}coolParticles();updateWork();updateEff()}
-</script></body></html>
+let rodMaterial='metal', convOn=true, surface='black', quizScore=0, answered={};
+let ins={loft:false,wall:false,window:false};
+function el(id){return document.getElementById(id)}
+
+function updateWork(){
+let f=Number(el('forceSlider').value), d=Number(el('distSlider').value);
+el('forceT').textContent=f+' N'; 
+el('distT').textContent=d+' m'; 
+el('workT').textContent=(f*d)+' J';
+el('distanceLine').setAttribute('x2',300+d*35);
+el('distanceLabel').setAttribute('x',300+d*17);
+el('distanceLabel').textContent='distance = '+d+' m';
+el('workInfo').textContent='Calculation: W = '+f+' × '+d+' = '+(f*d)+' J. Press Push to see the movement.';
+}
+
+function updateHeating(){
+let t=Number(el('waterTemp').value);
+el('waterTempT').textContent=t+' °C';
+let stage, explain, info, cx, cy, fill, pClass, particleText;
+if(t<0){
+  stage='ice warming'; explain='kinetic energy increasing';
+  cx=100+((t+20)/20)*105; cy=342-((t+20)/20)*97;
+  fill='#bfdbfe'; pClass='shakeSlow'; particleText='Ice particles vibrate more as temperature rises.';
+  info='Ice is warming from below 0 °C. Temperature is increasing, so average particle kinetic energy is increasing.';
+}
+else if(t===0){
+  stage='melting'; explain='kinetic energy constant; internal energy increasing';
+  cx=260; cy=225; fill='#93c5fd'; pClass='shakeMed'; particleText='Melting: kinetic energy is constant.';
+  info='During melting, temperature stays constant at 0 °C. Kinetic energy stays constant, but internal energy increases as particle arrangement changes.';
+}
+else if(t<100){
+  stage='liquid water warming'; explain='kinetic energy increasing';
+  cx=315+(t/100)*140; cy=225-(t/100)*110;
+  fill='#60a5fa'; pClass=t<50?'shakeMed':'shakeFast'; particleText='Water particles move faster as temperature rises.';
+  info='Liquid water is warming. Temperature is increasing, so average particle kinetic energy is increasing.';
+}
+else if(t===100){
+  stage='boiling'; explain='kinetic energy constant; internal energy increasing';
+  cx=520; cy=115; fill='#facc15'; pClass='shakeFast'; particleText='Boiling: kinetic energy is constant.';
+  info='During boiling, temperature stays constant at 100 °C. Kinetic energy stays constant, but internal energy increases as particles separate into a gas.';
+}
+else{
+  stage='steam warming'; explain='kinetic energy increasing';
+  cx=600; cy=90; fill='#fed7aa'; pClass='shakeFast'; particleText='Steam particles move fastest.';
+  info='Steam is warming. Temperature is increasing again, so average kinetic energy increases.';
+}
+el('waterStageT').textContent=stage; el('energyExplainT').textContent=explain; el('heatingInfo').textContent=info;
+el('heatCursor').setAttribute('cx',cx); el('heatCursor').setAttribute('cy',cy);
+el('heatCursorLine').setAttribute('x1',cx); el('heatCursorLine').setAttribute('x2',cx); el('heatCursorLine').setAttribute('y1',cy);
+el('waterFill').setAttribute('fill',fill);
+el('particleExplanation').textContent=particleText;
+let g=el('waterParticles'); g.innerHTML='';
+let count=t>=100?16:18;
+for(let i=0;i<count;i++){
+ let x=285+(i%6)*28, y=195+Math.floor(i/6)*25;
+ if(t>=100){x=285+(i%8)*22;y=135+Math.floor(i/8)*45;}
+ g.innerHTML+=`<circle class="particle ${pClass}" cx="${x}" cy="${y}" r="8" fill="${fill}" stroke="#172554" stroke-width="1"/>`;
+}
+}
+
+function updateConduction(){
+let heat=Number(el('rodHeat').value);
+el('rodHeatT').textContent=['','low','medium','high'][heat]; el('rodMaterialT').textContent=rodMaterial;
+let metal=rodMaterial==='metal';
+el('rod').setAttribute('fill',metal?'#cbd5e1':'#b45309');
+let obs = metal
+  ? (heat===1?'slow but clear transfer through metal':heat===2?'energy spreads far along the metal':'energy spreads very far and quickly')
+  : (heat===1?'very little transfer through wood':heat===2?'energy only spreads a short distance':'some transfer, but still much less than metal');
+el('conductionObs').textContent=obs;
+el('conductionInfo').textContent=metal?'Metal transfers thermal energy quickly because it is a good conductor.':'Wood transfers thermal energy slowly because it is a poor conductor / insulator.';
+let reach=metal?(heat===3?18:heat===2?15:12):(heat===3?9:heat===2?7:5);
+let cls=heat===3?'shakeFast':heat===2?'shakeMed':'shakeSlow';
+let particleG=el('particleRow'), trailG=el('energyTrail'); particleG.innerHTML=''; trailG.innerHTML='';
+for(let i=0;i<20;i++){
+ let x=155+i*31, y=193;
+ let active=i<reach;
+ let fill=active?(i<4?'#ef4444':i<9?'#f97316':i<14?'#facc15':'#fde68a'):'#94a3b8';
+ particleG.innerHTML+=`<circle class="${active?cls:'shakeSlow'}" cx="${x}" cy="${y}" r="12" fill="${fill}" stroke="#172554" stroke-width="2"/>`;
+}
+for(let i=0;i<reach-1;i++){
+ let x=170+i*31;
+ trailG.innerHTML+=`<line class="energyLink" x1="${x}" y1="193" x2="${x+25}" y2="193" stroke="${i<8?'#ef4444':'#f97316'}" stroke-width="5" stroke-linecap="round" opacity=".6"/>`;
+}
+}
+
+function updateConvection(){
+let op=convOn?1:.15;
+['hotArrow','coolArrowLeft','coolArrowRight'].forEach(id=>el(id).setAttribute('opacity',op));
+el('convHeatT').textContent=convOn?'on':'off';
+el('convInfo').textContent=convOn?'Hot air expands, becomes less dense and rises. Cooler, denser air sinks to replace it.':'With no heating, there is no strong convection current.';
+}
+
+function updateRadiation(){
+let black=surface==='black';
+el('surfaceT').textContent=black?'black matt':'shiny silver';
+el('absorbT').textContent=black?'high':'low';
+el('tempRiseT').textContent=black?'large':'small';
+el('radiationSurface').setAttribute('fill',black?'#111827':'#e5e7eb');
+el('reflectedRay').setAttribute('opacity',black?'.15':'1');
+el('surfaceLabel').textContent=black?'black matt absorbs more infrared':'shiny silver reflects more infrared';
+el('radInfo').textContent=black?'Black matt surfaces absorb more infrared radiation, so their temperature increases more quickly.':'Shiny silver surfaces reflect more infrared radiation, so their temperature rises less quickly.';
+}
+
+function toggleIns(type){ins[type]=!ins[type];updateInsulation();}
+function setLoss(id,reduced){
+let p=el(id);
+p.setAttribute('class',reduced?'reducedArrow':'heatArrow');
+p.setAttribute('marker-end',reduced?'url(#greyHead6)':'url(#redHead6)');
+}
+function updateInsulation(){
+['loft','wall','window'].forEach(k=>el(k+'Btn').classList.toggle('on',ins[k]));
+setLoss('roofLoss',ins.loft); setLoss('wallLossL',ins.wall); setLoss('wallLossR',ins.wall); setLoss('winLossL',ins.window); setLoss('winLossR',ins.window);
+setLoss('doorLoss',false); setLoss('floorLoss',false);
+let selected=[]; if(ins.loft)selected.push('loft'); if(ins.wall)selected.push('walls'); if(ins.window)selected.push('windows');
+el('insSummaryT').textContent=selected.length?selected.join(', '):'none selected';
+el('mainLossT').textContent=selected.length?selected.join(' + '):'none yet';
+el('insulationLabel').textContent=selected.length?'Grey arrows show reduced heat loss':'Red arrows show where heat is escaping';
+}
+
+function quiz(btn,c,fid,correctMsg,model){
+if(answered[fid])return; answered[fid]=true;
+let p=btn.closest('.quiz-card'); p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));
+btn.classList.add(c?'correct':'wrong');
+el(fid).textContent=c?correctMsg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c)quizScore++; el('quizScore').textContent=quizScore;
+}
+function checkCalc(inputId,ans,fid,msg){
+if(answered[fid])return;
+let v=Number(el(inputId).value); let c=Math.abs(v-ans)<0.01;
+el(fid).textContent=c?msg:'Not quite. Correct method: '+msg.replace('Correct: ','');
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}
+}
+function checkText(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.every(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}
+}
+
+
+function pushBox(){
+let d = Number(el('distSlider').value);
+if(d === 0){
+  d = 3;
+  el('distSlider').value = 3;
+  updateWork();
+}
+el('boxGroup').style.transition='none';
+el('person').style.transition='none';
+el('boxGroup').setAttribute('transform','translate(0 0)');
+el('person').setAttribute('transform','translate(0 0)');
+void el('boxGroup').getBoundingClientRect();
+el('boxGroup').style.transition='transform .8s ease';
+el('person').style.transition='transform .8s ease';
+setTimeout(function(){
+  el('boxGroup').setAttribute('transform','translate('+(d*8)+' 0)');
+  el('person').setAttribute('transform','translate('+(d*8)+' 0)');
+  el('workInfo').textContent += ' The box moves because the pushing force acts in the direction of movement.';
+},50);
+}
+
+function resetWork(){
+el('forceSlider').value=20;
+el('distSlider').value=3;
+el('boxGroup').style.transition='none';
+el('person').style.transition='none';
+el('boxGroup').setAttribute('transform','translate(0 0)');
+el('person').setAttribute('transform','translate(0 0)');
+updateWork();
+}
+function resetHeating(){
+el('waterTemp').value=-20;
+updateHeating();
+}
+function resetConduction(){
+rodMaterial='metal';
+el('rodHeat').value=2;
+updateConduction();
+}
+function resetConvection(){
+convOn=true;
+updateConvection();
+}
+function resetRadiation(){
+surface='black';
+updateRadiation();
+}
+function resetInsulation(){
+ins={loft:false,wall:false,window:false};
+updateInsulation();
+}
+
+window.onload=function(){updateWork();updateHeating();updateConduction();updateConvection();updateRadiation();updateInsulation();}
+</script>
+</body>
+</html>
