@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Work, Heating and Cooling</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#eef6ff;color:#102033}
+.hero{background:linear-gradient(135deg,#10133f,#f97316);color:white;text-align:center;padding:44px 18px}
+.hero h1{font-size:42px;margin:8px 0}.hero p{font-size:18px;font-weight:800}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:20}
+.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1120px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}.task,.quiz-card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.controls,.output{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}.control,.output div{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}.control strong,.output strong{display:block;font-size:22px;color:#172554}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff}
+input[type=range]{width:100%}.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{text-align:left;background:white;border:2px solid #d7ecff}.correct{background:#dcfce7!important;border-color:#22c55e!important}.wrong{background:#fff1f2!important;border-color:#ef4444!important}
+.feedback{font-weight:900;margin-top:10px}.ok{color:#15803d}.no{color:#dc2626}.calc-input{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.calc-input input{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:150px}
+textarea{width:100%;min-height:78px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}.label{font:bold 14px Arial;fill:#172554}.big{font:bold 18px Arial;fill:#172554}.small{font:bold 12px Arial;fill:#172554}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}.secure{background:#ecfdf5;border:2px solid #86efac}.build{background:#eef6ff;border:2px solid #93c5fd}.stretch{background:#fff7ed;border:2px solid #fed7aa}.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+@media(max-width:850px){.two,.grid,.controls,.output,.choice-grid{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+
+/* VISUAL FIX PATCH */
+.pull-ruler text{font:bold 13px Arial;fill:#172554}
+.pull-person line,.pull-person circle{stroke:#172554;stroke-width:5;fill:none;stroke-linecap:round}
+.pull-person .head{fill:#facc15;stroke:#172554}
+.pull-person .body{stroke:#172554}
+.particle-vibrate{animation:particleVibrate .18s infinite alternate}
+.particle-vibrate-slow{animation:particleVibrate .45s infinite alternate}
+@keyframes particleVibrate{from{transform:translate(0,0)}to{transform:translate(4px,-4px)}}
+.clean-arrow{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.clean-heat-arrow{fill:none;stroke:#ef4444;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#heatArrowHead)}
+.clean-heat-arrow.fade{opacity:.18;filter:grayscale(1)}
+.clean-blue-arrow{fill:none;stroke:#2563eb;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#blueArrowHead)}
+.clean-red-arrow{fill:none;stroke:#ef4444;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#redArrowHead)}
+
+
+/* CONVECTION ANIMATION PATCH */
+.conv-flow-red{stroke-dasharray:18 16;animation:flowUp 1.1s linear infinite}
+.conv-flow-blue{stroke-dasharray:18 16;animation:flowDown 1.1s linear infinite}
+@keyframes flowUp{to{stroke-dashoffset:-68}}
+@keyframes flowDown{to{stroke-dashoffset:68}}
+.heat-shimmer{animation:shimmer .8s infinite alternate}
+@keyframes shimmer{from{opacity:.45;transform:translateY(0)}to{opacity:1;transform:translateY(-4px)}}
+
+</style>
+</head>
+<body>
+<header class="hero"><h1>Work, Heating and Cooling</h1><p>Practical revision with clear diagrams, calculations, unit conversions and 20-question CFU.</p></header>
+<nav class="nav"><a href="index.html">🏠 Home</a><a href="#work">Work</a><a href="#curves">Heating Curves</a><a href="#conduction">Conduction</a><a href="#convection">Convection</a><a href="#radiation">Radiation</a><a href="#insulation">Insulation</a><a href="#quiz">CFU</a></nav>
+
+
+<section id="work">
+<h2>1. Work Done Practical</h2>
+<p><b>Work done = force × distance.</b> The ruler shows distance in metres. The person pulls the box with a force meter.</p>
+<div class="task">
+<div class="controls">
+<div class="control">Pulling force <strong id="forceT">80 N</strong><input id="force" type="range" min="10" max="240" step="10" value="80" oninput="updateWork()"></div>
+<div class="control">Mass/load <strong id="massT">20 kg</strong><input id="mass" type="range" min="5" max="60" step="5" value="20" oninput="updateWork()"></div>
+<div class="control">Target distance <strong id="distT">5 m</strong><input id="dist" type="range" min="1" max="10" value="5" oninput="updateWork()"></div>
+</div>
+<div class="two">
+<div>
+<svg viewBox="0 0 760 330" aria-label="work done practical with ruler and person">
+<defs><marker id="workArrowHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+
+<!-- floor and ruler -->
+<line x1="70" y1="250" x2="700" y2="250" stroke="#94a3b8" stroke-width="14" stroke-linecap="round"/>
+<g class="pull-ruler">
+<line x1="90" y1="285" x2="650" y2="285" stroke="#172554" stroke-width="4"/>
+<text x="72" y="310">0 m</text><text x="180" y="310">2 m</text><text x="292" y="310">4 m</text><text x="404" y="310">6 m</text><text x="516" y="310">8 m</text><text x="625" y="310">10 m</text>
+<line x1="90" y1="275" x2="90" y2="295" stroke="#172554" stroke-width="4"/>
+<line x1="202" y1="275" x2="202" y2="295" stroke="#172554" stroke-width="4"/>
+<line x1="314" y1="275" x2="314" y2="295" stroke="#172554" stroke-width="4"/>
+<line x1="426" y1="275" x2="426" y2="295" stroke="#172554" stroke-width="4"/>
+<line x1="538" y1="275" x2="538" y2="295" stroke="#172554" stroke-width="4"/>
+<line x1="650" y1="275" x2="650" y2="295" stroke="#172554" stroke-width="4"/>
+</g>
+
+<!-- moving group -->
+<g id="pullGroup" transform="translate(0 0)">
+<rect x="95" y="170" width="90" height="65" rx="12" fill="#b45309" stroke="#78350f" stroke-width="5"/>
+<line x1="185" y1="200" x2="285" y2="200" stroke="#172554" stroke-width="5"/>
+<rect x="285" y="182" width="58" height="34" rx="10" fill="white" stroke="#172554" stroke-width="4"/>
+<text id="meterRead" x="314" y="205" text-anchor="middle" class="small">80 N</text>
+<g class="pull-person" transform="translate(360 160)">
+<circle class="head" cx="0" cy="0" r="16"/>
+<line class="body" x1="0" y1="18" x2="0" y2="65"/>
+<line x1="0" y1="32" x2="-35" y2="42"/>
+<line x1="-35" y1="42" x2="-58" y2="40"/>
+<line x1="0" y1="32" x2="25" y2="45"/>
+<line x1="0" y1="65" x2="-22" y2="105"/>
+<line x1="0" y1="65" x2="25" y2="105"/>
+</g>
+</g>
+
+<!-- force arrow -->
+<line id="pullForceArrow" x1="110" y1="135" x2="250" y2="135" stroke="#ef4444" stroke-width="8" marker-end="url(#workArrowHead)" stroke-linecap="round"/>
+<text id="workMoveLabel" x="390" y="60" text-anchor="middle" class="big">Ready to pull</text>
+</svg>
+</div>
+<div>
+<div class="output"><div>Threshold force<strong id="thresholdT">60 N</strong></div><div>Actual distance<strong id="actualDist">0 m</strong></div><div>Work done<strong id="workOut">0 J</strong></div></div>
+<button class="green" onclick="runWork()">Run pull</button><button class="ghost" onclick="resetWork()">Reset</button>
+<div class="info">The whole pulling system moves along the ruler. If force is below the threshold, the box only moves part way.</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<section id="curves">
+<h2>2–3. Heating & Cooling Curves</h2>
+<div class="task">
+<p>This model shows a heating curve. Sloping lines show temperature increasing. Flat lines show a change of state: internal energy increases while temperature stays constant.</p>
+<div class="controls">
+<div class="control">Energy added <strong id="energyT">0 kJ</strong><input id="energy" type="range" min="0" max="100" step="5" value="0" oninput="updateHeating()"></div>
+<div class="control">Temperature <strong id="tempT">-20 °C</strong></div>
+<div class="control">Stage <strong id="stageT">solid warming</strong></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 600 340" aria-label="heating apparatus">
+<rect x="235" y="100" width="150" height="155" rx="0" fill="#dbeafe" stroke="#172554" stroke-width="5"/>
+<rect id="water" x="245" y="175" width="130" height="70" fill="#93c5fd"/>
+<rect x="80" y="70" width="40" height="200" rx="20" fill="white" stroke="#172554" stroke-width="5"/>
+<rect id="thermo" x="93" y="220" width="14" height="40" rx="7" fill="#ef4444"/>
+<rect x="275" y="275" width="70" height="26" rx="10" fill="#334155"/>
+<path id="flame" d="M310 275 C285 235 305 215 318 190 C345 230 335 250 310 275" fill="#f97316" opacity=".2"/>
+<g id="particles"></g>
+<text id="heatStageText" x="300" y="45" text-anchor="middle" class="big">Solid warming</text>
+</svg>
+<svg viewBox="0 0 600 340" aria-label="heating curve graph">
+<line x1="80" y1="280" x2="555" y2="280" stroke="#172554" stroke-width="5"/>
+<line x1="80" y1="280" x2="80" y2="40" stroke="#172554" stroke-width="5"/>
+<text x="250" y="325" class="label">Energy added / kJ</text>
+<text x="18" y="190" class="label" transform="rotate(-90 18 190)">Temperature / °C</text>
+<text x="42" y="282" class="small">-20</text><text x="55" y="185" class="small">0</text><text x="45" y="82" class="small">100</text>
+<polyline points="85,275 170,185 260,185 370,85 460,85 535,45" fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<circle id="curvePoint" cx="85" cy="275" r="10" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<text x="185" y="170" class="small">melting plateau</text><text x="380" y="70" class="small">boiling plateau</text>
+</svg>
+</div>
+</div>
+</section>
+
+<section id="conduction">
+<h2>4. Conduction Practical</h2>
+<div class="task">
+<p>Change the heat setting and material. Metal transfers heat further and faster than wood.</p>
+<div class="controls">
+<div class="control">Heat setting <strong id="heatSetT">1</strong><input id="heatSet" type="range" min="1" max="3" value="1" oninput="updateConduction()"></div>
+<div class="control">Material <strong id="matT">metal</strong><button class="blue" onclick="mat='metal';updateConduction()">Metal</button><button class="ghost" onclick="mat='wood';updateConduction()">Wood</button></div>
+<div class="control">Run<br><button class="green" onclick="runConduction()">Heat rod</button></div>
+</div>
+<svg viewBox="0 0 700 270" aria-label="conduction rod">
+<rect id="rodBase" x="80" y="125" width="540" height="36" rx="18" fill="#cbd5e1" stroke="#172554" stroke-width="5"/>
+<rect id="heatFill" x="80" y="125" width="0" height="36" rx="18" fill="url(#heatGrad)"/>
+<defs><linearGradient id="heatGrad"><stop offset="0%" stop-color="#ef4444"/><stop offset="55%" stop-color="#f97316"/><stop offset="100%" stop-color="#facc15"/></linearGradient></defs>
+<text id="rodLabel" x="350" y="60" text-anchor="middle" class="big">Metal rod: good conductor</text>
+<g id="rodDots"></g>
+<text x="100" y="205" class="label">heated end</text><text x="510" y="205" class="label">cool end</text>
+</svg>
+<div class="info" id="condInfo">Higher heat = more vibration. Metal passes energy along the rod more quickly than wood.</div>
+</div>
+</section>
+
+
+<section id="convection">
+<h2>5. Convection Demo</h2>
+<div class="two">
+<div class="task">
+<svg viewBox="0 0 600 360" aria-label="convection current in a heated beaker">
+<defs>
+<marker id="blueArrowHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker>
+<marker id="redArrowHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker>
+</defs>
+<ellipse cx="300" cy="78" rx="225" ry="34" fill="white" stroke="#172554" stroke-width="5"/>
+<path d="M75 78 L115 285 Q300 330 485 285 L525 78" fill="#e0f2fe" stroke="#172554" stroke-width="5"/>
+<ellipse cx="300" cy="78" rx="225" ry="34" fill="none" stroke="#172554" stroke-width="4"/>
+<rect class="heat-shimmer" x="220" y="292" width="160" height="16" rx="8" fill="#ef4444"/>
+
+<!-- clean convection arrows -->
+<path class="clean-red-arrow conv-flow-red" d="M300 258 C300 215 300 160 300 118"/>
+<path class="clean-red-arrow conv-flow-red" d="M260 248 C235 200 252 145 292 112"/>
+<path class="clean-red-arrow conv-flow-red" d="M340 248 C365 200 348 145 308 112"/>
+<path class="clean-blue-arrow conv-flow-blue" d="M155 112 C120 165 120 225 165 272"/>
+<path class="clean-blue-arrow conv-flow-blue" d="M445 112 C480 165 480 225 435 272"/>
+
+<text x="260" y="103" class="label">hot water rises</text>
+<text x="84" y="118" class="label">cool water sinks</text>
+<text x="388" y="118" class="label">cool water sinks</text>
+<text x="260" y="330" class="label">heat source</text>
+</svg>
+</div>
+<div class="task"><h3>What this shows</h3><p>Heating from below makes the water expand. The warmer water becomes less dense and rises. Cooler water at the sides sinks, forming curved convection currents.</p><textarea id="convText"></textarea><button class="green" onclick="checkText('convText','convF',['less dense','rises'],'Good: warm water becomes less dense and rises.')">Check</button><div id="convF" class="feedback"></div></div>
+</div>
+</section>
+
+
+<section id="radiation">
+<h2>6. Radiation Practical</h2>
+<div class="task">
+<p>Use the slider to compare cooling. Matt black surfaces are better emitters of infrared radiation, so they cool faster.</p>
+<div class="controls"><div class="control">Time <strong id="radTimeT">0 min</strong><input id="radTime" type="range" min="0" max="10" value="0" oninput="updateRadiation()"></div><div class="control">Black can <strong id="blackT">80 °C</strong></div><div class="control">Shiny can <strong id="shinyT">80 °C</strong></div></div>
+<svg viewBox="0 0 700 300" aria-label="radiation practical">
+<rect x="145" y="70" width="120" height="170" rx="18" fill="#111" stroke="#172554" stroke-width="5"/><rect x="435" y="70" width="120" height="170" rx="18" fill="#e5e7eb" stroke="#172554" stroke-width="5"/>
+<rect id="blackLevel" x="175" y="120" width="60" height="95" rx="10" fill="#ef4444"/><rect id="shinyLevel" x="465" y="120" width="60" height="95" rx="10" fill="#ef4444"/>
+<path id="blackRad" d="M280 100 C330 70 365 120 410 90" fill="none" stroke="#ef4444" stroke-width="7" stroke-linecap="round"/>
+<path id="shinyRad" d="M565 120 C600 105 620 128 650 112" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" opacity=".45"/>
+<text x="160" y="55" class="big">Matt black</text><text x="445" y="55" class="big">Shiny silver</text>
+</svg>
+</div>
+</section>
+
+
+<section id="insulation">
+<h2>7. Insulation Practical</h2>
+<div class="task">
+<p>Wavy arrows show heat loss. Adding insulation fades the matching arrows.</p>
+<svg viewBox="0 0 760 390" aria-label="house heat loss">
+<defs><marker id="heatArrowHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+
+<!-- house -->
+<rect x="285" y="165" width="210" height="135" fill="#ffe8a3" stroke="#172554" stroke-width="6"/>
+<polygon points="255,165 390,60 525,165" fill="#b45309" stroke="#172554" stroke-width="6"/>
+<rect x="365" y="235" width="45" height="65" fill="#92400e"/>
+<rect x="438" y="198" width="38" height="38" fill="#bae6fd" stroke="#172554" stroke-width="4"/>
+
+<!-- insulation layers -->
+<rect id="loftIns" x="300" y="150" width="180" height="14" fill="#22c55e" opacity="0"/>
+<rect id="wallIns" x="282" y="175" width="12" height="115" fill="#22c55e" opacity="0"/>
+<rect id="windowIns" x="435" y="195" width="44" height="44" fill="#22c55e" opacity="0"/>
+
+<!-- neat heat loss arrows -->
+<path id="roofArrow" class="clean-heat-arrow" d="M375 72 C330 30 370 20 335 0"/>
+<path id="wallArrow" class="clean-heat-arrow" d="M500 185 C555 160 595 185 650 155"/>
+<path id="winArrow" class="clean-heat-arrow" d="M480 220 C540 225 575 255 635 250"/>
+
+<text x="292" y="35" class="label">roof heat loss</text>
+<text x="590" y="145" class="label">wall heat loss</text>
+<text x="575" y="282" class="label">window heat loss</text>
+</svg>
+<div class="controls"><div class="control">Loft insulation <strong id="loftT">off</strong><button class="blue" onclick="toggleIns('loft')">Toggle</button></div><div class="control">Wall insulation <strong id="wallT">off</strong><button class="blue" onclick="toggleIns('wall')">Toggle</button></div><div class="control">Double glazing <strong id="windowT">off</strong><button class="blue" onclick="toggleIns('window')">Toggle</button></div></div>
+<div class="output"><div>Overall heat loss<strong id="lossT">high</strong></div><div>Model change<strong>arrows fade</strong></div><div>Best first upgrade<strong>loft</strong></div></div>
+</div>
+</section>
+
+
+<section id="quiz">
+<h2>8. CFU: 20 Questions</h2>
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Work done is measured in...</p><button class="choice" onclick="quiz(this,true,'q1')">J</button><button class="choice" onclick="quiz(this,false,'q1')">N</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. Force is measured in...</p><button class="choice" onclick="quiz(this,true,'q2')">N</button><button class="choice" onclick="quiz(this,false,'q2')">J</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. Conduction is energy transfer through...</p><button class="choice" onclick="quiz(this,true,'q3')">particles vibrating</button><button class="choice" onclick="quiz(this,false,'q3')">empty space only</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. Convection happens in...</p><button class="choice" onclick="quiz(this,true,'q4')">liquids and gases</button><button class="choice" onclick="quiz(this,false,'q4')">only solids</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. Radiation can travel through...</p><button class="choice" onclick="quiz(this,true,'q5')">a vacuum</button><button class="choice" onclick="quiz(this,false,'q5')">only metal</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. Flat parts of a heating curve show...</p><button class="choice" onclick="quiz(this,true,'q6')">change of state</button><button class="choice" onclick="quiz(this,false,'q6')">no energy transfer</button><div id="q6" class="feedback"></div></div>
+</div>
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. Work done: 50 N over 6 m.</p><div class="calc-input"><input id="calc7"><button class="green" onclick="checkCalc('calc7',300,'q7','Correct: 300 J.')">Check</button></div><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. Rearrange: 420 J over 7 m. Find force.</p><div class="calc-input"><input id="calc8"><button class="green" onclick="checkCalc('calc8',60,'q8','Correct: 60 N.')">Check</button></div><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. Rearrange: 640 J using 80 N. Find distance.</p><div class="calc-input"><input id="calc9"><button class="green" onclick="checkCalc('calc9',8,'q9','Correct: 8 m.')">Check</button></div><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. Convert 250 cm to m.</p><div class="calc-input"><input id="calc10"><button class="green" onclick="checkCalc('calc10',2.5,'q10','Correct: 2.5 m.')">Check</button></div><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. Convert 3.6 kJ to J.</p><div class="calc-input"><input id="calc11"><button class="green" onclick="checkCalc('calc11',3600,'q11','Correct: 3600 J.')">Check</button></div><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. Shiny surfaces reduce...</p><button class="choice" onclick="quiz(this,true,'q12')">radiation</button><button class="choice" onclick="quiz(this,false,'q12')">mass</button><div id="q12" class="feedback"></div></div>
+</div>
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. A box moves 9 m and 720 J of work is done. Calculate force.</p><div class="calc-input"><input id="calc13"><button class="green" onclick="checkCalc('calc13',80,'q13','Correct: 80 N.')">Check</button></div><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. 2.4 kJ is transferred over 8 s. Calculate J/s.</p><div class="calc-input"><input id="calc14"><button class="green" onclick="checkCalc('calc14',300,'q14','Correct: 300 J/s.')">Check</button></div><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain why wool is a good insulator.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkText('stretch15','q15',['air','conduction'],'Good: trapped air reduces conduction.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Explain why convection currents form.</p><textarea id="stretch16"></textarea><button class="green" onclick="checkText('stretch16','q16',['less dense','rises'],'Good: warm fluid becomes less dense and rises.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Explain why matt black surfaces cool faster.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkText('stretch17','q17',['radiation','emitter'],'Good: matt black is a better emitter of infrared radiation.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. Why does temperature stay constant during melting?</p><textarea id="stretch18"></textarea><button class="green" onclick="checkText('stretch18','q18',['state','internal energy'],'Good: energy changes state and increases internal energy.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Suggest one control variable in an insulation practical.</p><textarea id="stretch19"></textarea><button class="green" onclick="checkText('stretch19','q19',['temperature'],'Good: starting temperature is a control variable.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. Why do repeats improve a practical?</p><textarea id="stretch20"></textarea><button class="green" onclick="checkText('stretch20','q20',['reliable'],'Good: repeats improve reliability.')">Check</button><div id="q20" class="feedback"></div></div>
+</div>
+<div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
+
+<script>
+let quizScore=0,answered={},mat='metal',loft=false,wall=false,win=false;
+function el(id){return document.getElementById(id)}
+function makeScale(){let g=el('scaleTicks');for(let i=0;i<=10;i+=2){let x=80+i*48;g.innerHTML+=`<line x1="${x}" y1="200" x2="${x}" y2="225" stroke="#172554" stroke-width="4"/><text x="${x-10}" y="245" class="small">${i} m</text>`}}
+
+function updateWork(){
+let f=+el('force').value,m=+el('mass').value,d=+el('dist').value,th=m*3;
+el('forceT').textContent=f+' N';el('massT').textContent=m+' kg';el('distT').textContent=d+' m';el('thresholdT').textContent=th+' N';
+el('meterRead').textContent=f+' N';
+el('pullForceArrow').setAttribute('x2',110+Math.min(260,f));
+}
+function runWork(){
+let f=+el('force').value,m=+el('mass').value,d=+el('dist').value,th=m*3;
+let moved=f>=th?d:Math.round((f/th)*d*10)/10;
+let shift=moved*56;
+el('pullGroup').setAttribute('transform','translate('+shift+' 0)');
+el('actualDist').textContent=moved+' m';
+el('workOut').textContent=Math.round(f*moved)+' J';
+el('workMoveLabel').textContent=moved>=d?'Reached target distance':'Moved part way';
+}
+function resetWork(){
+el('pullGroup').setAttribute('transform','translate(0 0)');
+el('actualDist').textContent='0 m';el('workOut').textContent='0 J';el('workMoveLabel').textContent='Ready to pull';
+}
+
+function updateHeating(){let e=+el('energy').value,temp,stage,cx,cy;if(e<20){temp=-20+e;stage='solid warming';cx=85+e*4.25;cy=275-e*4.5}else if(e<40){temp=0;stage='melting plateau';cx=170+(e-20)*4.5;cy=185}else if(e<70){temp=(e-40)*3.33;stage='liquid warming';cx=260+(e-40)*3.67;cy=185-(e-40)*3.33}else if(e<90){temp=100;stage='boiling plateau';cx=370+(e-70)*4.5;cy=85}else{temp=100+(e-90)*2;stage='gas warming';cx=460+(e-90)*7.5;cy=85-(e-90)*4}el('energyT').textContent=e+' kJ';el('tempT').textContent=Math.round(temp)+' °C';el('stageT').textContent=stage;el('heatStageText').textContent=stage;el('thermo').setAttribute('height',Math.max(30,Math.min(185,45+(temp+20)*1.1)));el('thermo').setAttribute('y',260-Math.max(30,Math.min(185,45+(temp+20)*1.1)));el('flame').setAttribute('opacity',e>0?1:.2);el('water').setAttribute('fill',e<40?'#bfdbfe':e<70?'#93c5fd':'#fca5a5');el('curvePoint').setAttribute('cx',cx);el('curvePoint').setAttribute('cy',cy)}
+function makeParticles(){let g=el('particles');for(let i=0;i<20;i++){let x=255+(i%5)*25,y=190+Math.floor(i/5)*15;g.innerHTML+=`<circle cx="${x}" cy="${y}" r="5" fill="#172554" opacity=".7"/>`}}
+
+function updateConduction(){
+el('heatSetT').textContent=el('heatSet').value;el('matT').textContent=mat;
+el('rodBase').setAttribute('fill',mat==='metal'?'#cbd5e1':'#92400e');
+el('rodLabel').textContent=mat==='metal'?'Metal rod: good conductor':'Wood rod: poor conductor';
+el('heatFill').setAttribute('width',0);makeRodDots(false);
+}
+function makeRodDots(active){
+let g=el('rodDots');let heat=+el('heatSet').value;let reach=mat==='metal'?heat*2:heat;g.innerHTML='';
+for(let i=0;i<6;i++){
+let x=125+i*85;
+let activeDot=active&&i<reach;
+let cls=activeDot?(heat>=3?'particle-vibrate':'particle-vibrate-slow'):'';
+let colour=activeDot?'#ef4444':'#f97316';
+let r=activeDot?9+heat*2:7;
+g.innerHTML+=`<circle class="${cls}" cx="${x}" cy="143" r="${r}" fill="${colour}"/>`;
+}
+}
+function runConduction(){
+let heat=+el('heatSet').value;let width=mat==='metal'?heat*155:heat*60;
+el('heatFill').setAttribute('width',width);makeRodDots(true);
+el('condInfo').textContent=mat==='metal'?'Metal conducts heat far along the rod. Animated particles show vibration spreading.':'Wood conducts poorly, so fewer particles vibrate and heat stays near the heated end.';
+}
+
+function updateRadiation(){let t=+el('radTime').value,b=80-t*3.2,s=80-t*1.6;el('radTimeT').textContent=t+' min';el('blackT').textContent=Math.round(b)+' °C';el('shinyT').textContent=Math.round(s)+' °C';el('blackLevel').setAttribute('height',Math.max(20,b*1.1));el('blackLevel').setAttribute('y',220-Math.max(20,b*1.1));el('shinyLevel').setAttribute('height',Math.max(20,s*1.1));el('shinyLevel').setAttribute('y',220-Math.max(20,s*1.1))}
+
+function toggleIns(x){
+if(x==='loft')loft=!loft;if(x==='wall')wall=!wall;if(x==='window')win=!win;
+el('loftT').textContent=loft?'on':'off';el('wallT').textContent=wall?'on':'off';el('windowT').textContent=win?'on':'off';
+el('loftIns').setAttribute('opacity',loft?.8:0);el('wallIns').setAttribute('opacity',wall?.8:0);el('windowIns').setAttribute('opacity',win?.45:0);
+el('roofArrow').setAttribute('class','clean-heat-arrow '+(loft?'fade':''));
+el('wallArrow').setAttribute('class','clean-heat-arrow '+(wall?'fade':''));
+el('winArrow').setAttribute('class','clean-heat-arrow '+(win?'fade':''));
+let c=[loft,wall,win].filter(Boolean).length;el('lossT').textContent=c===0?'high':c===1?'medium':c===2?'low':'very low';
+}
+
+function quiz(btn,c,fid){if(answered[fid])return;answered[fid]=true;btn.classList.add(c?'correct':'wrong');el(fid).textContent=c?'Correct.':'Not quite.';el(fid).className='feedback '+(c?'ok':'no');if(c)quizScore++;el('quizScore').textContent=quizScore}
+function checkCalc(inputId,ans,fid,msg){if(answered[fid])return;let v=Number(el(inputId).value);let c=Math.abs(v-ans)<.05;el(fid).textContent=c?msg:'Not quite. Check the equation and units.';el(fid).className='feedback '+(c?'ok':'no');if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}}
+function checkText(inputId,fid,words,msg){if(answered[fid])return;let t=el(inputId).value.toLowerCase();let c=words.every(w=>t.includes(w));el(fid).textContent=c?msg:'Add more key science words.';el(fid).className='feedback '+(c?'ok':'no');if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}}
+window.onload=function(){makeScale();makeParticles();updateWork();updateHeating();updateConduction();updateRadiation()}
+</script>
+</body>
+</html>
