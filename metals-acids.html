@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 8 Metals and Acids Revision</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="hero"><div style="font-size:70px">🧪</div><h1>Metals and Acids</h1><p>Reactivity, pH, gas tests, displacement and equations.</p></div>
+<div class="topnav"><a href="index.html">🏠 Home</a><a href="metals-acids.html">🧪 Metals & Acids</a><a href="chemical-energy-reactions.html">🔥 Chemical Energy</a><a href="forces-pressure.html">🚗 Forces</a></div>
+
+<section id="basics">
+<h2>1. Core Ideas</h2>
+<div class="card-grid">
+<div class="card"><h3>Acids</h3><p>Acids have pH below 7 and turn universal indicator red/orange/yellow.</p></div>
+<div class="card"><h3>Metals + Acids</h3><p>Metal + acid → salt + hydrogen.</p></div>
+<div class="card"><h3>Reactivity</h3><p>More reactive metals react more vigorously and can displace less reactive metals.</p></div>
+</div>
+<div class="task"><h3>Quick Check</h3><p>What gas is made when a reactive metal reacts with acid?</p>
+<div class="choice-grid">
+<button class="choice" onclick="checkChoice(this,true,'basicF','Correct: metal + acid produces hydrogen gas.')">Hydrogen</button>
+<button class="choice" onclick="checkChoice(this,false,'basicF','Oxygen is not the gas made in metal-acid reactions.')">Oxygen</button>
+<button class="choice" onclick="checkChoice(this,false,'basicF','Carbon dioxide is made by carbonates and acids, not metals and acids.')">Carbon dioxide</button>
+<button class="choice" onclick="checkChoice(this,false,'basicF','Nitrogen is not produced here.')">Nitrogen</button>
+</div><div id="basicF" class="feedback"></div></div>
+</section>
+
+<section id="reactivity">
+<h2>2. Metal + Acid Reaction Simulator</h2>
+<p><strong>Big idea:</strong> more reactive metals produce hydrogen faster when reacting with acid.</p>
+<div class="task">
+<h3>Choose a metal</h3>
+<div><span class="metal-chip" id="chip-magnesium" onclick="chooseMetal('magnesium')">Magnesium</span><span class="metal-chip" id="chip-zinc" onclick="chooseMetal('zinc')">Zinc</span><span class="metal-chip" id="chip-iron" onclick="chooseMetal('iron')">Iron</span><span class="metal-chip" id="chip-copper" onclick="chooseMetal('copper')">Copper</span></div>
+<div class="diagram-row">
+<div class="svg-card"><h3>Reaction model</h3>
+<svg class="model" viewBox="0 0 620 360" aria-label="Metal and acid reaction model">
+<rect x="205" y="90" width="210" height="210" rx="22" fill="#e0f2fe" stroke="#172554" stroke-width="5"/>
+<path d="M215 170 C270 150 340 190 405 165 V290 H215 Z" fill="#93c5fd" opacity=".8"/>
+<rect id="metalPiece" x="285" y="255" width="65" height="28" rx="8" fill="#94a3b8" stroke="#334155" stroke-width="3"/>
+<circle id="b1" class="bubble" cx="265" cy="240" r="8"/><circle id="b2" class="bubble" cx="320" cy="225" r="8"/><circle id="b3" class="bubble" cx="360" cy="245" r="8"/>
+<text x="310" y="55" text-anchor="middle" class="text">Metal + acid → salt + hydrogen</text>
+<text x="310" y="330" text-anchor="middle" class="smallText" id="reactionLabel">Choose a metal to test reaction rate.</text>
+</svg>
+<button class="green" onclick="runReaction()">Run reaction</button><button class="ghost" onclick="resetReaction()">Reset</button></div>
+<div class="svg-card"><h3>Results</h3><div class="output"><div>Metal<strong id="metalOut">-</strong></div><div>Reaction rate<strong id="rateOut">-</strong></div><div>Hydrogen<strong id="hydrogenOut">-</strong></div></div><div class="info-box" id="reactionMsg">Magnesium reacts fastest. Copper does not react with dilute acid in this simple KS3 model.</div></div>
+</div></div>
+<div class="task"><h3>Explain</h3><p>Explain why magnesium reacts more vigorously than iron with acid.</p><textarea id="reactExplain"></textarea><button class="green" onclick="checkText('reactExplain','reactExplainF',['reactive','hydrogen'],'Good: magnesium is more reactive, so it produces hydrogen more quickly.')">Check</button><div id="reactExplainF" class="feedback"></div></div>
+</section>
+
+<section id="ph">
+<h2>3. pH and Indicators</h2>
+<div class="task"><h3>Indicator tester</h3><p>Move the pH slider. Watch the indicator colour and classification change.</p>
+<div class="controls"><div class="control">pH <strong id="phText">3</strong><input id="phSlider" type="range" min="0" max="14" value="3" oninput="updatePH()"></div><div class="control">Type<strong id="phType">acid</strong></div><div class="control">Indicator colour<strong id="phColour">red/orange</strong></div></div>
+<div class="phbox" id="phBox"></div><div class="info-box">Universal indicator is red/orange in acids, green at neutral pH 7, and blue/purple in alkalis.</div></div>
+</section>
+
+<section id="displacement">
+<h2>4. Displacement Reactions</h2>
+<p><strong>Big idea:</strong> a more reactive metal can displace a less reactive metal from its compound.</p>
+<div class="task"><h3>Displacement predictor</h3>
+<div class="controls">
+<div class="control">Added metal<strong id="addedMetalText">magnesium</strong><button class="primary" onclick="addedMetal='magnesium';updateDisplacement()">Mg</button><button class="orange" onclick="addedMetal='iron';updateDisplacement()">Fe</button><button class="ghost" onclick="addedMetal='copper';updateDisplacement()">Cu</button></div>
+<div class="control">Solution<strong id="solutionText">copper sulfate</strong><button class="primary" onclick="solutionMetal='copper';updateDisplacement()">CuSO₄</button><button class="orange" onclick="solutionMetal='iron';updateDisplacement()">FeSO₄</button></div>
+<div class="control">Prediction<br><button class="green" onclick="runDisplacement()">Test</button></div></div>
+<div class="output"><div>Result<strong id="dispResult">-</strong></div><div>Colour change<strong id="dispColour">-</strong></div><div>Reaction?<strong id="dispReact">-</strong></div></div>
+<div class="info-box" id="dispMsg">Choose a metal and a solution, then test whether displacement happens.</div></div>
+</section>
+
+<section id="equations">
+<h2>5. Word Equations and Gas Tests</h2>
+<div class="task"><h3>Build the word equation</h3><p>Complete the general word equation:</p>
+<div class="choice-grid">
+<button class="choice" onclick="checkChoice(this,true,'eqF','Correct: metal + acid → salt + hydrogen.')">metal + acid → salt + hydrogen</button>
+<button class="choice" onclick="checkChoice(this,false,'eqF','That is for acid + carbonate reactions.')">acid + carbonate → salt + water + carbon dioxide</button>
+<button class="choice" onclick="checkChoice(this,false,'eqF','This is not the metal-acid equation.')">metal + oxygen → metal oxide</button>
+<button class="choice" onclick="checkChoice(this,false,'eqF','Neutralisation makes salt and water.')">acid + alkali → salt + water</button>
+</div><div id="eqF" class="feedback"></div></div>
+<div class="task"><h3>Hydrogen gas test</h3><p>How do you test for hydrogen?</p>
+<div class="choice-grid">
+<button class="choice" onclick="checkChoice(this,true,'gasF','Correct: hydrogen makes a squeaky pop with a lit splint.')">Lit splint gives squeaky pop</button>
+<button class="choice" onclick="checkChoice(this,false,'gasF','That tests for oxygen.')">Glowing splint relights</button>
+<button class="choice" onclick="checkChoice(this,false,'gasF','That tests for carbon dioxide.')">Turns limewater cloudy</button>
+<button class="choice" onclick="checkChoice(this,false,'gasF','This is not a standard gas test.')">Turns blue litmus red</button>
+</div><div id="gasF" class="feedback"></div></div>
+</section>
+
+<section id="quiz">
+<h2>Final Check</h2><p>Choose your level. Includes recall, application, calculation and explanation.</p>
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Acids have pH...</p><button class="choice" onclick="quiz(this,true,'q1')">below 7</button><button class="choice" onclick="quiz(this,false,'q1')">above 7 only</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. Metal + acid produces...</p><button class="choice" onclick="quiz(this,true,'q2')">salt + hydrogen</button><button class="choice" onclick="quiz(this,false,'q2')">salt + oxygen</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. Hydrogen gas is tested with...</p><button class="choice" onclick="quiz(this,true,'q3')">a lit splint</button><button class="choice" onclick="quiz(this,false,'q3')">limewater</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. Universal indicator is green at...</p><button class="choice" onclick="quiz(this,true,'q4')">pH 7</button><button class="choice" onclick="quiz(this,false,'q4')">pH 1</button><div id="q4" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>5. A reaction makes 60 cm³ of hydrogen in 3 minutes. Calculate the rate in cm³/min.</p><div class="calc-input"><input id="calc5" placeholder="cm³/min"><button class="green" onclick="checkCalc('calc5',20,'q5','Correct: 60 ÷ 3 = 20 cm³/min.')">Check</button></div><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. If a solution has pH 2, it is...</p><button class="choice" onclick="quiz(this,true,'q6')">strongly acidic</button><button class="choice" onclick="quiz(this,false,'q6')">neutral</button><div id="q6" class="feedback"></div></div>
+<div class="quiz-card"><p>7. Magnesium is above copper in the reactivity series. Magnesium placed in copper sulfate will...</p><button class="choice" onclick="quiz(this,true,'q7')">displace copper</button><button class="choice" onclick="quiz(this,false,'q7')">do nothing</button><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. Which metal is least likely to react with dilute acid?</p><button class="choice" onclick="quiz(this,true,'q8')">copper</button><button class="choice" onclick="quiz(this,false,'q8')">magnesium</button><div id="q8" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>9. Explain why magnesium produces hydrogen faster than iron.</p><textarea id="stretch9"></textarea><button class="green" onclick="checkText('stretch9','q9',['reactive','hydrogen'],'Good: magnesium is more reactive, so it reacts faster and produces hydrogen more quickly.')">Check</button><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. 120 cm³ of hydrogen is collected in 4 minutes. Calculate the rate.</p><div class="calc-input"><input id="calc10" placeholder="cm³/min"><button class="green" onclick="checkCalc('calc10',30,'q10','Correct: 120 ÷ 4 = 30 cm³/min.')">Check</button></div><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. Explain how you would test whether a gas is hydrogen.</p><textarea id="stretch11"></textarea><button class="green" onclick="checkText('stretch11','q11',['lit','pop'],'Good: use a lit splint; hydrogen burns with a squeaky pop.')">Check</button><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. Explain why copper does not displace magnesium from magnesium sulfate.</p><textarea id="stretch12"></textarea><button class="green" onclick="checkText('stretch12','q12',['less reactive','magnesium'],'Good: copper is less reactive than magnesium, so it cannot displace magnesium.')">Check</button><div id="q12" class="feedback"></div></div>
+</div>
+<div class="quiz-score">Score: <span id="quizScore">0</span>/12</div>
+</section>
+
+<script>
+let selectedMetal='magnesium',addedMetal='magnesium',solutionMetal='copper',quizScore=0,answered={};
+function el(id){return document.getElementById(id)}
+function scoreOnce(fid, correct){if(answered[fid])return;answered[fid]=true;if(correct){quizScore++;el('quizScore').textContent=quizScore}}
+function checkChoice(btn,correct,fid,msg){let parent=btn.closest('.task')||btn.closest('.quiz-card');parent.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));btn.classList.add(correct?'correct':'wrong');el(fid).textContent=msg;el(fid).className='feedback '+(correct?'ok':'no')}
+function chooseMetal(metal){selectedMetal=metal;['magnesium','zinc','iron','copper'].forEach(m=>el('chip-'+m).classList.remove('selected'));el('chip-'+metal).classList.add('selected');el('metalOut').textContent=metal;const rates={magnesium:'fast',zinc:'medium',iron:'slow',copper:'none'};el('rateOut').textContent=rates[metal];el('hydrogenOut').textContent=metal==='copper'?'none':'produced';el('reactionLabel').textContent=metal==='copper'?'Copper shows no visible reaction with dilute acid.':metal+' reacts with acid and produces hydrogen gas.';el('reactionMsg').textContent=metal==='magnesium'?'Magnesium reacts fastest because it is more reactive.':metal==='copper'?'Copper is too unreactive to react with dilute acid in this model.':'This metal reacts, but less vigorously than magnesium.'}
+function runReaction(){chooseMetal(selectedMetal);let active=selectedMetal!=='copper';['b1','b2','b3'].forEach(id=>el(id).setAttribute('class',active?'bubble bubbleOn':'bubble'));setTimeout(()=>['b1','b2','b3'].forEach(id=>el(id).setAttribute('class','bubble')),2600)}
+function resetReaction(){chooseMetal('magnesium');['b1','b2','b3'].forEach(id=>el(id).setAttribute('class','bubble'))}
+function updatePH(){let ph=Number(el('phSlider').value);el('phText').textContent=ph;let type=ph<7?'acid':ph===7?'neutral':'alkali';el('phType').textContent=type;let colour='green',bg='#22c55e';if(ph<3){colour='red';bg='#ef4444'}else if(ph<7){colour='orange/yellow';bg='#f59e0b'}else if(ph===7){colour='green';bg='#22c55e'}else if(ph<11){colour='blue';bg='#38a7ff'}else{colour='purple';bg='#8b5cf6'}el('phColour').textContent=colour;el('phBox').style.background=bg}
+function updateDisplacement(){el('addedMetalText').textContent=addedMetal;el('solutionText').textContent=solutionMetal+' sulfate';el('dispResult').textContent='-';el('dispColour').textContent='-';el('dispReact').textContent='-';el('dispMsg').textContent='Ready to test.'}
+function reactivityRank(m){return {magnesium:3,iron:2,copper:1}[m]}
+function runDisplacement(){let happens=reactivityRank(addedMetal)>reactivityRank(solutionMetal);el('dispReact').textContent=happens?'yes':'no';el('dispResult').textContent=happens?addedMetal+' displaces '+solutionMetal:'no displacement';el('dispColour').textContent=happens?'solution changes':'no clear change';el('dispMsg').textContent=happens?'A more reactive metal displaces a less reactive metal from its compound.':'The added metal is not reactive enough to displace the metal in the solution.'}
+function quiz(btn,correct,fid){if(answered[fid])return;answered[fid]=true;btn.classList.add(correct?'correct':'wrong');el(fid).textContent=correct?'Correct.':'Not quite.';el(fid).className='feedback '+(correct?'ok':'no');if(correct)quizScore++;el('quizScore').textContent=quizScore}
+function checkCalc(inputId, answer, feedbackId, msg){if(answered[feedbackId])return;let val=Number(el(inputId).value);let correct=Math.abs(val-answer)<0.05;el(feedbackId).textContent=correct?msg:'Not quite. Check your calculation.';el(feedbackId).className='feedback '+(correct?'ok':'no');scoreOnce(feedbackId,correct)}
+function checkText(inputId, feedbackId, words, msg){if(answered[feedbackId])return;let t=el(inputId).value.toLowerCase();let correct=words.every(w=>t.includes(w));el(feedbackId).textContent=correct?msg:'Add more key science words to improve your answer.';el(feedbackId).className='feedback '+(correct?'ok':'no');scoreOnce(feedbackId,correct)}
+window.onload=function(){chooseMetal('magnesium');updatePH();updateDisplacement();}
+</script>
+</body></html>
