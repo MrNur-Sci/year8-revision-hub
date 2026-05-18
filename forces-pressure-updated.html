@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Forces, Friction and Pressure</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
+.hero{background:linear-gradient(135deg,#10133f,#2563eb);color:white;text-align:center;padding:44px 18px}.hero h1{font-size:42px;margin:8px 0}.hero p{font-size:18px;font-weight:800}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:20}.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1120px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}.task,.quiz-card,.card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.controls,.output{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}.control,.output div{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}.control strong,.output strong{display:block;font-size:22px;color:#172554}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.red{background:#ef4444;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff}
+input[type=range]{width:100%}.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.choice{text-align:left;background:white;border:2px solid #d7ecff}.correct{background:#dcfce7!important;border-color:#22c55e!important}.wrong{background:#fff1f2!important;border-color:#ef4444!important}
+.feedback{font-weight:900;margin-top:10px}.ok{color:#15803d}.no{color:#dc2626}.calc-input{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.calc-input input{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:150px}
+textarea{width:100%;min-height:78px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}.label{font:bold 14px Arial;fill:#172554}.big{font:bold 18px Arial;fill:#172554}.small{font:bold 12px Arial;fill:#172554}
+.arrow{stroke-linecap:round;stroke-width:8;marker-end:url(#arrowHead)}.forceObj{transition:transform .7s}.springCoil{fill:none;stroke:#172554;stroke-width:5}.moveDot{animation:dotMove 1.2s infinite alternate}@keyframes dotMove{to{transform:translateX(18px)}}.vibrate{animation:vib .2s infinite alternate}@keyframes vib{to{transform:translate(4px,-3px)}}.waterJet{stroke:#38bdf8;stroke-width:8;fill:none;stroke-linecap:round;transition:d .4s}.crush{transition:transform .4s}.crushed{transform:scaleY(.55);transform-origin:center bottom}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}.secure{background:#ecfdf5;border:2px solid #86efac}.build{background:#eef6ff;border:2px solid #93c5fd}.stretch{background:#fff7ed;border:2px solid #fed7aa}.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+@media(max-width:850px){.two,.grid,.controls,.output,.choice-grid{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+
+/* QA PATCH: deformation animation, elastic limit graph, friction arrow scaling */
+.spring-animated{stroke-dasharray:14 10;animation:springPulse .8s linear infinite}
+@keyframes springPulse{to{stroke-dashoffset:-48}}
+.force-arrow-dynamic{transition:all .35s}
+.graph-limit-line{stroke:#ef4444;stroke-width:4;stroke-dasharray:8 8}
+
+
+/* atmosphere/deformation/mini-check patch */
+.springStretch{transition:transform .45s}
+.canCrush{transition:transform .45s}
+.atmArrow{stroke:#ef4444;stroke-width:7;stroke-linecap:round;marker-end:url(#atmHead);transition:stroke-width .3s}
+.waterArrow{stroke:#2563eb;stroke-width:7;stroke-linecap:round;marker-end:url(#waterHead);transition:stroke-width .3s}
+.mini-check{background:#f0fdf4;border:2px solid #86efac;border-radius:18px;padding:14px;margin-top:14px}
+.mini-check h3{margin:0 0 8px;color:#166534}
+</style>
+</head>
+<body>
+<header class="hero"><h1>Forces, Friction and Pressure</h1><p>Contact forces, deformation, linear graphs, friction, pressure, fluid pressure and atmospheric pressure.</p></header>
+<nav class="nav"><a href="index.html">🏠 Home</a><a href="#contact">Contact</a><a href="#deform">Deformation</a><a href="#linear">Graphs</a><a href="#friction">Friction</a><a href="#pressure">Pressure</a><a href="#fluid">Fluid</a><a href="#atmos">Atmosphere</a><a href="#quiz">CFU</a></nav>
+
+<section id="contact"><h2>1. Contact Forces</h2>
+<div class="task"><p>Contact forces happen when objects touch. Resultant force decides whether motion changes.</p>
+<div class="controls"><div class="control">Push right <strong id="rightT">80 N</strong><input id="rightF" type="range" min="0" max="200" step="10" value="80" oninput="updateContact()"></div><div class="control">Push left <strong id="leftT">40 N</strong><input id="leftF" type="range" min="0" max="200" step="10" value="40" oninput="updateContact()"></div><div class="control">Run<br><button class="green" onclick="runContact()">Apply forces</button><button class="ghost" onclick="resetContact()">Reset</button></div></div>
+<div class="two">
+<svg viewBox="0 0 700 300" aria-label="contact forces simulation">
+<defs><marker id="arrowHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="currentColor"/></marker></defs>
+<line x1="60" y1="230" x2="640" y2="230" stroke="#94a3b8" stroke-width="10" stroke-linecap="round"/>
+<g id="cart" class="forceObj"><rect x="290" y="150" width="120" height="65" rx="12" fill="#f59e0b" stroke="#172554" stroke-width="5"/><circle cx="315" cy="225" r="12" fill="#172554"/><circle cx="385" cy="225" r="12" fill="#172554"/></g>
+<line id="rightArrow" x1="120" y1="175" x2="260" y2="175" stroke="#22c55e" class="arrow"/>
+<line id="leftArrow" x1="580" y1="175" x2="440" y2="175" stroke="#ef4444" class="arrow"/>
+<text id="resultLabel" x="350" y="70" text-anchor="middle" class="big">Resultant force = 40 N right</text>
+</svg>
+<div><div class="output"><div>Resultant<strong id="resultOut">40 N right</strong></div><div>Motion<strong id="motionOut">accelerates right</strong></div><div>Balanced?<strong id="balancedOut">no</strong></div></div><div class="info">If forces are balanced, the object does not change speed. If unbalanced, motion changes.</div></div>
+</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>Equal opposite forces give what resultant force?</p><button class="choice" onclick="choice(this,true,'contactCheck','Correct: resultant force is 0 N.')">0 N</button><button class="choice" onclick="choice(this,false,'contactCheck','Not quite. Equal opposite forces cancel.')">Both forces added</button><div id="contactCheck" class="feedback"></div></div></section>
+
+
+
+<section id="deform"><h2>2. Deformation</h2>
+<div class="task"><p>Forces can stretch, compress or bend objects. <b>Extension = new length − original length.</b></p>
+<div class="controls">
+<div class="control">Load force <strong id="loadT">20 N</strong><input id="loadF" type="range" min="0" max="100" step="5" value="20" oninput="updateSpring()"></div>
+<div class="control">Original length<strong>10 cm</strong></div>
+<div class="control">Elastic limit<strong>60 N</strong><br><button class="green" onclick="runSpring()">Animate stretch</button><button class="ghost" onclick="resetSpring()">Reset</button></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 680 400" aria-label="animated spring deformation simulation">
+<line x1="340" y1="40" x2="340" y2="80" stroke="#172554" stroke-width="7"/>
+<g id="springGroup" class="springStretch">
+<path id="springPath" class="springCoil" d="M340 80 C300 95 380 110 340 125 C300 140 380 155 340 170 C300 185 380 200 340 215"/>
+<rect id="loadBlock" x="295" y="215" width="90" height="55" rx="10" fill="#38a7ff" stroke="#172554" stroke-width="5"/>
+</g>
+<line x1="445" y1="80" x2="445" y2="215" stroke="#172554" stroke-width="4"/>
+<line x1="435" y1="80" x2="455" y2="80" stroke="#172554" stroke-width="4"/>
+<line id="newLenTick" x1="435" y1="215" x2="455" y2="215" stroke="#172554" stroke-width="4"/>
+<text x="470" y="150" class="label">new length</text>
+<line x1="210" y1="80" x2="210" y2="180" stroke="#64748b" stroke-width="4"/>
+<line x1="200" y1="80" x2="220" y2="80" stroke="#64748b" stroke-width="4"/>
+<line x1="200" y1="180" x2="220" y2="180" stroke="#64748b" stroke-width="4"/>
+<text x="95" y="135" class="label">original length = 10 cm</text>
+<text id="springLabel" x="340" y="365" text-anchor="middle" class="big">Elastic deformation</text>
+</svg>
+<div>
+<div class="output"><div>Original length<strong>10 cm</strong></div><div>New length<strong id="newLenOut">14 cm</strong></div><div>Extension<strong id="extOut">4 cm</strong></div></div>
+<div class="output"><div>Extension in mm<strong id="extMm">40 mm</strong></div><div>Type<strong id="deformType">elastic</strong></div><div>Calculation<strong id="calcOut">14 − 10 = 4 cm</strong></div></div>
+<div class="info">The spring and load visibly stretch downwards as force increases.</div>
+</div></div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>If original length is 10 cm and new length is 16 cm, what is extension?</p><button class="choice" onclick="choice(this,true,'deformCheck','Correct: 16 − 10 = 6 cm.')">6 cm</button><button class="choice" onclick="choice(this,false,'deformCheck','Not quite. Extension = new length − original length.')">26 cm</button><div id="deformCheck" class="feedback"></div></div>
+</section>
+
+
+
+
+<section id="linear"><h2>3. Linear Relationships</h2>
+<div class="task"><p>A straight line through the origin shows a directly proportional relationship. A spring is only linear up to the elastic limit. After the elastic limit, the graph curves and the deformation becomes inelastic.</p>
+<div class="controls">
+<div class="control">Force <strong id="graphForceT">30 N</strong><input id="graphForce" type="range" min="0" max="100" step="10" value="30" oninput="updateLinear()"></div>
+<div class="control">Spring constant<strong>5 N/cm</strong></div>
+<div class="control">Extension<strong id="graphExtT">6 cm</strong></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 700 360" aria-label="linear force extension graph">
+<line x1="80" y1="300" x2="640" y2="300" stroke="#172554" stroke-width="5"/><line x1="80" y1="300" x2="80" y2="45" stroke="#172554" stroke-width="5"/>
+<text x="290" y="340" class="label">Force / N</text><text x="20" y="190" class="label" transform="rotate(-90 20 190)">Extension / cm</text>
+<line x1="80" y1="300" x2="520" y2="80" stroke="#38a7ff" stroke-width="7" stroke-linecap="round"/>
+<circle id="graphPoint" cx="212" cy="234" r="10" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<text id="linearLabel" x="350" y="55" text-anchor="middle" class="big">30 N gives 6 cm extension</text>
+<text x="415" y="110" class="small">linear relationship</text>
+</svg>
+<svg viewBox="0 0 700 360" aria-label="elastic limit and inelastic deformation graph">
+<line x1="80" y1="300" x2="640" y2="300" stroke="#172554" stroke-width="5"/><line x1="80" y1="300" x2="80" y2="45" stroke="#172554" stroke-width="5"/>
+<text x="290" y="340" class="label">Force / N</text><text x="20" y="190" class="label" transform="rotate(-90 20 190)">Extension / cm</text>
+<path d="M80 300 L345 168 C430 120 520 112 620 110" fill="none" stroke="#f59e0b" stroke-width="7" stroke-linecap="round"/>
+<line x1="345" y1="300" x2="345" y2="70" class="graph-limit-line"/>
+<text x="355" y="82" class="small">elastic limit</text>
+<text x="130" y="245" class="small">elastic region</text>
+<text x="430" y="135" class="small">inelastic deformation</text>
+<text x="350" y="45" text-anchor="middle" class="big">After the elastic limit, the graph curves</text>
+</svg>
+</div>
+<div class="info">Before the elastic limit, force and extension are directly proportional. After the limit, the material may not return to its original shape.</div>
+</div>
+<div class="mini-check"><h3>Check your understanding</h3><p>A straight line through the origin shows...</p><button class="choice" onclick="choice(this,true,'linearCheck','Correct: direct proportionality.')">direct proportionality</button><button class="choice" onclick="choice(this,false,'linearCheck','Not quite.')">random results</button><div id="linearCheck" class="feedback"></div></div></section>
+
+
+<section id="friction"><h2>4–5. Friction and Mini-CFU</h2>
+<div class="task"><p>Friction opposes motion. Rougher surfaces create more friction. Lubrication and smoother surfaces reduce friction.</p>
+<div class="controls"><div class="control">Surface <strong id="surfaceT">wood</strong><button class="green" onclick="surface='ice';updateFriction()">Ice</button><button class="orange" onclick="surface='wood';updateFriction()">Wood</button><button class="red" onclick="surface='sandpaper';updateFriction()">Sandpaper</button></div><div class="control">Push force <strong id="pushT">60 N</strong><input id="pushF" type="range" min="10" max="150" step="10" value="60" oninput="updateFriction()"></div><div class="control">Run<br><button class="green" onclick="runFriction()">Slide</button><button class="ghost" onclick="resetFriction()">Reset</button></div></div>
+<div class="two">
+<svg viewBox="0 0 700 300" aria-label="friction surface simulation">
+<rect id="surfaceRect" x="55" y="220" width="590" height="20" rx="10" fill="#92400e"/>
+<g id="slideBox"><rect x="80" y="155" width="95" height="65" rx="12" fill="#f59e0b" stroke="#172554" stroke-width="5"/></g>
+<line id="pushArrow" x1="80" y1="140" x2="210" y2="140" stroke="#22c55e" class="arrow force-arrow-dynamic"/>
+<line id="frictionArrow" x1="185" y1="190" x2="100" y2="190" stroke="#ef4444" class="arrow force-arrow-dynamic"/>
+<text id="fricLabel" x="350" y="60" text-anchor="middle" class="big">Friction = 40 N</text>
+</svg>
+<div><div class="output"><div>Friction<strong id="fricOut">40 N</strong></div><div>Result<strong id="fricResult">moves</strong></div><div>Distance<strong id="fricDist">2 m</strong></div></div><div class="info">Friction acts opposite to the direction of movement.</div></div>
+</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>Which surface gives greatest friction?</p><button class="choice" onclick="choice(this,true,'frictionCheck','Correct: sandpaper is roughest.')">Sandpaper</button><button class="choice" onclick="choice(this,false,'frictionCheck','Not quite. Rougher surface = more friction.')">Ice</button><div id="frictionCheck" class="feedback"></div></div></section>
+
+<section id="pressure"><h2>6. Pressure</h2>
+<div class="task"><p><b>Pressure = force ÷ area</b>. Smaller area gives greater pressure for the same force.</p>
+<div class="controls"><div class="control">Force <strong id="pressForceT">100 N</strong><input id="pressForce" type="range" min="20" max="300" step="10" value="100" oninput="updatePressure()"></div><div class="control">Area <strong id="areaT">0.5 m²</strong><input id="area" type="range" min="0.1" max="2" step="0.1" value="0.5" oninput="updatePressure()"></div><div class="control">Pressure<strong id="pressureT">200 Pa</strong></div></div>
+<div class="two">
+<svg viewBox="0 0 650 320" aria-label="pressure block simulation">
+<rect x="60" y="260" width="530" height="18" rx="9" fill="#94a3b8"/>
+<rect id="pressureBlock" x="270" y="140" width="110" height="120" rx="12" fill="#38a7ff" stroke="#172554" stroke-width="5"/>
+<line x1="325" y1="55" x2="325" y2="130" stroke="#ef4444" class="arrow"/>
+<text id="pressureLabel" x="325" y="40" text-anchor="middle" class="big">Pressure = 200 Pa</text>
+</svg>
+<div><div class="output"><div>Equation<strong>P = F ÷ A</strong></div><div>Rearrange force<strong>F = P × A</strong></div><div>Rearrange area<strong>A = F ÷ P</strong></div></div><div class="info">Area must be in m² if pressure is in Pa.</div></div>
+</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>For the same force, smaller area means...</p><button class="choice" onclick="choice(this,true,'pressureCheck','Correct: pressure increases.')">pressure increases</button><button class="choice" onclick="choice(this,false,'pressureCheck','Not quite. P = F ÷ A.')">pressure decreases</button><div id="pressureCheck" class="feedback"></div></div></section>
+
+<section id="fluid"><h2>7. Fluid Pressure</h2>
+<div class="task"><p>Pressure in a liquid increases with depth because there is more liquid above pushing down.</p>
+<div class="controls"><div class="control">Depth <strong id="depthT">3 m</strong><input id="depth" type="range" min="1" max="10" value="3" oninput="updateFluid()"></div><div class="control">Jet strength<strong id="jetT">medium</strong></div><div class="control">Particles<strong>more above</strong></div></div>
+<svg viewBox="0 0 700 360" aria-label="fluid pressure depth tank">
+<rect x="120" y="55" width="230" height="260" rx="18" fill="#dbeafe" stroke="#172554" stroke-width="5"/>
+<rect id="waterLevel" x="130" y="70" width="210" height="235" fill="#93c5fd"/>
+<circle id="hole" cx="350" cy="220" r="8" fill="#172554"/>
+<path id="jetPath" d="M350 220 C430 215 480 240 540 260" stroke="#38bdf8" stroke-width="8" fill="none" stroke-linecap="round"/>
+<line id="depthLine" x1="95" y1="70" x2="95" y2="220" stroke="#ef4444" stroke-width="5"/>
+<text id="fluidLabel" x="420" y="70" class="big">Greater depth = greater pressure</text>
+</svg></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>Where is liquid pressure greatest?</p><button class="choice" onclick="choice(this,true,'fluidCheck','Correct: pressure is greatest at the bottom.')">At the bottom</button><button class="choice" onclick="choice(this,false,'fluidCheck','Not quite. Pressure increases with depth.')">At the surface</button><div id="fluidCheck" class="feedback"></div></div></section>
+
+
+<section id="atmos"><h2>8. Atmospheric Pressure</h2>
+<div class="task"><p>Air particles collide with surfaces and create pressure. Greater outside pressure gives a larger crushing effect. Water pressure also acts on submerged objects and increases with depth.</p>
+<div class="controls">
+<div class="control">Outside pressure <strong id="atmT">100%</strong><input id="atmPressure" type="range" min="20" max="180" value="100" step="10" oninput="updateAtmos()"></div>
+<div class="control">Water depth <strong id="waterDepthT">2 m</strong><input id="waterDepth" type="range" min="0" max="10" value="2" oninput="updateAtmos()"></div>
+<div class="control">Demo<br><button class="orange" onclick="crushCan()">Crush can</button><button class="ghost" onclick="resetCan()">Reset</button></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 680 360" aria-label="air pressure crushing can">
+<defs><marker id="atmHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+<g id="airCan" class="canCrush"><rect x="285" y="115" width="110" height="165" rx="20" fill="#cbd5e1" stroke="#172554" stroke-width="5"/><ellipse cx="340" cy="115" rx="55" ry="17" fill="#e5e7eb" stroke="#172554" stroke-width="4"/><text x="340" y="205" text-anchor="middle" class="small">can</text></g>
+<line id="atmA1" x1="155" y1="190" x2="270" y2="190" class="atmArrow"/>
+<line id="atmA2" x1="525" y1="190" x2="410" y2="190" class="atmArrow"/>
+<line id="atmA3" x1="340" y1="45" x2="340" y2="100" class="atmArrow"/>
+<text id="atmLabel" x="340" y="320" text-anchor="middle" class="big">Outside air pressure pushes on the can</text>
+</svg>
+<svg viewBox="0 0 680 360" aria-label="can submerged in water pressure model">
+<defs><marker id="waterHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker></defs>
+<rect x="150" y="55" width="380" height="260" rx="22" fill="#dbeafe" stroke="#172554" stroke-width="5"/>
+<rect x="160" y="95" width="360" height="210" fill="#93c5fd" opacity=".8"/>
+<g id="waterCan" class="canCrush"><rect x="300" y="185" width="80" height="95" rx="16" fill="#cbd5e1" stroke="#172554" stroke-width="5"/><ellipse cx="340" cy="185" rx="40" ry="13" fill="#e5e7eb" stroke="#172554" stroke-width="4"/></g>
+<line id="wA1" x1="245" y1="230" x2="295" y2="230" class="waterArrow"/>
+<line id="wA2" x1="435" y1="230" x2="385" y2="230" class="waterArrow"/>
+<line id="wA3" x1="340" y1="115" x2="340" y2="180" class="waterArrow"/>
+<text id="waterLabel" x="340" y="45" text-anchor="middle" class="big">Submerged can: pressure increases with depth</text>
+</svg></div>
+<div class="output"><div>Air pressure<strong id="pressPercent">100%</strong></div><div>Water depth<strong id="depthOut">2 m</strong></div><div>Crushing effect<strong id="crushOut">medium</strong></div></div>
+<div class="info">Use the sliders, then press “Crush can”. The can crushes more when outside pressure/depth is higher.</div></div>
+<div class="mini-check"><h3>Check your understanding</h3><p>Why is pressure greater deeper underwater?</p><button class="choice" onclick="choice(this,true,'atmosCheck','Correct: deeper water means more water above pushing down.')">More water above pushes down</button><button class="choice" onclick="choice(this,false,'atmosCheck','Not quite. Think about the weight of water above.')">The can becomes heavier</button><div id="atmosCheck" class="feedback"></div></div>
+</section>
+
+
+<section id="quiz"><h2>9. CFU: 20 Questions</h2>
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Force is measured in...</p><button class="choice" onclick="quiz(this,true,'q1')">newtons</button><button class="choice" onclick="quiz(this,false,'q1')">joules</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. Friction acts...</p><button class="choice" onclick="quiz(this,true,'q2')">opposite motion</button><button class="choice" onclick="quiz(this,false,'q2')">always upwards</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. Pressure is measured in...</p><button class="choice" onclick="quiz(this,true,'q3')">pascals</button><button class="choice" onclick="quiz(this,false,'q3')">metres</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. Liquid pressure increases with...</p><button class="choice" onclick="quiz(this,true,'q4')">depth</button><button class="choice" onclick="quiz(this,false,'q4')">colour</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. Atmospheric pressure is caused by...</p><button class="choice" onclick="quiz(this,true,'q5')">air particles colliding</button><button class="choice" onclick="quiz(this,false,'q5')">light only</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. Elastic deformation means the object...</p><button class="choice" onclick="quiz(this,true,'q6')">returns to original shape</button><button class="choice" onclick="quiz(this,false,'q6')">never changes back</button><div id="q6" class="feedback"></div></div>
+</div>
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. Calculate resultant force: 90 N right and 40 N left.</p><div class="calc-input"><input id="calc7"><button class="green" onclick="checkCalc('calc7',50,'q7','Correct: 50 N to the right.')">Check</button></div><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. Pressure: force = 120 N, area = 0.4 m².</p><div class="calc-input"><input id="calc8"><button class="green" onclick="checkCalc('calc8',300,'q8','Correct: P = 120 ÷ 0.4 = 300 Pa.')">Check</button></div><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. Rearrange pressure: P = 500 Pa, area = 0.2 m². Find force.</p><div class="calc-input"><input id="calc9"><button class="green" onclick="checkCalc('calc9',100,'q9','Correct: F = P × A = 500 × 0.2 = 100 N.')">Check</button></div><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. Rearrange pressure: F = 200 N, P = 400 Pa. Find area.</p><div class="calc-input"><input id="calc10"><button class="green" onclick="checkCalc('calc10',0.5,'q10','Correct: A = F ÷ P = 200 ÷ 400 = 0.5 m².')">Check</button></div><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. Convert 50 mm to cm.</p><div class="calc-input"><input id="calc11"><button class="green" onclick="checkCalc('calc11',5,'q11','Correct: 50 mm = 5 cm.')">Check</button></div><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. Convert 2 cm² to m².</p><div class="calc-input"><input id="calc12"><button class="green" onclick="checkCalc('calc12',0.0002,'q12','Correct: 2 cm² = 0.0002 m².')">Check</button></div><div id="q12" class="feedback"></div></div>
+</div>
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. A box is pushed with 140 N and friction is 55 N. Calculate resultant force.</p><div class="calc-input"><input id="calc13"><button class="green" onclick="checkCalc('calc13',85,'q13','Correct: 85 N forwards.')">Check</button></div><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. Explain why high heels create more pressure than trainers.</p><textarea id="stretch14"></textarea><button class="green" onclick="checkText('stretch14','q14',['smaller area','pressure'],'Good: smaller area gives greater pressure.')">Check</button><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain why water pressure increases with depth.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkText('stretch15','q15',['more water','above'],'Good: there is more water above pushing down.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Explain why air pressure decreases on a mountain.</p><textarea id="stretch16"></textarea><button class="green" onclick="checkText('stretch16','q16',['fewer air particles'],'Good: fewer air particles above means lower pressure.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Give one way to reduce friction.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkText('stretch17','q17',['lubrication'],'Good: lubrication reduces friction.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. Explain what a straight-line graph through the origin shows.</p><textarea id="stretch18"></textarea><button class="green" onclick="checkText('stretch18','q18',['directly proportional'],'Good: it shows direct proportionality.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Suggest one control variable in a friction investigation.</p><textarea id="stretch19"></textarea><button class="green" onclick="checkText('stretch19','q19',['mass'],'Good: mass/load is a valid control variable.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. Evaluate why repeats improve a pressure investigation.</p><textarea id="stretch20"></textarea><button class="green" onclick="checkText('stretch20','q20',['reliable'],'Good: repeats improve reliability and help identify anomalies.')">Check</button><div id="q20" class="feedback"></div></div>
+</div><div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
+
+<script>
+let surface='wood',quizScore=0,answered={};
+function el(id){return document.getElementById(id)}
+function updateContact(){let r=+el('rightF').value,l=+el('leftF').value,res=r-l;el('rightT').textContent=r+' N';el('leftT').textContent=l+' N';el('rightArrow').setAttribute('x2',120+Math.max(30,r));el('leftArrow').setAttribute('x2',580-Math.max(30,l));let dir=res>0?'right':res<0?'left':'none';el('resultOut').textContent=Math.abs(res)+' N '+dir;el('motionOut').textContent=res===0?'constant speed/stationary':'accelerates '+dir;el('balancedOut').textContent=res===0?'yes':'no';el('resultLabel').textContent='Resultant force = '+Math.abs(res)+' N '+dir}
+function runContact(){let r=+el('rightF').value,l=+el('leftF').value,res=r-l;el('cart').setAttribute('transform','translate('+(res*0.7)+' 0)')}function resetContact(){el('cart').setAttribute('transform','translate(0 0)')}
+
+
+function updateSpring(){
+let f=+el('loadF').value, extension=Math.round(f/5), newLength=10+extension, plastic=f>60;
+el('loadT').textContent=f+' N'; el('newLenOut').textContent=newLength+' cm'; el('extOut').textContent=extension+' cm';
+el('extMm').textContent=extension*10+' mm'; el('deformType').textContent=plastic?'inelastic/plastic':'elastic';
+el('calcOut').textContent=newLength+' − 10 = '+extension+' cm';
+el('springLabel').textContent=plastic?'Inelastic deformation: elastic limit exceeded':'Elastic deformation';
+let stretch=1+(extension/18);
+el('springGroup').setAttribute('transform',`translate(0 80) scale(1 ${stretch}) translate(0 -80)`);
+let tickY=215+(extension*7);
+el('newLenTick').setAttribute('y1',tickY); el('newLenTick').setAttribute('y2',tickY);
+}
+function runSpring(){el('springPath').classList.add('spring-animated');el('loadBlock').classList.add('vibrate');setTimeout(()=>{el('springPath').classList.remove('spring-animated');el('loadBlock').classList.remove('vibrate')},2200)}
+function resetSpring(){el('loadF').value=20;updateSpring();el('springPath').classList.remove('spring-animated');el('loadBlock').classList.remove('vibrate')}
+
+function updateLinear(){let f=+el('graphForce').value,ext=f/5;el('graphForceT').textContent=f+' N';el('graphExtT').textContent=ext+' cm';el('linearLabel').textContent=f+' N gives '+ext+' cm extension';el('graphPoint').setAttribute('cx',80+f*4.4);el('graphPoint').setAttribute('cy',300-ext*11)}
+
+function updateFriction(){
+let push=+el('pushF').value;
+let fr={ice:10,wood:40,sandpaper:80}[surface];
+el('surfaceT').textContent=surface;
+el('pushT').textContent=push+' N';
+el('fricOut').textContent=fr+' N';
+el('fricLabel').textContent='Friction = '+fr+' N';
+el('fricResult').textContent=push>fr?'moves':'does not move';
+el('fricDist').textContent=Math.max(0,Math.round((push-fr)/20))+' m';
+el('surfaceRect').setAttribute('fill',surface==='ice'?'#bae6fd':surface==='wood'?'#92400e':'#57534e');
+el('pushArrow').setAttribute('x2',80+Math.max(50,push*1.25));
+el('frictionArrow').setAttribute('x1',185);
+el('frictionArrow').setAttribute('x2',185-Math.max(35,fr*1.15));
+el('frictionArrow').setAttribute('stroke-width',surface==='ice'?5:surface==='wood'?8:11);
+}
+function runFriction(){let push=+el('pushF').value,fr={ice:10,wood:40,sandpaper:80}[surface];let d=Math.max(0,(push-fr)*3);el('slideBox').setAttribute('transform','translate('+d+' 0)')}
+function resetFriction(){el('slideBox').setAttribute('transform','translate(0 0)')}
+
+function updatePressure(){let f=+el('pressForce').value,a=+el('area').value,p=Math.round(f/a);el('pressForceT').textContent=f+' N';el('areaT').textContent=a.toFixed(1)+' m²';el('pressureT').textContent=p+' Pa';el('pressureLabel').textContent='Pressure = '+p+' Pa';let w=80+a*75;el('pressureBlock').setAttribute('width',w);el('pressureBlock').setAttribute('x',325-w/2)}
+function updateFluid(){let d=+el('depth').value;el('depthT').textContent=d+' m';el('jetT').textContent=d<4?'low':d<8?'medium':'high';let y=85+d*22;el('hole').setAttribute('cy',y);el('jetPath').setAttribute('d',`M350 ${y} C${390+d*10} ${y-10} ${450+d*10} ${y+20} ${520+d*12} ${y+40}`);el('depthLine').setAttribute('y2',y)}
+
+function updateAtmos(){
+let air=+el('atmPressure').value, depth=+el('waterDepth').value;
+el('atmT').textContent=air+'%'; el('pressPercent').textContent=air+'%';
+el('waterDepthT').textContent=depth+' m'; el('depthOut').textContent=depth+' m';
+let effect=(air-100)/80 + depth/10; el('crushOut').textContent=effect<0.4?'low':effect<1.0?'medium':'high';
+el('atmLabel').textContent='Outside air pressure = '+air+'%'; el('waterLabel').textContent='Water depth = '+depth+' m';
+let aw=Math.max(4,air/18); ['atmA1','atmA2','atmA3'].forEach(id=>el(id).setAttribute('stroke-width',aw));
+let ww=Math.max(4,4+depth); ['wA1','wA2','wA3'].forEach(id=>el(id).setAttribute('stroke-width',ww));
+el('wA3').setAttribute('y1',Math.max(75,185-depth*8)); el('wA3').setAttribute('y2',180);
+}
+function crushCan(){
+let air=+el('atmPressure').value, depth=+el('waterDepth').value;
+let airScale=Math.max(.45,1-(air-80)/220), waterScale=Math.max(.45,1-depth/18);
+el('airCan').setAttribute('transform',`translate(0 ${280*(1-airScale)}) scale(1 ${airScale})`);
+el('waterCan').setAttribute('transform',`translate(0 ${260*(1-waterScale)}) scale(1 ${waterScale})`);
+}
+function resetCan(){el('airCan').setAttribute('transform','translate(0 0) scale(1 1)');el('waterCan').setAttribute('transform','translate(0 0) scale(1 1)')}
+
+function choice(btn,c,fid,msg){
+let p=btn.closest('.mini-check')||btn.closest('.task')||btn.closest('.quiz-card');
+p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));
+btn.classList.add(c?'correct':'wrong'); el(fid).textContent=msg; el(fid).className='feedback '+(c?'ok':'no');
+}
+function quiz(btn,c,fid){if(answered[fid])return;answered[fid]=true;btn.classList.add(c?'correct':'wrong');el(fid).textContent=c?'Correct.':'Not quite.';el(fid).className='feedback '+(c?'ok':'no');if(c)quizScore++;el('quizScore').textContent=quizScore}
+function checkCalc(inputId,ans,fid,msg){if(answered[fid])return;let v=Number(el(inputId).value);let c=Math.abs(v-ans)<0.00001;el(fid).textContent=c?msg:'Not quite. Check equation and units.';el(fid).className='feedback '+(c?'ok':'no');if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}}
+function checkText(inputId,fid,words,msg){if(answered[fid])return;let t=el(inputId).value.toLowerCase();let c=words.every(w=>t.includes(w));el(fid).textContent=c?msg:'Add more precise science words.';el(fid).className='feedback '+(c?'ok':'no');if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}}
+window.onload=function(){updateContact();updateSpring();updateLinear();updateFriction();updatePressure();updateFluid();updateAtmos()}
+</script>
+</body></html>
