@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Energy Stores, Transfers and Resources</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
+.hero{background:linear-gradient(135deg,#10133f,#2563eb,#22c55e);color:white;text-align:center;padding:46px 18px}
+.hero h1{font-size:42px;margin:0 0 10px}.hero p{font-size:18px;font-weight:800;max-width:980px;margin:auto}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:30}
+.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1160px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}
+h3{color:#172554;margin:8px 0}
+.task,.quiz-card,.card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.controls,.output{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.control,.output div{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}
+.control strong,.output strong{display:block;font-size:21px;color:#172554}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}
+.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.red{background:#ef4444;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff;color:#102033}
+input[type=range]{width:100%}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}
+.label{font:bold 14px Arial;fill:#172554}.big{font:bold 18px Arial;fill:#172554}.small{font:bold 12px Arial;fill:#172554}
+.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+.success{background:#ecfdf5;border:2px solid #86efac;border-radius:16px;padding:12px;font-weight:900;color:#166534}
+.warn{background:#fff1f2;border:2px solid #fecaca;border-radius:16px;padding:12px;font-weight:900;color:#991b1b}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.choice{text-align:left;background:white;border:2px solid #d7ecff;color:#102033}
+.correct{background:#dcfce7!important;border-color:#22c55e!important}.wrong{background:#fff1f2!important;border-color:#ef4444!important}
+.feedback{font-weight:900;margin-top:10px}.ok{color:#15803d}.no{color:#dc2626}
+.calc-input{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.calc-input input{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:150px}
+textarea{width:100%;min-height:80px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}.secure{background:#ecfdf5;border:2px solid #86efac}.build{background:#eef6ff;border:2px solid #93c5fd}.stretch{background:#fff7ed;border:2px solid #fed7aa}
+.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+.store{padding:14px;border:2px solid #d7ecff;border-radius:18px;background:white;font-weight:900}.store b{color:#172554}
+.transferArrow{stroke:#2563eb;stroke-width:8;fill:none;stroke-linecap:round}.wastedArrow{stroke:#ef4444;stroke-width:6;fill:none;stroke-linecap:round}.usefulArrow{stroke:#22c55e;stroke-width:8;fill:none;stroke-linecap:round}.resourceBox{background:white;border:2px solid #d7ecff;border-radius:18px;padding:14px}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}td,th{border:2px solid #d7ecff;padding:10px;text-align:left}th{background:#eef6ff;color:#172554}
+@media(max-width:850px){.two,.three,.controls,.output,.choice-grid{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="hero"><h1>Energy Stores, Transfers, Power and Resources</h1><p>Detailed Year 8 revision covering energy stores, changes in energy, energy in food practical, power, Sankey diagrams, efficiency and energy resources.</p></header>
+<nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="#stores">Stores</a>
+<a href="#changes">Changes</a>
+<a href="#food">Food Practical</a>
+<a href="#power">Power</a>
+<a href="#sankey">Sankey</a>
+<a href="#efficiency">Efficiency</a>
+<a href="#resources">Resources</a>
+<a href="#quiz">CFU</a>
+</nav>
+
+<section id="stores"><h2>1. Energy Stores</h2>
+<div class="task">
+<p>Energy is stored in different ways. When a system changes, energy is transferred between stores. Energy is not created or destroyed; it is transferred, stored or dissipated to the surroundings.</p>
+<div class="three">
+<div class="store">🔋 <b>Chemical</b><br>Food, fuels, batteries.</div>
+<div class="store">🏃 <b>Kinetic</b><br>Moving objects.</div>
+<div class="store">🌡️ <b>Thermal</b><br>Hot objects. Higher temperature usually means more energy in the thermal store.</div>
+<div class="store">⬆️ <b>Gravitational potential</b><br>Objects lifted higher.</div>
+<div class="store">🌀 <b>Elastic potential</b><br>Stretched/compressed springs, elastic bands.</div>
+<div class="store">⚛️ <b>Nuclear</b><br>Atomic nuclei, nuclear fuels.</div>
+</div>
+<div class="info">Best scientific language: “Energy is transferred from the chemical store to the thermal store.” Avoid: “energy is used up” or “energy disappears”.</div>
+</div>
+</section>
+
+<section id="changes"><h2>2. Changes in Energy Stores</h2>
+<div class="task">
+<p>Use this model to link situations to energy store changes.</p>
+<div class="controls">
+<div class="control">Scenario<strong id="scenarioT">falling object</strong><button class="blue" onclick="setScenario('falling')">Falling</button><button class="orange" onclick="setScenario('battery')">Torch</button><button class="green" onclick="setScenario('spring')">Spring</button><button class="ghost" onclick="resetScenario()">Reset</button></div>
+<div class="control">Starting store<strong id="startStoreT">gravitational potential</strong></div>
+<div class="control">Ending store<strong id="endStoreT">kinetic + thermal</strong></div>
+</div>
+<svg viewBox="0 0 920 360" aria-label="energy store transfer model">
+<defs><marker id="blueHead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker></defs>
+<rect x="65" y="115" width="230" height="115" rx="22" fill="#eef6ff" stroke="#172554" stroke-width="5"/>
+<text id="startStoreBox" x="180" y="160" text-anchor="middle" class="big">gravitational</text>
+<text x="180" y="190" text-anchor="middle" class="label">starting store</text>
+<path d="M305 172 C390 172 430 172 515 172" stroke="#2563eb" stroke-width="8" fill="none" marker-end="url(#blueHead)"/>
+<text id="transferPathT" x="410" y="145" text-anchor="middle" class="label">mechanically</text>
+<rect x="535" y="115" width="300" height="115" rx="22" fill="#ecfdf5" stroke="#172554" stroke-width="5"/>
+<text id="endStoreBox" x="685" y="160" text-anchor="middle" class="big">kinetic + thermal</text>
+<text x="685" y="190" text-anchor="middle" class="label">ending store(s)</text>
+<text id="scenarioExplanation" x="460" y="300" text-anchor="middle" class="big">As an object falls, gravitational potential energy decreases and kinetic energy increases.</text>
+</svg>
+<div class="info" id="scenarioInfo">Falling object: gravitational potential energy store decreases. Kinetic energy store increases. Some energy is dissipated to the thermal store due to air resistance.</div>
+</div>
+</section>
+
+<section id="food"><h2>3. Energy in Food Practical</h2>
+<div class="task">
+<p>Food stores energy chemically. In a simple food test, a burning food sample heats water. The temperature change of the water gives evidence that energy has been transferred from the chemical store of the food to the thermal store of the water and surroundings.</p>
+<div class="controls">
+<div class="control">Food sample<strong id="foodT">crisp</strong><button class="orange" onclick="setFood('crisp')">Crisp</button><button class="green" onclick="setFood('bread')">Bread</button><button class="red" onclick="setFood('nut')">Nut</button><button class="ghost" onclick="resetFood()">Reset</button></div>
+<div class="control">Temperature change<strong id="tempChangeT">22 °C</strong></div>
+<div class="control">Conclusion<strong id="foodConclusionT">medium energy</strong></div>
+</div>
+<svg viewBox="0 0 920 390" aria-label="energy in food practical">
+<defs><marker id="redHeadFood" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+<rect x="390" y="80" width="170" height="150" rx="20" fill="none" stroke="#172554" stroke-width="5"/>
+<rect id="waterLevel" x="410" y="150" width="130" height="60" fill="#93c5fd" opacity=".85"/>
+<text x="475" y="65" text-anchor="middle" class="big">water</text>
+<line x1="475" y1="230" x2="475" y2="285" stroke="#475569" stroke-width="7"/>
+<circle id="foodCircle" cx="475" cy="310" r="32" fill="#f59e0b" stroke="#172554" stroke-width="4"/>
+<path d="M475 285 C450 245 475 230 485 198 C525 250 510 275 485 295 Z" fill="#f97316" opacity=".9"/>
+<path d="M510 260 C575 230 620 205 670 170" stroke="#ef4444" stroke-width="7" fill="none" marker-end="url(#redHeadFood)"/>
+<rect x="650" y="135" width="210" height="55" rx="16" fill="white" stroke="#fecaca" stroke-width="3"/>
+<text x="755" y="158" text-anchor="middle" class="label">energy transferred</text>
+<text x="755" y="178" text-anchor="middle" class="label">to water by heating</text>
+<text id="foodLabel" x="475" y="360" text-anchor="middle" class="big">crisp sample</text>
+</svg>
+<div class="info" id="foodInfo">Crisp: temperature rise is moderate. More temperature rise suggests more energy transferred to the water, but some energy is always lost to the surroundings.</div>
+<table>
+<tr><th>Variable type</th><th>Example in this practical</th></tr>
+<tr><td>Independent variable</td><td>Type or mass of food sample</td></tr>
+<tr><td>Dependent variable</td><td>Temperature change of the water</td></tr>
+<tr><td>Control variables</td><td>Volume of water, starting temperature, distance from flame to tube, mass of food if comparing energy per gram</td></tr>
+</table>
+</div>
+</section>
+
+<section id="power"><h2>4. Power</h2>
+<div class="task">
+<p><b>Power</b> is the rate of energy transfer. A device with a higher power transfers energy faster.</p>
+<div class="info"><b>Equation:</b> power = energy transferred ÷ time. Unit: watt, W. 1 W = 1 J/s.</div>
+<div class="controls">
+<div class="control">Energy transferred<strong id="powerEnergyT">100 J</strong><input id="powerEnergy" type="range" min="10" max="500" value="100" step="10" oninput="updatePower()"></div>
+<div class="control">Time<strong id="powerTimeT">10 s</strong><input id="powerTime" type="range" min="1" max="60" value="10" step="1" oninput="updatePower()"></div>
+<div class="control">Power<strong id="powerT">10 W</strong><button class="ghost" onclick="resetPower()">Reset</button></div>
+</div>
+<svg viewBox="0 0 850 260" aria-label="power rate of energy transfer">
+<rect x="90" y="100" width="660" height="60" rx="22" fill="#eef6ff" stroke="#172554" stroke-width="5"/>
+<rect id="powerBar" x="90" y="100" width="132" height="60" rx="22" fill="#22c55e"/>
+<text id="powerBarT" x="425" y="137" text-anchor="middle" class="big">10 J/s</text>
+<text x="90" y="190" class="label">slow transfer</text><text x="650" y="190" class="label">fast transfer</text>
+</svg>
+<div class="info" id="powerInfo">Power = 100 ÷ 10 = 10 W.</div>
+</div>
+</section>
+
+<section id="sankey"><h2>5. Sankey Diagrams</h2>
+<div class="task">
+<p>A Sankey diagram shows energy transfers. Wider arrows show larger amounts of energy. Useful energy goes in the desired direction. Wasted energy is dissipated to the surroundings.</p>
+<div class="controls">
+<div class="control">Input energy<strong id="inputEnergyT">100 J</strong><input id="inputEnergy" type="range" min="20" max="200" value="100" step="10" oninput="updateSankey()"></div>
+<div class="control">Useful energy<strong id="usefulEnergyT">60 J</strong><input id="usefulEnergy" type="range" min="0" max="100" value="60" step="5" oninput="updateSankey()"></div>
+<div class="control">Wasted energy<strong id="wastedEnergyT">40 J</strong><button class="ghost" onclick="resetSankey()">Reset</button></div>
+</div>
+<svg viewBox="0 0 900 360" aria-label="Sankey diagram">
+<defs><marker id="sankeyGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/></marker><marker id="sankeyRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/></marker></defs>
+<path id="inputArrow" d="M70 150 H360" stroke="#2563eb" stroke-width="40" fill="none" stroke-linecap="round"/>
+<text id="inputArrowT" x="190" y="135" text-anchor="middle" class="label">100 J input</text>
+<path id="usefulSankey" d="M360 150 H760" stroke="#22c55e" stroke-width="24" fill="none" stroke-linecap="round" marker-end="url(#sankeyGreen)"/>
+<text id="usefulArrowT" x="575" y="135" text-anchor="middle" class="label">60 J useful</text>
+<path id="wastedSankey" d="M360 150 C430 200 520 250 700 300" stroke="#ef4444" stroke-width="16" fill="none" stroke-linecap="round" marker-end="url(#sankeyRed)"/>
+<text id="wastedArrowT" x="570" y="285" text-anchor="middle" class="label">40 J wasted</text>
+</svg>
+<div class="info" id="sankeyInfo">Useful + wasted energy = input energy. If input is 100 J and useful is 60 J, wasted energy is 40 J.</div>
+</div>
+</section>
+
+<section id="efficiency"><h2>6. Efficiency</h2>
+<div class="task">
+<p>Efficiency tells us what fraction or percentage of input energy is transferred usefully.</p>
+<div class="info"><b>Efficiency equation:</b> efficiency = useful output energy ÷ total input energy × 100%</div>
+<div class="controls">
+<div class="control">Useful energy<strong id="effUsefulT">60 J</strong><input id="effUseful" type="range" min="0" max="100" value="60" step="5" oninput="updateEfficiency()"></div>
+<div class="control">Input energy<strong id="effInputT">100 J</strong><input id="effInput" type="range" min="10" max="200" value="100" step="10" oninput="updateEfficiency()"></div>
+<div class="control">Efficiency<strong id="effT">60%</strong><button class="ghost" onclick="resetEfficiency()">Reset</button></div>
+</div>
+<svg viewBox="0 0 850 250" aria-label="efficiency bar">
+<rect x="80" y="100" width="690" height="55" rx="20" fill="#fee2e2" stroke="#172554" stroke-width="4"/>
+<rect id="effBar" x="80" y="100" width="414" height="55" rx="20" fill="#22c55e"/>
+<text id="effBarT" x="425" y="135" text-anchor="middle" class="big">60% useful</text>
+<text x="80" y="190" class="label">0%</text><text x="735" y="190" class="label">100%</text>
+</svg>
+<div class="info" id="effInfo">Efficiency = 60 ÷ 100 × 100 = 60%.</div>
+</div>
+</section>
+
+<section id="resources"><h2>7. Renewable and Non-renewable Energy Resources</h2>
+<div class="task">
+<p>Energy resources are used to generate electricity, provide heating and power transport. They have advantages and disadvantages.</p>
+<div class="two">
+<div class="resourceBox"><h3>Renewable resources</h3><p>Replaced naturally in a short time.</p><ul><li>Solar</li><li>Wind</li><li>Hydroelectric</li><li>Geothermal</li><li>Biofuel</li></ul><div class="success">Usually lower carbon emissions during generation, but may be affected by weather, location or cost.</div></div>
+<div class="resourceBox"><h3>Non-renewable resources</h3><p>Used faster than they are replaced.</p><ul><li>Coal</li><li>Oil</li><li>Natural gas</li><li>Nuclear fuel</li></ul><div class="warn">Fossil fuels release carbon dioxide when burned. Nuclear power does not release carbon dioxide during generation but produces radioactive waste.</div></div>
+</div>
+<table>
+<tr><th>Resource</th><th>Advantage</th><th>Disadvantage</th></tr>
+<tr><td>Wind</td><td>Renewable, no fuel burned</td><td>Depends on wind conditions</td></tr>
+<tr><td>Solar</td><td>Renewable, useful in sunny places</td><td>Output changes with light level</td></tr>
+<tr><td>Coal/gas/oil</td><td>Reliable, high energy output</td><td>Non-renewable and releases carbon dioxide</td></tr>
+<tr><td>Nuclear</td><td>Reliable, high energy output, low carbon during generation</td><td>Radioactive waste and expensive power stations</td></tr>
+</table>
+</div>
+</section>
+
+<section id="quiz"><h2>8. CFU: 20 Questions</h2>
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Energy stored in food and batteries is called...</p><button class="choice" onclick="quiz(this,true,'q1','Correct: chemical energy store.','Model answer: Food, fuels and batteries store energy chemically.')">chemical energy store</button><button class="choice" onclick="quiz(this,false,'q1','Correct: chemical energy store.','Model answer: Food, fuels and batteries store energy chemically.')">kinetic energy store</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. Energy stored in moving objects is called...</p><button class="choice" onclick="quiz(this,true,'q2','Correct: kinetic energy store.','Model answer: Moving objects have energy in their kinetic energy store.')">kinetic energy store</button><button class="choice" onclick="quiz(this,false,'q2','Correct: kinetic energy store.','Model answer: Moving objects have energy in their kinetic energy store.')">thermal energy store</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. Energy stored by a stretched spring is called...</p><button class="choice" onclick="quiz(this,true,'q3','Correct: elastic potential energy store.','Model answer: A stretched or compressed object stores energy in its elastic potential store.')">elastic potential</button><button class="choice" onclick="quiz(this,false,'q3','Correct: elastic potential energy store.','Model answer: A stretched or compressed object stores energy in its elastic potential store.')">nuclear</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. What does a Sankey diagram show?</p><button class="choice" onclick="quiz(this,true,'q4','Correct: energy transfers.','Model answer: A Sankey diagram shows useful and wasted energy transfers. Arrow width represents the amount of energy.')">energy transfers</button><button class="choice" onclick="quiz(this,false,'q4','Correct: energy transfers.','Model answer: A Sankey diagram shows useful and wasted energy transfers. Arrow width represents the amount of energy.')">only temperature</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. A renewable energy resource is...</p><button class="choice" onclick="quiz(this,true,'q5','Correct: wind is renewable.','Model answer: Wind is renewable because it is replaced naturally in a short time.')">wind</button><button class="choice" onclick="quiz(this,false,'q5','Correct: wind is renewable.','Model answer: Wind is renewable because it is replaced naturally in a short time.')">coal</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. Wasted energy is usually transferred to the surroundings by...</p><button class="choice" onclick="quiz(this,true,'q6','Correct: heating.','Model answer: Wasted energy is often dissipated to the surroundings by heating and sound.')">heating</button><button class="choice" onclick="quiz(this,false,'q6','Correct: heating.','Model answer: Wasted energy is often dissipated to the surroundings by heating and sound.')">freezing</button><div id="q6" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. A device has 100 J input and 70 J useful output. Calculate wasted energy.</p><div class="calc-input"><input id="calc7"><button class="green" onclick="checkCalc('calc7',30,'q7','Correct: wasted = input − useful = 100 − 70 = 30 J.')">Check</button></div><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. A device has 200 J input and 150 J useful output. Calculate wasted energy.</p><div class="calc-input"><input id="calc8"><button class="green" onclick="checkCalc('calc8',50,'q8','Correct: wasted = 200 − 150 = 50 J.')">Check</button></div><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. Useful output is 40 J and input is 100 J. Calculate efficiency as a percentage.</p><div class="calc-input"><input id="calc9"><button class="green" onclick="checkCalc('calc9',40,'q9','Correct: efficiency = 40 ÷ 100 × 100 = 40%.')">Check</button></div><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. Useful output is 75 J and input is 150 J. Calculate efficiency as a percentage.</p><div class="calc-input"><input id="calc10"><button class="green" onclick="checkCalc('calc10',50,'q10','Correct: efficiency = 75 ÷ 150 × 100 = 50%.')">Check</button></div><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. Convert 2.5 kJ to J.</p><div class="calc-input"><input id="calc11"><button class="green" onclick="checkCalc('calc11',2500,'q11','Correct: 2.5 kJ × 1000 = 2500 J.')">Check</button></div><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. A device is 80% efficient and has 200 J input. Calculate useful output energy.</p><div class="calc-input"><input id="calc12"><button class="green" onclick="checkCalc('calc12',160,'q12','Correct: useful = 80 ÷ 100 × 200 = 160 J.')">Check</button></div><div id="q12" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. Explain why energy is not “lost” when a device is inefficient.</p><textarea id="stretch13"></textarea><button class="green" onclick="checkText('stretch13','q13',['dissipated'],'Good: wasted energy is dissipated to the surroundings.','Model answer: Energy is not destroyed or lost. In an inefficient device, more energy is dissipated to the surroundings, often by heating and sound.')">Check</button><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. Explain why a more efficient kettle is useful.</p><textarea id="stretch14"></textarea><button class="green" onclick="checkText('stretch14','q14',['wastes','less'],'Good: it wastes less energy.','Model answer: A more efficient kettle transfers a greater proportion of input energy usefully to the water and wastes less energy to the surroundings.')">Check</button><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain why fossil fuels are non-renewable.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkText('stretch15','q15',['used','replaced'],'Good: they are used faster than they are replaced.','Model answer: Fossil fuels are non-renewable because they are used much faster than they are naturally replaced.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Give one advantage and one disadvantage of wind power.</p><textarea id="stretch16"></textarea><button class="green" onclick="checkText('stretch16','q16',['renewable','wind'],'Good: you included renewable and weather/wind dependence.','Model answer: An advantage is that wind power is renewable and does not burn fuel. A disadvantage is that output depends on wind conditions.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Explain the energy transfers in a battery-powered torch.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkText('stretch17','q17',['chemical','light'],'Good: chemical energy is transferred to light and thermal energy.','Model answer: Energy in the chemical store of the battery is transferred electrically to the lamp, then usefully by radiation as light. Some energy is wasted by heating.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. Why are Sankey arrow widths useful?</p><textarea id="stretch18"></textarea><button class="green" onclick="checkText('stretch18','q18',['amount'],'Good: widths show the amount of energy.','Model answer: Sankey arrow widths show the amount of energy transferred, so you can compare useful and wasted energy visually.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Compare coal and solar power.</p><textarea id="stretch19"></textarea><button class="green" onclick="checkText('stretch19','q19',['coal','solar'],'Good: you compared both resources.','Model answer: Coal is non-renewable and releases carbon dioxide when burned. Solar power is renewable and does not release carbon dioxide during generation, but it depends on sunlight.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. Why should we reduce wasted energy?</p><textarea id="stretch20"></textarea><button class="green" onclick="checkText('stretch20','q20',['cost'],'Good: reducing wasted energy can reduce cost and fuel use.','Model answer: Reducing wasted energy can reduce energy costs, reduce fuel use and reduce environmental impact.')">Check</button><div id="q20" class="feedback"></div></div>
+</div>
+<div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
+
+<script>
+let scenario='falling', food='crisp', quizScore=0, answered={};
+function el(id){return document.getElementById(id)}
+
+function setScenario(s){scenario=s;updateScenario();}
+function updateScenario(){
+let data={
+falling:['falling object','gravitational potential','kinetic + thermal','gravitational','kinetic + thermal','mechanically','As an object falls, gravitational potential energy decreases and kinetic energy increases.','Falling object: gravitational potential store decreases. Kinetic store increases. Some energy is dissipated to the thermal store due to air resistance.'],
+battery:['battery-powered torch','chemical','light + thermal','chemical','light + thermal','electrically','Energy is transferred from the chemical store of the battery to light and thermal stores.','Torch: energy in the battery chemical store is transferred electrically to the lamp. Useful output is light; wasted output is thermal energy.'],
+spring:['stretched spring','elastic potential','kinetic + thermal','elastic potential','kinetic + thermal','mechanically','A stretched spring transfers energy from the elastic potential store to the kinetic store.','Spring: elastic potential store decreases as the object moves. Kinetic store increases. Some energy is dissipated by heating and sound.']
+}[scenario];
+el('scenarioT').textContent=data[0];el('startStoreT').textContent=data[1];el('endStoreT').textContent=data[2];
+el('startStoreBox').textContent=data[3];el('endStoreBox').textContent=data[4];el('transferPathT').textContent=data[5];
+el('scenarioExplanation').textContent=data[6];el('scenarioInfo').textContent=data[7];
+}
+function resetScenario(){scenario='falling';updateScenario();}
+
+function setFood(f){food=f;updateFood();}
+function updateFood(){
+let data={
+crisp:['crisp','22 °C','medium energy','#f59e0b','crisp sample','Crisp: temperature rise is moderate. More temperature rise suggests more energy transferred to the water, but some energy is always lost to the surroundings.'],
+bread:['bread','12 °C','lower energy','#fcd34d','bread sample','Bread: lower temperature rise suggests less energy transferred to the water in this simple test.'],
+nut:['nut','38 °C','higher energy','#92400e','nut sample','Nut: larger temperature rise suggests more energy transferred to the water, often because nuts contain oils/fats with large chemical energy stores.']
+}[food];
+el('foodT').textContent=data[0];el('tempChangeT').textContent=data[1];el('foodConclusionT').textContent=data[2];el('foodCircle').setAttribute('fill',data[3]);el('foodLabel').textContent=data[4];el('foodInfo').textContent=data[5];
+}
+function resetFood(){food='crisp';updateFood();}
+
+function updatePower(){
+let e=Number(el('powerEnergy').value), t=Number(el('powerTime').value);
+let p=Math.round((e/t)*10)/10;
+el('powerEnergyT').textContent=e+' J';el('powerTimeT').textContent=t+' s';el('powerT').textContent=p+' W';
+let w=Math.min(660,Math.max(20,p*13.2));el('powerBar').setAttribute('width',w);el('powerBarT').textContent=p+' J/s';
+el('powerInfo').textContent='Power = '+e+' ÷ '+t+' = '+p+' W.';
+}
+function resetPower(){el('powerEnergy').value=100;el('powerTime').value=10;updatePower();}
+
+function updateSankey(){
+let input=Number(el('inputEnergy').value), useful=Number(el('usefulEnergy').value);
+if(useful>input){useful=input;el('usefulEnergy').value=useful;}
+let wasted=input-useful;
+el('inputEnergyT').textContent=input+' J';el('usefulEnergyT').textContent=useful+' J';el('wastedEnergyT').textContent=wasted+' J';
+el('inputArrow').setAttribute('stroke-width',Math.max(8,input/3));
+el('usefulSankey').setAttribute('stroke-width',Math.max(5,useful/4));
+el('wastedSankey').setAttribute('stroke-width',Math.max(5,wasted/4));
+el('inputArrowT').textContent=input+' J input';el('usefulArrowT').textContent=useful+' J useful';el('wastedArrowT').textContent=wasted+' J wasted';
+el('sankeyInfo').textContent='Useful + wasted energy = input energy. '+useful+' J + '+wasted+' J = '+input+' J.';
+}
+function resetSankey(){el('inputEnergy').value=100;el('usefulEnergy').value=60;updateSankey();}
+
+function updateEfficiency(){
+let useful=Number(el('effUseful').value), input=Number(el('effInput').value);
+if(useful>input){useful=input;el('effUseful').value=useful;}
+let eff=Math.round((useful/input)*100);
+el('effUsefulT').textContent=useful+' J';el('effInputT').textContent=input+' J';el('effT').textContent=eff+'%';
+el('effBar').setAttribute('width',Math.max(0,690*eff/100));el('effBarT').textContent=eff+'% useful';
+el('effInfo').textContent='Efficiency = '+useful+' ÷ '+input+' × 100 = '+eff+'%.';
+}
+function resetEfficiency(){el('effUseful').value=60;el('effInput').value=100;updateEfficiency();}
+
+function quiz(btn,c,fid,correctMsg,model){
+if(answered[fid])return; answered[fid]=true;
+let p=btn.closest('.quiz-card'); p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));
+btn.classList.add(c?'correct':'wrong');
+el(fid).textContent=c?correctMsg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c)quizScore++; el('quizScore').textContent=quizScore;
+}
+function checkCalc(inputId,ans,fid,msg){
+if(answered[fid])return;
+let v=Number(el(inputId).value); let c=Math.abs(v-ans)<0.01;
+el(fid).textContent=c?msg:'Not quite. Correct method: '+msg.replace('Correct: ','');
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}
+}
+function checkText(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.every(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore}
+}
+window.onload=function(){updateScenario();updateFood();updatePower();updateSankey();updateEfficiency();}
+</script>
+</body>
+</html>
