@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Evolution and Inheritance</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
+.hero{background:linear-gradient(135deg,#12335f,#2563eb,#16a34a);color:white;text-align:center;padding:46px 18px}
+.hero h1{font-size:42px;margin:0 0 10px}
+.hero p{font-size:18px;font-weight:800;max-width:980px;margin:auto}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:30}
+.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1160px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}
+h3{color:#172554;margin:8px 0}
+.card,.task,.quiz-card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.control{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}
+.control strong{display:block;font-size:20px;color:#172554;margin:4px 0}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}
+.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.red{background:#ef4444;color:white}.purple{background:#7c3aed;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff;color:#102033}
+.choice{background:white;border:2px solid #d7ecff;color:#102033;border-radius:14px}
+.feedback{font-weight:900;margin-top:10px;min-height:22px}.ok{color:#15803d}.no{color:#dc2626}
+.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+.success{background:#ecfdf5;border:2px solid #86efac;border-radius:16px;padding:12px;font-weight:900;color:#166534}
+.warn{background:#fff1f2;border:2px solid #fecaca;border-radius:16px;padding:12px;font-weight:900;color:#991b1b}
+textarea{width:100%;min-height:80px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}
+input[type=number],input[type=text]{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:180px}
+input[type=range]{width:100%}
+select{padding:10px;border:2px solid #d7ecff;border-radius:14px;font-weight:900;background:white;max-width:100%;min-width:230px}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;margin:12px 0}
+td,th{border:2px solid #d7ecff;padding:10px;text-align:left;vertical-align:top;word-break:normal;overflow-wrap:anywhere}
+th{background:#eef6ff;color:#172554}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}.exact-diagram-img{width:100%;height:auto;display:block;border:2px solid #d7ecff;border-radius:20px;background:white;padding:8px}.diagram-img{width:100%;height:auto;border:2px solid #d7ecff;border-radius:20px;background:#fbf9ff;padding:12px}
+.label{font:bold 14px Arial;fill:#172554}
+.big{font:bold 18px Arial;fill:#172554}
+.small{font:bold 12px Arial;fill:#172554}
+.step{display:inline-block;background:#eef6ff;border:2px solid #d7ecff;border-radius:999px;padding:7px 11px;margin:3px;font-weight:900;color:#172554}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}
+.secure{background:#ecfdf5;border:2px solid #86efac}
+.build{background:#eef6ff;border:2px solid #93c5fd}
+.stretch{background:#fff7ed;border:2px solid #fed7aa}
+.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+.pill{display:inline-block;border:2px solid #d7ecff;background:white;border-radius:999px;padding:7px 11px;font-weight:900;margin:3px}
+.hiddenAns{color:#64748b;font-style:italic}
+.bar{transition:height .35s,y .35s}
+@media(max-width:850px){.two,.three,.controls{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="hero">
+<h1>Evolution and Inheritance</h1>
+<p>Year 8 revision resource covering DNA, genes and chromosomes, inheritance, changes in DNA, natural selection and extinction.</p>
+</header>
+
+<nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="#dna">DNA</a>
+<a href="#inheritance">Inheritance</a>
+<a href="#mutation">Changes in DNA</a>
+<a href="#selection">Natural Selection</a>
+<a href="#extinction">Extinction</a>
+<a href="#data">Data</a>
+<a href="#quiz">CFU</a>
+</nav>
+
+<section id="dna">
+<h2>1. DNA, Genes and Chromosomes</h2>
+<div class="task">
+<p><span class="step">Learn</span> Genetic information is stored in the nucleus of cells. DNA is a molecule that carries instructions. A gene is a short section of DNA that codes for a characteristic. DNA is organised into chromosomes.</p>
+<div class="three">
+<div class="card"><h3>DNA</h3><p>A long molecule carrying genetic instructions.</p></div>
+<div class="card"><h3>Gene</h3><p>A section of DNA that helps determine a characteristic.</p></div>
+<div class="card"><h3>Chromosome</h3><p>A long coiled structure made of DNA, found in the nucleus.</p></div>
+</div>
+<div class="info">Key order: <b>cell → nucleus → chromosome → DNA → gene</b>.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Use the diagram to review where genetic information is found.</p>
+<div class="two">
+<img class="exact-diagram-img" src="dna-gene-chromosome-diagram.png" alt="Diagram showing cell, nucleus, chromosome, DNA and gene">
+
+<div>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>1. Where are chromosomes found?</td><td><select id="dnaQ1"><option value="">Select an answer</option><option value="nucleus">nucleus</option><option value="cytoplasm">cytoplasm</option><option value="cell membrane">cell membrane</option></select><button class="green" onclick="checkDropdown('dnaQ1','nucleus','dnaF1','Correct: chromosomes are found in the nucleus.','Model answer: Chromosomes are found in the nucleus.')">Check</button><div id="dnaF1" class="feedback"></div></td></tr>
+<tr><td>2. What is a gene?</td><td><select id="dnaQ2"><option value="">Select an answer</option><option value="section of DNA">a section of DNA</option><option value="whole cell">a whole cell</option><option value="type of blood cell">a type of blood cell</option></select><button class="green" onclick="checkDropdown('dnaQ2','section of DNA','dnaF2','Correct: a gene is a section of DNA.','Model answer: A gene is a section of DNA that helps determine a characteristic.')">Check</button><div id="dnaF2" class="feedback"></div></td></tr>
+<tr><td>3. Which order is correct?</td><td><select id="dnaQ3"><option value="">Select an answer</option><option value="cell-nucleus-chromosome-DNA-gene">cell → nucleus → chromosome → DNA → gene</option><option value="gene-cell-nucleus-DNA">gene → cell → nucleus → DNA</option><option value="DNA-cell-gene-nucleus">DNA → cell → gene → nucleus</option></select><button class="green" onclick="checkDropdown('dnaQ3','cell-nucleus-chromosome-DNA-gene','dnaF3','Correct.','Model answer: cell → nucleus → chromosome → DNA → gene.')">Check</button><div id="dnaF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<section id="inheritance">
+<h2>2. Inheritance</h2>
+<div class="task">
+<p><span class="step">Learn</span> Inheritance is the passing of genetic information from parents to offspring. Offspring inherit genes from both parents, so they often have a mixture of characteristics from their parents.</p>
+<div class="three">
+<div class="card"><h3>Inherited characteristic</h3><p>A feature passed on genetically, such as natural eye colour or blood group.</p></div>
+<div class="card"><h3>Environmental variation</h3><p>Differences caused by surroundings or lifestyle, such as language spoken or scars.</p></div>
+<div class="card"><h3>Inherited + environmental</h3><p>Some features are affected by both genes and environment, such as height or body mass.</p></div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Classify each characteristic.</p>
+<table>
+<tr><th>Characteristic</th><th>Student answer</th></tr>
+<tr><td>Blood group</td><td><select id="inhQ1"><option value="">Select an answer</option><option value="inherited">inherited</option><option value="environmental">environmental</option><option value="both">both</option></select><button class="green" onclick="checkDropdown('inhQ1','inherited','inhF1','Correct: blood group is inherited.','Model answer: Blood group is inherited from parents.')">Check</button><div id="inhF1" class="feedback"></div></td></tr>
+<tr><td>Language spoken</td><td><select id="inhQ2"><option value="">Select an answer</option><option value="inherited">inherited</option><option value="environmental">environmental</option><option value="both">both</option></select><button class="green" onclick="checkDropdown('inhQ2','environmental','inhF2','Correct: language spoken is environmental.','Model answer: Language spoken is learned from the environment.')">Check</button><div id="inhF2" class="feedback"></div></td></tr>
+<tr><td>Height</td><td><select id="inhQ3"><option value="">Select an answer</option><option value="inherited">inherited only</option><option value="environmental">environmental only</option><option value="both">inherited and environmental</option></select><button class="green" onclick="checkDropdown('inhQ3','both','inhF3','Correct: height is affected by genes and environment.','Model answer: Height is affected by inherited genes and environmental factors such as diet and health.')">Check</button><div id="inhF3" class="feedback"></div></td></tr>
+</table>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Use the simple inheritance model below. B represents brown eyes and b represents blue eyes. In this simplified model, brown is dominant and blue is recessive.</p>
+<div class="controls">
+<div class="control">Parent 1 alleles<strong id="p1Alleles">Bb</strong></div>
+<div class="control">Parent 2 alleles<strong id="p2Alleles">Bb</strong></div>
+<div class="control">Reset<strong><button class="ghost" onclick="resetPunnett()">Reset answers</button></strong></div>
+</div>
+<table>
+<tr><th></th><th>B</th><th>b</th></tr>
+<tr><th>B</th><td>BB</td><td>Bb</td></tr>
+<tr><th>b</th><td>Bb</td><td>bb</td></tr>
+</table>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>Which genotype gives blue eyes in this simplified model?</td><td><select id="punQ1"><option value="">Select an answer</option><option value="BB">BB</option><option value="Bb">Bb</option><option value="bb">bb</option></select><button class="green" onclick="checkDropdown('punQ1','bb','punF1','Correct: bb has two recessive alleles.','Model answer: bb gives blue eyes because the recessive allele must be inherited from both parents.')">Check</button><div id="punF1" class="feedback"></div></td></tr>
+<tr><td>How many of the four outcomes contain at least one B allele?</td><td><select id="punQ2"><option value="">Select an answer</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select><button class="green" onclick="checkDropdown('punQ2','3','punF2','Correct: BB, Bb and Bb all contain at least one B.','Model answer: 3 out of 4 outcomes contain at least one B allele.')">Check</button><div id="punF2" class="feedback"></div></td></tr>
+<tr><td>What fraction of outcomes are bb?</td><td><select id="punQ3"><option value="">Select an answer</option><option value="1/4">1/4</option><option value="1/2">1/2</option><option value="3/4">3/4</option></select><button class="green" onclick="checkDropdown('punQ3','1/4','punF3','Correct: one out of four outcomes is bb.','Model answer: 1/4 of the outcomes are bb.')">Check</button><div id="punF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="mutation">
+<h2>3. Changes in DNA</h2>
+<div class="task">
+<p><span class="step">Learn</span> A mutation is a change in DNA. Mutations can be harmful, neutral or sometimes beneficial. Variation caused by mutation can be inherited if it occurs in sex cells.</p>
+<div class="three">
+<div class="card"><h3>Neutral</h3><p>No noticeable effect on the organism.</p></div>
+<div class="card"><h3>Harmful</h3><p>Reduces survival or causes a problem.</p></div>
+<div class="card"><h3>Beneficial</h3><p>Helps survival or reproduction in a particular environment.</p></div>
+</div>
+<div class="info">Mutations do not happen because an organism “needs” them. They occur randomly. The environment decides whether a mutation is useful.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Classify the mutation scenario.</p>
+<table>
+<tr><th>Scenario</th><th>Student answer</th></tr>
+<tr><td>A change in DNA has no effect on the protein produced.</td><td><select id="mutQ1"><option value="">Select an answer</option><option value="neutral">neutral</option><option value="harmful">harmful</option><option value="beneficial">beneficial</option></select><button class="green" onclick="checkDropdown('mutQ1','neutral','mutF1','Correct: no effect means neutral.','Model answer: This mutation is neutral because it has no noticeable effect.')">Check</button><div id="mutF1" class="feedback"></div></td></tr>
+<tr><td>A mutation gives bacteria resistance to an antibiotic. The bacteria are then exposed to that antibiotic.</td><td><select id="mutQ2"><option value="">Select an answer</option><option value="neutral">neutral</option><option value="harmful">harmful</option><option value="beneficial">beneficial</option></select><button class="green" onclick="checkDropdown('mutQ2','beneficial','mutF2','Correct: resistance helps the bacteria survive in this environment.','Model answer: This mutation is beneficial for the bacteria in an environment where the antibiotic is present.')">Check</button><div id="mutF2" class="feedback"></div></td></tr>
+<tr><td>A mutation stops an important enzyme from working.</td><td><select id="mutQ3"><option value="">Select an answer</option><option value="neutral">neutral</option><option value="harmful">harmful</option><option value="beneficial">beneficial</option></select><button class="green" onclick="checkDropdown('mutQ3','harmful','mutF3','Correct: it prevents an important enzyme working.','Model answer: This mutation is harmful because it stops an important enzyme from working.')">Check</button><div id="mutF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="selection">
+<h2>4. Natural Selection</h2>
+<div class="task">
+<p><span class="step">Learn</span> Natural selection happens when individuals with helpful characteristics are more likely to survive, reproduce and pass on their genes. Over many generations, the helpful characteristic becomes more common.</p>
+<div class="info">Sequence: <b>variation → competition → survival advantage → reproduction → inheritance → population changes over generations</b>.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Use the environment model to see how camouflage affects survival.</p>
+<div class="controls">
+<div class="control">Environment<strong id="envLabel">dark forest</strong><button class="blue" onclick="setEnvironment('dark')">Dark forest</button><button class="orange" onclick="setEnvironment('light')">Light forest</button><button class="ghost" onclick="resetSelection()">Reset</button></div>
+<div class="control">Better camouflaged<strong id="camouflageLabel">dark beetles</strong></div>
+<div class="control">Selection pressure<strong>predators</strong></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 560 360" aria-label="natural selection beetle population model">
+<rect id="envBackground" x="30" y="40" width="500" height="250" rx="24" fill="#334155" stroke="#172554" stroke-width="4"/>
+<circle cx="120" cy="125" r="22" fill="#111827" stroke="#020617" stroke-width="4"/>
+<circle cx="200" cy="190" r="22" fill="#111827" stroke="#020617" stroke-width="4"/>
+<circle cx="310" cy="110" r="22" fill="#f8fafc" stroke="#172554" stroke-width="4"/>
+<circle cx="420" cy="205" r="22" fill="#f8fafc" stroke="#172554" stroke-width="4"/>
+<text x="280" y="330" text-anchor="middle" class="big" id="selectionText">Dark beetles are harder to see in a dark forest.</text>
+</svg>
+<div>
+<svg viewBox="0 0 420 320" aria-label="population bar chart">
+<line x1="70" y1="270" x2="350" y2="270" stroke="#172554" stroke-width="5"/>
+<line x1="70" y1="270" x2="70" y2="50" stroke="#172554" stroke-width="5"/>
+<rect id="darkBar" class="bar" x="125" y="90" width="70" height="180" fill="#111827"/>
+<rect id="lightBar" class="bar" x="245" y="170" width="70" height="100" fill="#f8fafc" stroke="#172554" stroke-width="3"/>
+<text x="160" y="295" text-anchor="middle" class="label">dark</text>
+<text x="280" y="295" text-anchor="middle" class="label">light</text>
+<text x="210" y="35" text-anchor="middle" class="big">Surviving beetles</text>
+</svg>
+</div>
+</div>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>In the current environment, which beetles are more likely to survive?</td><td><select id="selQ1"><option value="">Select an answer</option><option value="dark">dark beetles</option><option value="light">light beetles</option></select><button class="green" onclick="checkSelection()">Check</button><div id="selF1" class="feedback"></div></td></tr>
+<tr><td>Why does that characteristic become more common?</td><td><select id="selQ2"><option value="">Select an answer</option><option value="reproduce">they survive, reproduce and pass on genes</option><option value="decide">they decide to change colour</option><option value="need">they change because they need to</option></select><button class="green" onclick="checkDropdown('selQ2','reproduce','selF2','Correct: survivors reproduce and pass on genes.','Model answer: Helpful characteristics become more common because individuals with them are more likely to survive, reproduce and pass on the genes.')">Check</button><div id="selF2" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="extinction">
+<h2>5. Extinction</h2>
+<div class="task">
+<p><span class="step">Learn</span> Extinction happens when no individuals of a species remain alive. It can happen when a species cannot adapt quickly enough to changes in its environment.</p>
+<div class="three">
+<div class="card"><h3>Environmental change</h3><p>Climate or habitat changes can make survival difficult.</p></div>
+<div class="card"><h3>New predators or disease</h3><p>A new threat can reduce population size quickly.</p></div>
+<div class="card"><h3>Competition or human activity</h3><p>Species may lose food, space or habitat.</p></div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Identify the cause of extinction risk.</p>
+<table>
+<tr><th>Scenario</th><th>Student answer</th></tr>
+<tr><td>A forest is cut down and the species loses its habitat.</td><td><select id="extQ1"><option value="">Select an answer</option><option value="habitat loss">habitat loss</option><option value="disease">disease</option><option value="new predator">new predator</option></select><button class="green" onclick="checkDropdown('extQ1','habitat loss','extF1','Correct: the species loses its habitat.','Model answer: This is habitat loss caused by deforestation.')">Check</button><div id="extF1" class="feedback"></div></td></tr>
+<tr><td>A new virus spreads through a small population.</td><td><select id="extQ2"><option value="">Select an answer</option><option value="habitat loss">habitat loss</option><option value="disease">disease</option><option value="competition">competition</option></select><button class="green" onclick="checkDropdown('extQ2','disease','extF2','Correct: a virus is a disease.','Model answer: Disease can reduce a population and increase extinction risk.')">Check</button><div id="extF2" class="feedback"></div></td></tr>
+<tr><td>A new species uses the same food source and is better adapted.</td><td><select id="extQ3"><option value="">Select an answer</option><option value="competition">competition</option><option value="asteroid">asteroid</option><option value="mutation">mutation only</option></select><button class="green" onclick="checkDropdown('extQ3','competition','extF3','Correct: both species need the same food.','Model answer: This is competition because both species use the same food source.')">Check</button><div id="extF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="data">
+<h2>6. Data and Evidence</h2>
+<div class="task">
+<p><span class="step">Learn</span> Scientists use data, fossils and observations to explain evolution. Graphs can show how a characteristic or population changes over time.</p>
+<table>
+<tr><th>Generation</th><th>% dark beetles</th></tr>
+<tr><td>1</td><td>20</td></tr>
+<tr><td>2</td><td>35</td></tr>
+<tr><td>3</td><td>55</td></tr>
+<tr><td>4</td><td>70</td></tr>
+<tr><td>5</td><td>82</td></tr>
+</table>
+<div class="two">
+<svg viewBox="0 0 520 360" aria-label="percentage dark beetles graph">
+<line x1="70" y1="300" x2="460" y2="300" stroke="#172554" stroke-width="4"/>
+<line x1="70" y1="300" x2="70" y2="50" stroke="#172554" stroke-width="4"/>
+<text x="265" y="340" text-anchor="middle" class="label">Generation</text>
+<text x="25" y="190" class="label" transform="rotate(-90 25 190)">Dark beetles / %</text>
+<text x="58" y="305" class="small">0</text><text x="48" y="245" class="small">25</text><text x="48" y="185" class="small">50</text><text x="48" y="125" class="small">75</text><text x="42" y="65" class="small">100</text>
+<polyline points="120,252 200,216 280,168 360,132 440,103" stroke="#2563eb" stroke-width="5" fill="none"/>
+<circle cx="120" cy="252" r="7" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="200" cy="216" r="7" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="280" cy="168" r="7" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="360" cy="132" r="7" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="440" cy="103" r="7" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+</svg>
+<div>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>What trend is shown?</td><td><select id="dataQ1"><option value="">Select an answer</option><option value="increase">percentage of dark beetles increases</option><option value="decrease">percentage decreases</option><option value="no change">no change</option></select><button class="green" onclick="checkDropdown('dataQ1','increase','dataF1','Correct: the percentage increases.','Model answer: The percentage of dark beetles increases over the generations.')">Check</button><div id="dataF1" class="feedback"></div></td></tr>
+<tr><td>What is the change from generation 1 to 5?</td><td><select id="dataQ2"><option value="">Select an answer</option><option value="62">62 percentage points</option><option value="82">82 percentage points</option><option value="20">20 percentage points</option></select><button class="green" onclick="checkDropdown('dataQ2','62','dataF2','Correct: 82 − 20 = 62 percentage points.','Model answer: The change is 82 − 20 = 62 percentage points.')">Check</button><div id="dataF2" class="feedback"></div></td></tr>
+<tr><td>Which explanation best fits the data?</td><td><select id="dataQ3"><option value="">Select an answer</option><option value="selection">dark beetles had a survival advantage and reproduced more</option><option value="choice">light beetles chose to become dark</option><option value="random only">the environment had no effect</option></select><button class="green" onclick="checkDropdown('dataQ3','selection','dataF3','Correct: survival advantage explains the population change.','Model answer: Dark beetles likely had a survival advantage and passed on their genes more often.')">Check</button><div id="dataF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<section id="quiz">
+<h2>7. Final CFU: 20 Questions</h2>
+
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Where is DNA found in a cell?</p><button class="choice" onclick="quiz(this,true,'q1','Correct: DNA is found in the nucleus.','Model answer: DNA is found in the nucleus of most body cells.')">nucleus</button><button class="choice" onclick="quiz(this,false,'q1','Correct: DNA is found in the nucleus.','Model answer: DNA is found in the nucleus of most body cells.')">cell wall</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. A gene is...</p><button class="choice" onclick="quiz(this,true,'q2','Correct: a gene is a section of DNA.','Model answer: A gene is a section of DNA that helps determine a characteristic.')">a section of DNA</button><button class="choice" onclick="quiz(this,false,'q2','Correct: a gene is a section of DNA.','Model answer: A gene is a section of DNA that helps determine a characteristic.')">a whole organ</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. A chromosome is made from...</p><button class="choice" onclick="quiz(this,true,'q3','Correct: chromosomes are made from DNA.','Model answer: Chromosomes are long coiled structures made from DNA.')">DNA</button><button class="choice" onclick="quiz(this,false,'q3','Correct: chromosomes are made from DNA.','Model answer: Chromosomes are long coiled structures made from DNA.')">starch</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. Inheritance means...</p><button class="choice" onclick="quiz(this,true,'q4','Correct: genetic information is passed from parents to offspring.','Model answer: Inheritance is the passing of genetic information from parents to offspring.')">genetic information is passed from parents to offspring</button><button class="choice" onclick="quiz(this,false,'q4','Correct: genetic information is passed from parents to offspring.','Model answer: Inheritance is the passing of genetic information from parents to offspring.')">all organisms become identical</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. A mutation is...</p><button class="choice" onclick="quiz(this,true,'q5','Correct: a mutation is a change in DNA.','Model answer: A mutation is a change in DNA.')">a change in DNA</button><button class="choice" onclick="quiz(this,false,'q5','Correct: a mutation is a change in DNA.','Model answer: A mutation is a change in DNA.')">a type of habitat</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. Extinction means...</p><button class="choice" onclick="quiz(this,true,'q6','Correct: no individuals of the species remain alive.','Model answer: Extinction happens when no individuals of a species remain alive.')">no individuals of a species remain alive</button><button class="choice" onclick="quiz(this,false,'q6','Correct: no individuals of the species remain alive.','Model answer: Extinction happens when no individuals of a species remain alive.')">a species changes colour for one day</button><div id="q6" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. Is blood group inherited, environmental, or both?</p><textarea id="stretch7"></textarea><button class="green" onclick="checkAny('stretch7','q7',['inherited'],'Good: blood group is inherited.','Model answer: Blood group is inherited because it is determined by genes passed from parents.')">Check</button><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. Is language spoken inherited, environmental, or both?</p><textarea id="stretch8"></textarea><button class="green" onclick="checkAny('stretch8','q8',['environment'],'Good: language spoken is environmental.','Model answer: Language spoken is environmental because it is learned from surroundings.')">Check</button><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. Explain why height can be affected by both genes and environment.</p><textarea id="stretch9"></textarea><button class="green" onclick="checkText('stretch9','q9',['genes','environment'],'Good: you included genes and environment.','Model answer: Height is affected by genes inherited from parents and environmental factors such as diet and health.')">Check</button><div id="q9" class="feedback"></div></div>
+<div class="quiz-card">
+<p>10. Complete the Punnett square for Bb × Bb, then give the fraction of outcomes that are bb.</p>
+<table>
+<tr><th></th><th>B</th><th>b</th></tr>
+<tr><th>B</th><td><select id="pun10a"><option value="">Select</option><option>BB</option><option>Bb</option><option>bb</option></select></td><td><select id="pun10b"><option value="">Select</option><option>BB</option><option>Bb</option><option>bb</option></select></td></tr>
+<tr><th>b</th><td><select id="pun10c"><option value="">Select</option><option>BB</option><option>Bb</option><option>bb</option></select></td><td><select id="pun10d"><option value="">Select</option><option>BB</option><option>Bb</option><option>bb</option></select></td></tr>
+</table>
+<p>Fraction that are bb:</p>
+<select id="calc10"><option value="">Select an answer</option><option value="1/4">1/4</option><option value="1/2">1/2</option><option value="3/4">3/4</option><option value="4/4">4/4</option></select>
+<button class="green" onclick="checkPunnettCFU()">Check</button>
+<div id="q10" class="feedback"></div>
+</div>
+<div class="quiz-card"><p>11. In the beetle data, dark beetles increase from 20% to 82%. Calculate the change.</p><input type="number" id="calc11"><button class="green" onclick="checkCalc('calc11',62,'q11','Correct: 82 − 20 = 62 percentage points.')">Check</button><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. Name one cause of extinction.</p><textarea id="stretch12"></textarea><button class="green" onclick="checkAny('stretch12','q12',['habitat','disease','predator','competition','climate','human','hunting'],'Good: this can cause extinction.','Model answer: Causes of extinction include habitat loss, disease, new predators, competition, climate change or human activity.')">Check</button><div id="q12" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. Explain natural selection using the words variation, survival and reproduce.</p><textarea id="stretch13"></textarea><button class="green" onclick="checkText('stretch13','q13',['variation','survival','reproduce'],'Good: you included the key process words.','Model answer: Natural selection happens when there is variation. Individuals with helpful characteristics have a survival advantage, reproduce more and pass on their genes.')">Check</button><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. Why does a helpful characteristic become more common over generations?</p><textarea id="stretch14"></textarea><button class="green" onclick="checkText('stretch14','q14',['survive','reproduce'],'Good: survival and reproduction explain the change.','Model answer: Individuals with the helpful characteristic are more likely to survive and reproduce, so they pass the genes on to offspring.')">Check</button><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain why mutations are not always harmful.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkAny('stretch15','q15',['neutral','beneficial','helpful'],'Good: mutations can be neutral or beneficial.','Model answer: Mutations are not always harmful. Some have no effect and are neutral, while some may be beneficial in a particular environment.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Explain why antibiotic resistance can spread in bacteria.</p><textarea id="stretch16"></textarea><button class="green" onclick="checkText('stretch16','q16',['survive','reproduce'],'Good: resistant bacteria survive and reproduce.','Model answer: Bacteria with resistance survive when antibiotics are present. They reproduce and pass on the resistance, so resistance becomes more common.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Explain why fossils are useful evidence for evolution.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkAny('stretch17','q17',['change','past','over time'],'Good: fossils show past organisms and change over time.','Model answer: Fossils are useful because they show what organisms were like in the past and provide evidence that species have changed over time.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. Explain why a species with low variation may be at greater risk of extinction.</p><textarea id="stretch18"></textarea><button class="green" onclick="checkAny('stretch18','q18',['adapt','survive','change'],'Good: low variation reduces chance some survive change.','Model answer: If there is low variation, fewer individuals may have characteristics that help them survive environmental change, so extinction risk is higher.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Why is “an animal changes because it needs to” not a good explanation of evolution?</p><textarea id="stretch19"></textarea><button class="green" onclick="checkAny('stretch19','q19',['random','mutation','selection','genes'],'Good: evolution is not need-based.','Model answer: Organisms do not choose to change because they need to. Mutations happen randomly, and natural selection increases helpful inherited characteristics over generations.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. Use evidence from the beetle data to support natural selection.</p><textarea id="stretch20"></textarea><button class="green" onclick="checkAny('stretch20','q20',['20','82','increase'],'Good: you used evidence from the data.','Model answer: The percentage of dark beetles increased from 20% in generation 1 to 82% in generation 5, suggesting dark beetles had a survival advantage and reproduced more.')">Check</button><div id="q20" class="feedback"></div></div>
+</div>
+<div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
+
+<script>
+let quizScore=0;
+let answered={};
+let environment='dark';
+
+function el(id){return document.getElementById(id);}
+
+function checkDropdown(selectId,correct,feedbackId,correctMsg,modelMsg){
+let ans=el(selectId).value;
+if(!ans){el(feedbackId).textContent='Select an answer first.';el(feedbackId).className='feedback no';return;}
+let ok=ans===correct;
+el(feedbackId).textContent=ok?correctMsg:modelMsg;
+el(feedbackId).className='feedback '+(ok?'ok':'no');
+}
+
+function resetPunnett(){
+['punQ1','punQ2','punQ3'].forEach(id=>el(id).value='');
+['punF1','punF2','punF3'].forEach(id=>{el(id).textContent='';el(id).className='feedback';});
+}
+
+function setEnvironment(env){
+environment=env;
+updateSelection();
+}
+function resetSelection(){
+environment='dark';
+updateSelection();
+el('selQ1').value='';
+el('selQ2').value='';
+el('selF1').textContent='';
+el('selF2').textContent='';
+el('selF1').className='feedback';
+el('selF2').className='feedback';
+}
+function updateSelection(){
+if(environment==='dark'){
+el('envLabel').textContent='dark forest';
+el('camouflageLabel').textContent='dark beetles';
+el('envBackground').setAttribute('fill','#334155');
+el('selectionText').textContent='Dark beetles are harder to see in a dark forest.';
+el('darkBar').setAttribute('y','90');
+el('darkBar').setAttribute('height','180');
+el('lightBar').setAttribute('y','170');
+el('lightBar').setAttribute('height','100');
+}else{
+el('envLabel').textContent='light forest';
+el('camouflageLabel').textContent='light beetles';
+el('envBackground').setAttribute('fill','#fde68a');
+el('selectionText').textContent='Light beetles are harder to see in a light forest.';
+el('darkBar').setAttribute('y','170');
+el('darkBar').setAttribute('height','100');
+el('lightBar').setAttribute('y','90');
+el('lightBar').setAttribute('height','180');
+}
+}
+function checkSelection(){
+let ans=el('selQ1').value;
+let correct=environment==='dark'?'dark':'light';
+if(!ans){el('selF1').textContent='Select an answer first.';el('selF1').className='feedback no';return;}
+let ok=ans===correct;
+let model=environment==='dark'?'Dark beetles are more camouflaged in a dark forest.':'Light beetles are more camouflaged in a light forest.';
+el('selF1').textContent=ok?'Correct. '+model:'Model answer: '+model;
+el('selF1').className='feedback '+(ok?'ok':'no');
+}
+
+const safetyResetIds=[];
+function quiz(btn,c,fid,correctMsg,model){
+if(answered[fid])return;
+answered[fid]=true;
+let p=btn.closest('.quiz-card');
+p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));
+btn.classList.add(c?'correct':'wrong');
+el(fid).textContent=c?correctMsg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c)quizScore++;
+el('quizScore').textContent=quizScore;
+}
+function checkCalc(inputId,ans,fid,msg){
+if(answered[fid])return;
+let v=Number(el(inputId).value);
+let c=Math.abs(v-ans)<0.01;
+el(fid).textContent=c?msg:'Not quite. Correct method: '+msg.replace('Correct: ','');
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+function checkText(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.every(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+function checkAny(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.some(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+
+function checkPunnettCFU(){
+if(answered['q10'])return;
+let vals=[el('pun10a').value,el('pun10b').value,el('pun10c').value,el('pun10d').value,el('calc10').value];
+if(vals.some(v=>!v)){
+el('q10').textContent='Complete every box and select the fraction.';
+el('q10').className='feedback no';
+return;
+}
+let correct=el('pun10a').value==='BB' && el('pun10b').value==='Bb' && el('pun10c').value==='Bb' && el('pun10d').value==='bb' && el('calc10').value==='1/4';
+el('q10').textContent=correct?'Correct: the outcomes are BB, Bb, Bb and bb, so 1 out of 4 is bb.':'Model answer: The Punnett square outcomes are BB, Bb, Bb and bb. 1 out of 4 outcomes is bb, so the fraction is 1/4.';
+el('q10').className='feedback '+(correct?'ok':'no');
+if(correct){answered['q10']=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+
+function checkTextExact(inputId,ans,fid,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.trim().toLowerCase().replace(/\s/g,'');
+let c=t===ans.toLowerCase();
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+
+window.onload=function(){updateSelection();};
+</script>
+</body>
+</html>
