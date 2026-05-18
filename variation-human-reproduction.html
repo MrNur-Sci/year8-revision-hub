@@ -1,1 +1,426 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Variation and Human Reproduction</title><link rel="stylesheet" href="styles.css"></head><body><div class="hero"><h1>Variation and Human Reproduction</h1><p>This full topic page will be built next using the same structure.</p></div><div class="topnav"><a href="index.html">🏠 Home</a><a href="metals-acids.html">🧪 Metals & Acids</a></div><section><h2>Coming next</h2><p>This placeholder prevents broken navigation while the full Year 8 hub is being built.</p></section></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Variation and Human Reproduction</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
+.hero{background:linear-gradient(135deg,#5b21b6,#2563eb,#0f766e);color:white;text-align:center;padding:46px 18px}
+.hero h1{font-size:42px;margin:0 0 10px}
+.hero p{font-size:18px;font-weight:800;max-width:980px;margin:auto}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:30}
+.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1160px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}
+h3{color:#172554;margin:8px 0}
+.card,.task,.quiz-card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.control{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}
+.control strong{display:block;font-size:20px;color:#172554;margin:4px 0}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}
+.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.red{background:#ef4444;color:white}.purple{background:#7c3aed;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff;color:#102033}
+.choice{background:white;border:2px solid #d7ecff;color:#102033;border-radius:14px}
+.feedback{font-weight:900;margin-top:10px;min-height:22px}.ok{color:#15803d}.no{color:#dc2626}
+.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+.success{background:#ecfdf5;border:2px solid #86efac;border-radius:16px;padding:12px;font-weight:900;color:#166534}
+.warn{background:#fff1f2;border:2px solid #fecaca;border-radius:16px;padding:12px;font-weight:900;color:#991b1b}
+textarea{width:100%;min-height:80px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}
+input[type=number],input[type=text]{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:180px}
+input[type=range]{width:100%}
+select{padding:10px;border:2px solid #d7ecff;border-radius:14px;font-weight:900;background:white;max-width:100%;min-width:230px}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;margin:12px 0}
+td,th{border:2px solid #d7ecff;padding:10px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{background:#eef6ff;color:#172554}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}
+.label{font:bold 14px Arial;fill:#172554}
+.big{font:bold 18px Arial;fill:#172554}
+.small{font:bold 12px Arial;fill:#172554}
+.step{display:inline-block;background:#eef6ff;border:2px solid #d7ecff;border-radius:999px;padding:7px 11px;margin:3px;font-weight:900;color:#172554}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}
+.secure{background:#ecfdf5;border:2px solid #86efac}
+.build{background:#eef6ff;border:2px solid #93c5fd}
+.stretch{background:#fff7ed;border:2px solid #fed7aa}
+.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+.pill{display:inline-block;border:2px solid #d7ecff;background:white;border-radius:999px;padding:7px 11px;font-weight:900;margin:3px}
+.hiddenAns{color:#64748b;font-style:italic}
+.bar{transition:height .35s,y .35s}
+@media(max-width:850px){.two,.three,.controls{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="hero">
+<h1>Variation and Human Reproduction</h1>
+<p>Year 8 revision resource covering reproductive organs, menstrual cycle, fertilisation, pregnancy, infertility and variation.</p>
+</header>
+
+<nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="#organs">Organs</a>
+<a href="#cycle">Menstrual Cycle</a>
+<a href="#fertilisation">Fertilisation</a>
+<a href="#pregnancy">Pregnancy</a>
+<a href="#infertility">Infertility</a>
+<a href="#variation">Variation</a>
+<a href="#graphs">Variation Graphs</a>
+<a href="#quiz">CFU</a>
+</nav>
+
+<section id="organs">
+<h2>1. Reproductive Organs</h2>
+<div class="task">
+<p><span class="step">Learn</span> The reproductive system contains organs that produce sex cells and support fertilisation and development of a baby.</p>
+<div class="two">
+<div class="card">
+<h3>Female reproductive system</h3>
+<table>
+<tr><th>Organ</th><th>Function</th></tr>
+<tr><td>Ovary</td><td>Produces eggs and releases hormones.</td></tr>
+<tr><td>Oviduct / fallopian tube</td><td>Transports the egg; fertilisation usually happens here.</td></tr>
+<tr><td>Uterus</td><td>Where an embryo can implant and develop.</td></tr>
+<tr><td>Cervix</td><td>Opening between uterus and vagina.</td></tr>
+<tr><td>Vagina</td><td>Receives sperm and forms the birth canal.</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>Male reproductive system</h3>
+<table>
+<tr><th>Organ</th><th>Function</th></tr>
+<tr><td>Testes</td><td>Produce sperm and testosterone.</td></tr>
+<tr><td>Scrotum</td><td>Holds the testes outside the body to keep them cooler.</td></tr>
+<tr><td>Sperm duct</td><td>Carries sperm from testes towards the urethra.</td></tr>
+<tr><td>Urethra</td><td>Carries semen out of the body.</td></tr>
+<tr><td>Penis</td><td>Transfers semen during sexual reproduction.</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Match each organ to its function.</p>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>Where are eggs produced?</td><td><select id="orgQ1"><option value="">Select an answer</option><option value="ovary">ovary</option><option value="uterus">uterus</option><option value="cervix">cervix</option></select><button class="green" onclick="checkDropdown('orgQ1','ovary','orgF1','Correct: eggs are produced in the ovaries.','Model answer: Eggs are produced in the ovaries.')">Check</button><div id="orgF1" class="feedback"></div></td></tr>
+<tr><td>Where are sperm produced?</td><td><select id="orgQ2"><option value="">Select an answer</option><option value="testes">testes</option><option value="penis">penis</option><option value="sperm duct">sperm duct</option></select><button class="green" onclick="checkDropdown('orgQ2','testes','orgF2','Correct: sperm are produced in the testes.','Model answer: Sperm are produced in the testes.')">Check</button><div id="orgF2" class="feedback"></div></td></tr>
+<tr><td>Where does fertilisation usually happen?</td><td><select id="orgQ3"><option value="">Select an answer</option><option value="oviduct">oviduct/fallopian tube</option><option value="uterus">uterus</option><option value="ovary">ovary</option></select><button class="green" onclick="checkDropdown('orgQ3','oviduct','orgF3','Correct: fertilisation usually happens in the oviduct.','Model answer: Fertilisation usually happens in the oviduct, also called the fallopian tube.')">Check</button><div id="orgF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="cycle">
+<h2>2. Menstrual Cycle</h2>
+<div class="task">
+<p><span class="step">Learn</span> The menstrual cycle prepares the uterus for pregnancy. A typical cycle is about 28 days, but it can vary.</p>
+<div class="two">
+<svg viewBox="0 0 620 420" aria-label="menstrual cycle timeline">
+<line x1="70" y1="250" x2="550" y2="250" stroke="#172554" stroke-width="5"/>
+<circle cx="90" cy="250" r="18" fill="#ef4444" stroke="#172554" stroke-width="4"/>
+<circle cx="260" cy="250" r="18" fill="#38a7ff" stroke="#172554" stroke-width="4"/>
+<circle cx="350" cy="250" r="18" fill="#22c55e" stroke="#172554" stroke-width="4"/>
+<circle cx="520" cy="250" r="18" fill="#f59e0b" stroke="#172554" stroke-width="4"/>
+<text x="90" y="295" text-anchor="middle" class="label">Day 1</text>
+<text x="260" y="295" text-anchor="middle" class="label">Lining builds</text>
+<text x="350" y="295" text-anchor="middle" class="label">Ovulation</text>
+<text x="520" y="295" text-anchor="middle" class="label">Day 28</text>
+<text x="310" y="70" text-anchor="middle" class="big">Menstrual cycle overview</text>
+<rect x="70" y="115" width="95" height="55" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/>
+<text x="118" y="148" text-anchor="middle" class="label">period</text>
+<rect x="190" y="115" width="180" height="55" rx="14" fill="#dbeafe" stroke="#38a7ff" stroke-width="3"/>
+<text x="280" y="148" text-anchor="middle" class="label">uterus lining thickens</text>
+<rect x="380" y="115" width="120" height="55" rx="14" fill="#dcfce7" stroke="#22c55e" stroke-width="3"/>
+<text x="440" y="148" text-anchor="middle" class="label">egg released</text>
+</svg>
+<div>
+<table>
+<tr><th>Stage</th><th>What happens?</th></tr>
+<tr><td>Period / menstruation</td><td>The uterus lining breaks down and leaves the body.</td></tr>
+<tr><td>Lining builds up</td><td>The uterus lining thickens to prepare for a possible pregnancy.</td></tr>
+<tr><td>Ovulation</td><td>An egg is released from an ovary.</td></tr>
+<tr><td>If no fertilisation happens</td><td>The lining breaks down and the cycle starts again.</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Choose the best answer.</p>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>What is ovulation?</td><td><select id="cycQ1"><option value="">Select an answer</option><option value="egg released">an egg is released from an ovary</option><option value="lining leaves">uterus lining leaves the body</option><option value="sperm made">sperm are produced</option></select><button class="green" onclick="checkDropdown('cycQ1','egg released','cycF1','Correct: ovulation is the release of an egg.','Model answer: Ovulation is when an egg is released from an ovary.')">Check</button><div id="cycF1" class="feedback"></div></td></tr>
+<tr><td>What happens during menstruation?</td><td><select id="cycQ2"><option value="">Select an answer</option><option value="lining breaks down">the uterus lining breaks down and leaves the body</option><option value="egg fertilised">an egg is fertilised</option><option value="baby born">a baby is born</option></select><button class="green" onclick="checkDropdown('cycQ2','lining breaks down','cycF2','Correct: the uterus lining breaks down.','Model answer: During menstruation, the uterus lining breaks down and leaves the body.')">Check</button><div id="cycF2" class="feedback"></div></td></tr>
+<tr><td>Why does the uterus lining thicken?</td><td><select id="cycQ3"><option value="">Select an answer</option><option value="prepare pregnancy">to prepare for possible pregnancy</option><option value="make sperm">to make sperm</option><option value="release egg">to release an egg</option></select><button class="green" onclick="checkDropdown('cycQ3','prepare pregnancy','cycF3','Correct: it prepares for possible pregnancy.','Model answer: The uterus lining thickens so an embryo could implant if fertilisation happens.')">Check</button><div id="cycF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="fertilisation">
+<h2>3. Fertilisation</h2>
+<div class="task">
+<p><span class="step">Learn</span> Fertilisation happens when the nucleus of a sperm cell joins with the nucleus of an egg cell. This forms a fertilised egg cell called a zygote.</p>
+<div class="two">
+<svg viewBox="0 0 620 360" aria-label="fertilisation model">
+<circle cx="370" cy="180" r="72" fill="#fde68a" stroke="#172554" stroke-width="5"/>
+<circle cx="370" cy="180" r="25" fill="#f59e0b" stroke="#172554" stroke-width="4"/>
+<text x="370" y="285" text-anchor="middle" class="big">egg cell</text>
+<path d="M80 180 C150 130 210 130 280 175" stroke="#38a7ff" stroke-width="8" fill="none" stroke-linecap="round"/>
+<circle cx="75" cy="180" r="18" fill="#38a7ff" stroke="#172554" stroke-width="4"/>
+<text x="155" y="245" text-anchor="middle" class="big">sperm cell</text>
+<path d="M285 175 L315 178" stroke="#172554" stroke-width="4"/>
+<path d="M315 178 l-14 -8 v16 z" fill="#172554"/>
+<text x="310" y="65" class="big" text-anchor="middle">sperm nucleus + egg nucleus → zygote</text>
+</svg>
+<div>
+<table>
+<tr><th>Keyword</th><th>Meaning</th></tr>
+<tr><td>Gamete</td><td>A sex cell, such as sperm or egg.</td></tr>
+<tr><td>Fertilisation</td><td>Fusion of sperm and egg nuclei.</td></tr>
+<tr><td>Zygote</td><td>The fertilised egg cell formed after fertilisation.</td></tr>
+<tr><td>Embryo</td><td>Early stage of development after the zygote divides.</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Sequence the process.</p>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>What joins during fertilisation?</td><td><select id="ferQ1"><option value="">Select an answer</option><option value="nuclei">sperm nucleus and egg nucleus</option><option value="uterus lining">uterus lining and ovary</option><option value="placenta">placenta and umbilical cord</option></select><button class="green" onclick="checkDropdown('ferQ1','nuclei','ferF1','Correct: the nuclei join.','Model answer: Fertilisation is the fusion of the sperm nucleus and egg nucleus.')">Check</button><div id="ferF1" class="feedback"></div></td></tr>
+<tr><td>What is formed immediately after fertilisation?</td><td><select id="ferQ2"><option value="">Select an answer</option><option value="zygote">zygote</option><option value="foetus">foetus</option><option value="placenta">placenta</option></select><button class="green" onclick="checkDropdown('ferQ2','zygote','ferF2','Correct: a zygote forms.','Model answer: A zygote forms immediately after fertilisation.')">Check</button><div id="ferF2" class="feedback"></div></td></tr>
+<tr><td>Where does fertilisation usually happen?</td><td><select id="ferQ3"><option value="">Select an answer</option><option value="oviduct">oviduct/fallopian tube</option><option value="vagina">vagina</option><option value="uterus lining">uterus lining</option></select><button class="green" onclick="checkDropdown('ferQ3','oviduct','ferF3','Correct: usually in the oviduct.','Model answer: Fertilisation usually happens in the oviduct/fallopian tube.')">Check</button><div id="ferF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="pregnancy">
+<h2>4. Stages of Pregnancy</h2>
+<div class="task">
+<p><span class="step">Learn</span> After fertilisation, the zygote divides to form an embryo. The embryo implants in the uterus lining. Later, it develops into a foetus.</p>
+<div class="two">
+<svg viewBox="0 0 640 380" aria-label="pregnancy stages">
+<line x1="70" y1="210" x2="570" y2="210" stroke="#172554" stroke-width="5"/>
+<circle cx="90" cy="210" r="20" fill="#fde68a" stroke="#172554" stroke-width="4"/>
+<circle cx="210" cy="210" r="24" fill="#bfdbfe" stroke="#172554" stroke-width="4"/>
+<circle cx="340" cy="210" r="32" fill="#c4b5fd" stroke="#172554" stroke-width="4"/>
+<circle cx="500" cy="210" r="44" fill="#fbcfe8" stroke="#172554" stroke-width="4"/>
+<text x="90" y="275" text-anchor="middle" class="label">zygote</text>
+<text x="210" y="275" text-anchor="middle" class="label">cell division</text>
+<text x="340" y="275" text-anchor="middle" class="label">embryo</text>
+<text x="500" y="275" text-anchor="middle" class="label">foetus</text>
+<text x="320" y="70" text-anchor="middle" class="big">fertilisation → embryo → implantation → foetus</text>
+</svg>
+<div>
+<table>
+<tr><th>Structure</th><th>Function</th></tr>
+<tr><td>Placenta</td><td>Allows exchange of substances between mother and foetus.</td></tr>
+<tr><td>Umbilical cord</td><td>Connects foetus to placenta.</td></tr>
+<tr><td>Amniotic fluid</td><td>Cushions and protects the foetus.</td></tr>
+<tr><td>Uterus</td><td>Where the embryo/foetus develops.</td></tr>
+</table>
+</div>
+</div>
+<div class="info">The mother's blood and the foetus's blood do not normally mix directly; substances diffuse across the placenta.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Choose the best answer.</p>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>What does the placenta do?</td><td><select id="pregQ1"><option value="">Select an answer</option><option value="exchange">exchange of substances between mother and foetus</option><option value="make sperm">make sperm</option><option value="release egg">release an egg</option></select><button class="green" onclick="checkDropdown('pregQ1','exchange','pregF1','Correct: the placenta exchanges substances.','Model answer: The placenta allows substances such as oxygen and glucose to pass to the foetus, and waste such as carbon dioxide to pass away.')">Check</button><div id="pregF1" class="feedback"></div></td></tr>
+<tr><td>What connects the foetus to the placenta?</td><td><select id="pregQ2"><option value="">Select an answer</option><option value="umbilical cord">umbilical cord</option><option value="oviduct">oviduct</option><option value="cervix">cervix</option></select><button class="green" onclick="checkDropdown('pregQ2','umbilical cord','pregF2','Correct: the umbilical cord connects the foetus to the placenta.','Model answer: The umbilical cord connects the foetus to the placenta.')">Check</button><div id="pregF2" class="feedback"></div></td></tr>
+<tr><td>What protects the foetus from knocks?</td><td><select id="pregQ3"><option value="">Select an answer</option><option value="amniotic fluid">amniotic fluid</option><option value="sperm duct">sperm duct</option><option value="ovary">ovary</option></select><button class="green" onclick="checkDropdown('pregQ3','amniotic fluid','pregF3','Correct: amniotic fluid cushions the foetus.','Model answer: Amniotic fluid cushions and protects the foetus from knocks.')">Check</button><div id="pregF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="infertility">
+<h2>5. Infertility Issues</h2>
+<div class="task">
+<p><span class="step">Learn</span> Infertility means difficulty becoming pregnant. It can be linked to sperm, eggs, hormones, blocked tubes or other medical factors.</p>
+<div class="three">
+<div class="card"><h3>Sperm-related</h3><p>Low sperm count or sperm not moving properly can make fertilisation less likely.</p></div>
+<div class="card"><h3>Egg or ovulation-related</h3><p>If ovulation does not happen regularly, fewer eggs are available for fertilisation.</p></div>
+<div class="card"><h3>Blocked tubes</h3><p>If oviducts are blocked, egg and sperm may not meet.</p></div>
+</div>
+<div class="warn">This is a science learning section. Real infertility is a medical issue and should be discussed with qualified health professionals.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Identify the likely issue from each scenario.</p>
+<table>
+<tr><th>Scenario</th><th>Student answer</th></tr>
+<tr><td>Sperm are produced, but very few can swim effectively.</td><td><select id="infQ1"><option value="">Select an answer</option><option value="sperm">sperm-related issue</option><option value="blocked tube">blocked oviduct</option><option value="implantation">implantation issue</option></select><button class="green" onclick="checkDropdown('infQ1','sperm','infF1','Correct: this is sperm-related.','Model answer: This is a sperm-related issue because sperm movement is affected.')">Check</button><div id="infF1" class="feedback"></div></td></tr>
+<tr><td>An egg is not released regularly from the ovary.</td><td><select id="infQ2"><option value="">Select an answer</option><option value="ovulation">ovulation issue</option><option value="sperm">sperm-related issue</option><option value="placenta">placenta issue</option></select><button class="green" onclick="checkDropdown('infQ2','ovulation','infF2','Correct: this is an ovulation issue.','Model answer: This is an ovulation issue because an egg is not released regularly.')">Check</button><div id="infF2" class="feedback"></div></td></tr>
+<tr><td>The oviduct is blocked, so sperm and egg may not meet.</td><td><select id="infQ3"><option value="">Select an answer</option><option value="blocked tube">blocked oviduct</option><option value="uterus lining">period</option><option value="sperm duct">sperm duct</option></select><button class="green" onclick="checkDropdown('infQ3','blocked tube','infF3','Correct: the oviduct is blocked.','Model answer: A blocked oviduct can prevent sperm and egg meeting, reducing the chance of fertilisation.')">Check</button><div id="infF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="variation">
+<h2>6. Variation</h2>
+<div class="task">
+<p><span class="step">Learn</span> Variation means differences between organisms of the same species. Variation can be caused by genes, the environment, or both.</p>
+<div class="three">
+<div class="card"><h3>Genetic variation</h3><p>Differences caused by inherited genes, such as blood group.</p></div>
+<div class="card"><h3>Environmental variation</h3><p>Differences caused by surroundings or lifestyle, such as a scar.</p></div>
+<div class="card"><h3>Both</h3><p>Some characteristics are affected by genes and environment, such as height or body mass.</p></div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Classify the cause of variation.</p>
+<table>
+<tr><th>Characteristic</th><th>Student answer</th></tr>
+<tr><td>Blood group</td><td><select id="varQ1"><option value="">Select an answer</option><option value="genetic">genetic</option><option value="environmental">environmental</option><option value="both">both</option></select><button class="green" onclick="checkDropdown('varQ1','genetic','varF1','Correct: blood group is genetic.','Model answer: Blood group is caused by inherited genes.')">Check</button><div id="varF1" class="feedback"></div></td></tr>
+<tr><td>A scar from an injury</td><td><select id="varQ2"><option value="">Select an answer</option><option value="genetic">genetic</option><option value="environmental">environmental</option><option value="both">both</option></select><button class="green" onclick="checkDropdown('varQ2','environmental','varF2','Correct: a scar is environmental.','Model answer: A scar is environmental because it is caused by an injury, not inherited genes.')">Check</button><div id="varF2" class="feedback"></div></td></tr>
+<tr><td>Body mass</td><td><select id="varQ3"><option value="">Select an answer</option><option value="genetic">genetic only</option><option value="environmental">environmental only</option><option value="both">both</option></select><button class="green" onclick="checkDropdown('varQ3','both','varF3','Correct: body mass can be affected by genes and environment.','Model answer: Body mass is affected by both genes and environmental factors such as diet and activity.')">Check</button><div id="varF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="graphs">
+<h2>7. Continuous and Discontinuous Variation</h2>
+<div class="task">
+<p><span class="step">Learn</span> Continuous variation has values across a range, usually measured with numbers. Discontinuous variation has distinct categories.</p>
+<div class="two">
+<div class="card"><h3>Continuous variation</h3><p>Examples: height, hand span, body mass. Data often forms a range and may be shown on a line graph or histogram.</p></div>
+<div class="card"><h3>Discontinuous variation</h3><p>Examples: blood group, tongue rolling category, attached/free earlobes. Data is counted in categories and often shown as a bar chart.</p></div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Choose the data type and graph type.</p>
+<div class="two">
+<svg viewBox="0 0 540 360" aria-label="continuous variation graph">
+<line x1="70" y1="300" x2="470" y2="300" stroke="#172554" stroke-width="5"/>
+<line x1="70" y1="300" x2="70" y2="60" stroke="#172554" stroke-width="5"/>
+<path d="M95 280 C150 210 190 120 270 110 C350 120 410 210 450 280" stroke="#2563eb" stroke-width="6" fill="none"/>
+<text x="270" y="340" text-anchor="middle" class="label">height / cm</text>
+<text x="30" y="190" class="label" transform="rotate(-90 30 190)">number of students</text>
+<text x="270" y="40" text-anchor="middle" class="big">Continuous data</text>
+</svg>
+<svg viewBox="0 0 540 390" aria-label="discontinuous variation bar chart with labelled axes">
+<line x1="80" y1="315" x2="475" y2="315" stroke="#172554" stroke-width="5"/>
+<line x1="80" y1="315" x2="80" y2="70" stroke="#172554" stroke-width="5"/>
+
+<!-- y-axis tick marks and labels -->
+<line x1="72" y1="315" x2="80" y2="315" stroke="#172554" stroke-width="3"/>
+<line x1="72" y1="255" x2="80" y2="255" stroke="#172554" stroke-width="3"/>
+<line x1="72" y1="195" x2="80" y2="195" stroke="#172554" stroke-width="3"/>
+<line x1="72" y1="135" x2="80" y2="135" stroke="#172554" stroke-width="3"/>
+<line x1="72" y1="75" x2="80" y2="75" stroke="#172554" stroke-width="3"/>
+<text x="60" y="320" text-anchor="middle" class="small">0</text>
+<text x="58" y="260" text-anchor="middle" class="small">5</text>
+<text x="55" y="200" text-anchor="middle" class="small">10</text>
+<text x="55" y="140" text-anchor="middle" class="small">15</text>
+<text x="55" y="80" text-anchor="middle" class="small">20</text>
+
+<!-- bars -->
+<rect x="120" y="135" width="55" height="180" fill="#38a7ff"/>
+<rect x="220" y="195" width="55" height="120" fill="#22c55e"/>
+<rect x="320" y="105" width="55" height="210" fill="#f59e0b"/>
+<rect x="420" y="225" width="55" height="90" fill="#ef4444"/>
+
+<!-- category labels -->
+<text x="147" y="342" text-anchor="middle" class="small">A</text>
+<text x="247" y="342" text-anchor="middle" class="small">B</text>
+<text x="347" y="342" text-anchor="middle" class="small">O</text>
+<text x="447" y="342" text-anchor="middle" class="small">AB</text>
+
+<!-- axis titles and graph title -->
+<text x="280" y="380" text-anchor="middle" class="label">Blood group</text>
+<text x="25" y="205" class="label" transform="rotate(-90 25 205)">Number of students</text>
+<text x="275" y="40" text-anchor="middle" class="big">Discontinuous data</text>
+</svg>
+</div>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>Height is an example of...</td><td><select id="graphQ1"><option value="">Select an answer</option><option value="continuous">continuous variation</option><option value="discontinuous">discontinuous variation</option></select><button class="green" onclick="checkDropdown('graphQ1','continuous','graphF1','Correct: height is continuous.','Model answer: Height is continuous because it can take many values across a range.')">Check</button><div id="graphF1" class="feedback"></div></td></tr>
+<tr><td>Blood group is an example of...</td><td><select id="graphQ2"><option value="">Select an answer</option><option value="continuous">continuous variation</option><option value="discontinuous">discontinuous variation</option></select><button class="green" onclick="checkDropdown('graphQ2','discontinuous','graphF2','Correct: blood group is discontinuous.','Model answer: Blood group is discontinuous because it has distinct categories.')">Check</button><div id="graphF2" class="feedback"></div></td></tr>
+<tr><td>Which graph is best for categories such as blood group?</td><td><select id="graphQ3"><option value="">Select an answer</option><option value="bar chart">bar chart</option><option value="line graph">line graph</option><option value="scatter graph">scatter graph</option></select><button class="green" onclick="checkDropdown('graphQ3','bar chart','graphF3','Correct: a bar chart is best for categories.','Model answer: A bar chart is best for discontinuous categories such as blood group.')">Check</button><div id="graphF3" class="feedback"></div></td></tr>
+</table>
+</div>
+</section>
+
+<section id="quiz">
+<h2>8. Final CFU: 20 Questions</h2>
+
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. Which organ produces eggs?</p><button class="choice" onclick="quiz(this,true,'q1','Correct: ovaries produce eggs.','Model answer: Eggs are produced in the ovaries.')">ovary</button><button class="choice" onclick="quiz(this,false,'q1','Correct: ovaries produce eggs.','Model answer: Eggs are produced in the ovaries.')">uterus</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. Which organ produces sperm?</p><button class="choice" onclick="quiz(this,true,'q2','Correct: testes produce sperm.','Model answer: Sperm are produced in the testes.')">testes</button><button class="choice" onclick="quiz(this,false,'q2','Correct: testes produce sperm.','Model answer: Sperm are produced in the testes.')">oviduct</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. What is ovulation?</p><button class="choice" onclick="quiz(this,true,'q3','Correct: ovulation is egg release.','Model answer: Ovulation is when an egg is released from an ovary.')">release of an egg</button><button class="choice" onclick="quiz(this,false,'q3','Correct: ovulation is egg release.','Model answer: Ovulation is when an egg is released from an ovary.')">production of sperm</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. Fertilisation is...</p><button class="choice" onclick="quiz(this,true,'q4','Correct: sperm and egg nuclei join.','Model answer: Fertilisation is the fusion of the sperm nucleus and egg nucleus.')">fusion of sperm and egg nuclei</button><button class="choice" onclick="quiz(this,false,'q4','Correct: sperm and egg nuclei join.','Model answer: Fertilisation is the fusion of the sperm nucleus and egg nucleus.')">breakdown of uterus lining</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. A zygote is...</p><button class="choice" onclick="quiz(this,true,'q5','Correct: a zygote is a fertilised egg cell.','Model answer: A zygote is a fertilised egg cell.')">a fertilised egg cell</button><button class="choice" onclick="quiz(this,false,'q5','Correct: a zygote is a fertilised egg cell.','Model answer: A zygote is a fertilised egg cell.')">a hormone</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. Variation means...</p><button class="choice" onclick="quiz(this,true,'q6','Correct: variation means differences.','Model answer: Variation means differences between organisms of the same species.')">differences between organisms</button><button class="choice" onclick="quiz(this,false,'q6','Correct: variation means differences.','Model answer: Variation means differences between organisms of the same species.')">all organisms are identical</button><div id="q6" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. Where does fertilisation usually happen?</p><textarea id="stretch7"></textarea><button class="green" onclick="checkAny('stretch7','q7',['oviduct','fallopian'],'Good: fertilisation usually happens in the oviduct/fallopian tube.','Model answer: Fertilisation usually happens in the oviduct, also called the fallopian tube.')">Check</button><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. What happens during menstruation?</p><textarea id="stretch8"></textarea><button class="green" onclick="checkAny('stretch8','q8',['lining','break','leaves','period'],'Good: you described the uterus lining breaking down.','Model answer: During menstruation, the uterus lining breaks down and leaves the body.')">Check</button><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. Explain the function of the placenta.</p><textarea id="stretch9"></textarea><button class="green" onclick="checkAny('stretch9','q9',['oxygen','glucose','waste','exchange','carbon dioxide'],'Good: you described exchange of substances.','Model answer: The placenta allows exchange of substances between mother and foetus, such as oxygen and glucose to the foetus and carbon dioxide away.')">Check</button><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. What is the function of the umbilical cord?</p><textarea id="stretch10"></textarea><button class="green" onclick="checkAny('stretch10','q10',['connect','placenta','foetus','fetus'],'Good: the umbilical cord connects the foetus to the placenta.','Model answer: The umbilical cord connects the foetus to the placenta.')">Check</button><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. Give one sperm-related infertility issue.</p><textarea id="stretch11"></textarea><button class="green" onclick="checkAny('stretch11','q11',['low','count','swim','movement','motility'],'Good: this is sperm-related.','Model answer: A sperm-related issue could be a low sperm count or sperm not swimming effectively.')">Check</button><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. Give one cause of environmental variation.</p><textarea id="stretch12"></textarea><button class="green" onclick="checkAny('stretch12','q12',['diet','exercise','injury','scar','sun','environment'],'Good: this can cause environmental variation.','Model answer: Environmental variation can be caused by diet, exercise, injury, sunlight or lifestyle.')">Check</button><div id="q12" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. Explain the difference between genetic and environmental variation.</p><textarea id="stretch13"></textarea><button class="green" onclick="checkText('stretch13','q13',['genes','environment'],'Good: you compared genes and environment.','Model answer: Genetic variation is caused by inherited genes, while environmental variation is caused by surroundings or lifestyle.')">Check</button><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. Why is height usually both genetic and environmental?</p><textarea id="stretch14"></textarea><button class="green" onclick="checkText('stretch14','q14',['genes','diet'],'Good: height depends on genes and factors such as diet.','Model answer: Height is affected by genes inherited from parents and environmental factors such as diet and health.')">Check</button><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain the difference between continuous and discontinuous variation.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkAny('stretch15','q15',['range','categories','continuous','discontinuous'],'Good: you described range and categories.','Model answer: Continuous variation has values across a range, such as height. Discontinuous variation has distinct categories, such as blood group.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Why is a bar chart suitable for blood group data?</p><textarea id="stretch16"></textarea><button class="green" onclick="checkAny('stretch16','q16',['categories','category','discontinuous'],'Good: blood groups are categories.','Model answer: A bar chart is suitable because blood group is discontinuous data with separate categories.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Explain why amniotic fluid is important.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkAny('stretch17','q17',['protect','cushion','knock'],'Good: amniotic fluid protects the foetus.','Model answer: Amniotic fluid cushions and protects the foetus from knocks.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. Explain why a blocked oviduct can reduce fertility.</p><textarea id="stretch18"></textarea><button class="green" onclick="checkAny('stretch18','q18',['sperm','egg','meet','fertilisation'],'Good: sperm and egg may not meet.','Model answer: A blocked oviduct can prevent sperm and egg meeting, so fertilisation is less likely.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Explain why the uterus lining thickens during the menstrual cycle.</p><textarea id="stretch19"></textarea><button class="green" onclick="checkAny('stretch19','q19',['embryo','implant','pregnancy'],'Good: the lining prepares for implantation.','Model answer: The uterus lining thickens so an embryo can implant if fertilisation happens.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. A student records hand span for a class. Explain whether this is continuous or discontinuous variation.</p><textarea id="stretch20"></textarea><button class="green" onclick="checkText('stretch20','q20',['continuous','range'],'Good: hand span is continuous because it varies across a range.','Model answer: Hand span is continuous variation because it can take many values across a range and is measured with numbers.')">Check</button><div id="q20" class="feedback"></div></div>
+</div>
+<div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
+
+<script>
+let quizScore=0;
+let answered={};
+
+function el(id){return document.getElementById(id);}
+
+function checkDropdown(selectId,correct,feedbackId,correctMsg,modelMsg){
+let ans=el(selectId).value;
+if(!ans){el(feedbackId).textContent='Select an answer first.';el(feedbackId).className='feedback no';return;}
+let ok=ans===correct;
+el(feedbackId).textContent=ok?correctMsg:modelMsg;
+el(feedbackId).className='feedback '+(ok?'ok':'no');
+}
+
+function quiz(btn,c,fid,correctMsg,model){
+if(answered[fid])return;
+answered[fid]=true;
+let p=btn.closest('.quiz-card');
+p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));
+btn.classList.add(c?'correct':'wrong');
+el(fid).textContent=c?correctMsg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c)quizScore++;
+el('quizScore').textContent=quizScore;
+}
+function checkText(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.every(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+function checkAny(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.some(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+</script>
+</body>
+</html>
