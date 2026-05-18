@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Year 8 Working Scientifically</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef6ff;color:#102033;line-height:1.5}
+.hero{background:linear-gradient(135deg,#10133f,#2563eb,#7c3aed);color:white;text-align:center;padding:46px 18px}
+.hero h1{font-size:42px;margin:0 0 10px}
+.hero p{font-size:18px;font-weight:800;max-width:980px;margin:auto}
+.nav{position:sticky;top:0;background:white;border-bottom:2px solid #d7ecff;text-align:center;padding:9px;z-index:30}
+.nav a{display:inline-block;margin:3px;padding:9px 12px;background:#eef6ff;border:1px solid #d7ecff;border-radius:999px;text-decoration:none;color:#102033;font-weight:900}
+section{max-width:1160px;margin:18px auto;background:white;border-radius:24px;padding:26px;box-shadow:0 12px 28px rgba(20,30,70,.13)}
+h2{font-size:30px;color:#172554;margin:0 0 10px}
+h3{color:#172554;margin:8px 0}
+.card,.task,.quiz-card{border:2px solid #d7ecff;border-radius:20px;background:#f8fbff;padding:17px;margin:14px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.control{background:white;border:2px solid #d7ecff;border-radius:16px;padding:12px;text-align:center;font-weight:900}
+.control strong{display:block;font-size:20px;color:#172554;margin:4px 0}
+button{border:0;border-radius:999px;padding:10px 14px;margin:4px;font-weight:900;cursor:pointer}
+.green{background:#22c55e;color:white}.blue{background:#38a7ff;color:white}.orange{background:#f59e0b;color:white}.red{background:#ef4444;color:white}.purple{background:#7c3aed;color:white}.ghost{background:#eef6ff;border:2px solid #d7ecff;color:#102033}
+.choice{background:white;border:2px solid #d7ecff;color:#102033;border-radius:14px}
+.feedback{font-weight:900;margin-top:10px;min-height:22px}.ok{color:#15803d}.no{color:#dc2626}
+.info{background:#fff7ed;border:2px solid #fed7aa;border-radius:16px;padding:12px;font-weight:900;color:#7c2d12}
+.success{background:#ecfdf5;border:2px solid #86efac;border-radius:16px;padding:12px;font-weight:900;color:#166534}
+.warn{background:#fff1f2;border:2px solid #fecaca;border-radius:16px;padding:12px;font-weight:900;color:#991b1b}
+textarea{width:100%;min-height:80px;border:2px solid #d7ecff;border-radius:14px;padding:11px;font-size:16px}
+input[type=number],input[type=text]{padding:11px;border:2px solid #d7ecff;border-radius:14px;font-size:16px;max-width:180px}
+input[type=range]{width:100%}
+select{padding:10px;border:2px solid #d7ecff;border-radius:14px;font-weight:900;background:white;max-width:100%;min-width:210px}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;margin:12px 0}
+td,th{border:2px solid #d7ecff;padding:10px;text-align:left;vertical-align:top}
+th{background:#eef6ff;color:#172554}
+svg{width:100%;height:auto;background:white;border:2px solid #d7ecff;border-radius:20px}
+.label{font:bold 14px Arial;fill:#172554}
+.big{font:bold 18px Arial;fill:#172554}
+.small{font:bold 12px Arial;fill:#172554}
+.step{display:inline-block;background:#eef6ff;border:2px solid #d7ecff;border-radius:999px;padding:7px 11px;margin:3px;font-weight:900;color:#172554}
+.quiz-band{padding:16px;border-radius:18px;margin:16px 0}
+.secure{background:#ecfdf5;border:2px solid #86efac}
+.build{background:#eef6ff;border:2px solid #93c5fd}
+.stretch{background:#fff7ed;border:2px solid #fed7aa}
+.quiz-score{font-size:21px;font-weight:900;padding:14px;background:#eef6ff;border-radius:16px}
+.hiddenAns{color:#64748b;font-style:italic}
+@media(max-width:850px){.two,.three,.controls{grid-template-columns:1fr}.nav{position:static}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="hero">
+<h1>Working Scientifically Skills Lab</h1>
+<p>Interactive practice for variables, graphs, correlation, hazard vs risk, planning, data analysis, anomalies and conclusions.</p>
+</header>
+
+<nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="#variables">Variables</a>
+<a href="#graphs">Graphs</a>
+<a href="#safety">Safety</a>
+<a href="#planning">Planning</a>
+<a href="#data">Data</a>
+<a href="#conclusions">Conclusions</a>
+<a href="#quiz">CFU</a>
+</nav>
+
+<section id="variables">
+<h2>1. Variables: Exam-Style Scenarios</h2>
+
+<div class="task">
+<p><span class="step">Learn</span> In exams, variables are usually hidden inside a method. Read the whole practical description, then identify what is changed, what is measured and what is kept the same.</p>
+<div class="three">
+<div class="card"><h3>Independent variable</h3><p>The one thing deliberately changed by the student.</p></div>
+<div class="card"><h3>Dependent variable</h3><p>The result that is measured or recorded.</p></div>
+<div class="card"><h3>Control variables</h3><p>Things kept the same so the test is fair and valid.</p></div>
+</div>
+<div class="info">Exam sentence frame: “The student changes the ________, measures the ________, and keeps ________ the same.”</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Read the practical method carefully.</p>
+<div class="controls">
+<div class="control">Scenario<strong id="varScenarioTitle">Temperature and dissolving</strong>
+<button class="blue" onclick="setVarScenario('dissolve')">Dissolving</button>
+<button class="green" onclick="setVarScenario('plant')">Plant growth</button>
+<button class="orange" onclick="setVarScenario('spring')">Spring extension</button>
+<button class="ghost" onclick="resetVariables()">Reset</button>
+</div>
+<div class="control">Reveal model answers<strong id="varStatus">answers hidden</strong><button class="purple" onclick="revealVariables()">Reveal</button></div>
+<div class="control">Student task<strong>use dropdowns below</strong></div>
+</div>
+
+<div class="card">
+<h3>Practical scenario</h3>
+<p id="scenarioText"></p>
+</div>
+
+<table>
+<tr><th>Variable type</th><th>Student answer</th><th>Model answer after reveal</th><th>Why?</th></tr>
+<tr>
+<td>Independent variable</td>
+<td><select id="ivSelect"><option value="">Select an answer</option></select><button class="green" onclick="checkVarSelect('iv')">Check</button><div id="ivFeedback" class="feedback"></div></td>
+<td id="varIV" class="hiddenAns">hidden</td><td id="varIVWhy" class="hiddenAns">hidden</td>
+</tr>
+<tr>
+<td>Dependent variable</td>
+<td><select id="dvSelect"><option value="">Select an answer</option></select><button class="green" onclick="checkVarSelect('dv')">Check</button><div id="dvFeedback" class="feedback"></div></td>
+<td id="varDV" class="hiddenAns">hidden</td><td id="varDVWhy" class="hiddenAns">hidden</td>
+</tr>
+<tr>
+<td>Control variable</td>
+<td><select id="cvSelect"><option value="">Select an answer</option></select><button class="green" onclick="checkVarSelect('cv')">Check</button><div id="cvFeedback" class="feedback"></div></td>
+<td id="varCV" class="hiddenAns">hidden</td><td id="varCVWhy" class="hiddenAns">hidden</td>
+</tr>
+</table>
+<div id="varExplain" class="success">Choose answers from the dropdowns, then check.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Answer the questions using the scenario below.</p>
+<div class="card">
+<h3 id="contextTitle">Context: Temperature and dissolving</h3>
+<p id="contextScenario"></p>
+</div>
+
+<div class="card">
+<h3>Question 1: What is changed?</h3>
+<p>In this investigation, which factor does the student deliberately change?</p>
+<select id="classSelect1"><option value="">Select an answer</option></select>
+<button class="green" onclick="checkClassQuestion(1)">Check</button>
+<div id="classF1" class="feedback"></div>
+</div>
+
+<div class="card">
+<h3>Question 2: What is measured?</h3>
+<p>Which result does the student measure or record?</p>
+<select id="classSelect2"><option value="">Select an answer</option></select>
+<button class="green" onclick="checkClassQuestion(2)">Check</button>
+<div id="classF2" class="feedback"></div>
+</div>
+
+<div class="card">
+<h3>Question 3: What is kept the same?</h3>
+<p>Which factor should be kept the same to make the test fair?</p>
+<select id="classSelect3"><option value="">Select an answer</option></select>
+<button class="green" onclick="checkClassQuestion(3)">Check</button>
+<div id="classF3" class="feedback"></div>
+</div>
+
+<div class="card">
+<h3>Question 4: Build the exam sentence</h3>
+<p>Complete this idea in your own words: “The student changes..., measures..., and keeps... the same.”</p>
+<textarea id="varSentence" placeholder="The student changes ... measures ... and keeps ... the same."></textarea>
+<button class="green" onclick="checkVarSentence()">Check sentence</button>
+<div id="varSentenceF" class="feedback"></div>
+</div>
+</div>
+</section>
+
+<section id="graphs">
+<h2>2. Graph Reading and Correlation</h2>
+<div class="task">
+<p><span class="step">Learn</span> Graph questions normally ask students to identify the pattern, read values, compare results and support conclusions with data.</p>
+<div class="info"><b>Graph routine:</b> read both axes, look at the trend, use numbers from the graph, then decide if the relationship is positive, negative or has no clear correlation.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Choose a graph pattern, then answer the questions.</p>
+<div class="controls">
+<div class="control">Pattern<strong id="graphPattern">positive correlation</strong>
+<button class="green" onclick="setGraph('positive')">Positive</button>
+<button class="red" onclick="setGraph('negative')">Negative</button>
+<button class="blue" onclick="setGraph('none')">No correlation</button>
+<button class="ghost" onclick="resetGraph()">Reset</button>
+</div>
+<div class="control">Trend<strong id="graphTrend">answer hidden</strong></div>
+<div class="control">Best answer<strong id="graphBest">answer hidden</strong></div>
+</div>
+<div class="two">
+<svg viewBox="0 0 560 420" aria-label="graph reading">
+<line x1="75" y1="340" x2="500" y2="340" stroke="#172554" stroke-width="5"/>
+<line x1="75" y1="340" x2="75" y2="60" stroke="#172554" stroke-width="5"/>
+<text x="285" y="390" text-anchor="middle" class="label">Independent variable / units</text>
+<text x="25" y="215" class="label" transform="rotate(-90 25 215)">Dependent variable / units</text>
+<text x="70" y="360" class="small">0</text><text x="170" y="360" class="small">2</text><text x="270" y="360" class="small">4</text><text x="370" y="360" class="small">6</text><text x="470" y="360" class="small">8</text>
+<text x="47" y="345" class="small">0</text><text x="47" y="275" class="small">2</text><text x="47" y="205" class="small">4</text><text x="47" y="135" class="small">6</text><text x="47" y="65" class="small">8</text>
+<g id="graphPoints"></g>
+<path id="graphLine" d="M105 305 L475 100" stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>
+<div>
+<div class="success" id="graphExplain">Select an answer and press check.</div>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>1. Which axis is the independent variable?</td><td><select id="axisSelect"><option value="">Select an answer</option><option value="x">x-axis</option><option value="y">y-axis</option></select><button class="green" onclick="checkAxisSelect()">Check</button><div id="axisF" class="feedback"></div></td></tr>
+<tr><td>2. What pattern is shown?</td><td><select id="corrSelect"><option value="">Select an answer</option><option value="positive correlation">positive correlation</option><option value="negative correlation">negative correlation</option><option value="no correlation">no correlation</option></select><button class="green" onclick="checkCorrelationSelect()">Check</button><div id="corrSelectF" class="feedback"></div></td></tr>
+<tr><td>3. Which sentence best describes the graph?</td><td><select id="graphSentenceSelect"><option value="">Select an answer</option><option value="0">As x increases, y increases.</option><option value="1">As x increases, y decreases.</option><option value="2">There is no clear pattern.</option></select><button class="green" onclick="checkGraphSentenceSelect()">Check</button><div id="graphSentenceF" class="feedback"></div></td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Challenge</span> Use the graph to answer each question.</p>
+<div class="two">
+<svg viewBox="0 0 560 420" aria-label="plant graph challenge">
+<line x1="75" y1="340" x2="500" y2="340" stroke="#172554" stroke-width="5"/>
+<line x1="75" y1="340" x2="75" y2="60" stroke="#172554" stroke-width="5"/>
+<text x="285" y="390" text-anchor="middle" class="label">Fertiliser added / g</text>
+<text x="25" y="215" class="label" transform="rotate(-90 25 215)">Plant height / cm</text>
+<text x="70" y="360" class="small">0</text><text x="165" y="360" class="small">2</text><text x="260" y="360" class="small">4</text><text x="355" y="360" class="small">6</text><text x="450" y="360" class="small">8</text>
+<text x="47" y="345" class="small">0</text><text x="40" y="285" class="small">10</text><text x="40" y="225" class="small">20</text><text x="40" y="165" class="small">30</text><text x="40" y="105" class="small">40</text>
+<polyline points="100,300 190,255 280,205 370,155 460,110" stroke="#22c55e" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="100" cy="300" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="190" cy="255" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="280" cy="205" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="370" cy="155" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="460" cy="110" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+</svg>
+<div>
+<button class="ghost" onclick="resetChallengeGraph()">Reset challenge answers</button>
+<table>
+<tr><th>Question</th><th>Student answer</th></tr>
+<tr><td>1. What is the independent variable?</td><td><select id="g2Select1"><option value="">Select an answer</option><option value="fertiliser">fertiliser added</option><option value="height">plant height</option></select><button class="green" onclick="checkG2(1)">Check</button><div id="g2q1" class="feedback"></div></td></tr>
+<tr><td>2. What is the dependent variable?</td><td><select id="g2Select2"><option value="">Select an answer</option><option value="height">plant height</option><option value="fertiliser">fertiliser added</option></select><button class="green" onclick="checkG2(2)">Check</button><div id="g2q2" class="feedback"></div></td></tr>
+<tr><td>3. What correlation is shown?</td><td><select id="g2Select3"><option value="">Select an answer</option><option value="positive">positive correlation</option><option value="negative">negative correlation</option><option value="none">no correlation</option></select><button class="green" onclick="checkG2(3)">Check</button><div id="g2q3" class="feedback"></div></td></tr>
+<tr><td>4. Choose the best conclusion.</td><td><select id="g2Select4"><option value="">Select an answer</option><option value="good">As fertiliser added increases, plant height increases.</option><option value="bad">The plant grew because the graph is green.</option></select><button class="green" onclick="checkG2(4)">Check</button><div id="g2q4" class="feedback"></div></td></tr>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<section id="safety">
+<h2>3. Lab Safety: Hazard, Risk and Precaution</h2>
+<div class="task">
+<p><span class="step">Learn</span> Hazard, risk and precaution are different.</p>
+<div class="three">
+<div class="card"><h3>Hazard</h3><p>Something that could cause harm.</p></div>
+<div class="card"><h3>Risk</h3><p>The chance of harm happening and how serious it could be.</p></div>
+<div class="card"><h3>Precaution</h3><p>Action taken to reduce the risk.</p></div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Choose a practical scenario.</p>
+<div class="controls">
+<div class="control">Scenario<strong id="safetyTitle">acid practical</strong><button class="red" onclick="setSafety('acid')">Acid</button><button class="orange" onclick="setSafety('flame')">Bunsen</button><button class="blue" onclick="setSafety('glass')">Glassware</button><button class="ghost" onclick="resetSafety()">Reset</button></div>
+<div class="control">Hazard<strong id="hazardShort">acid</strong></div>
+<div class="control">Precaution<strong id="precautionShort">wear goggles</strong></div>
+</div>
+<table>
+<tr><th>Hazard</th><td id="hazardRow">acid</td></tr>
+<tr><th>Risk</th><td id="riskRow">acid could splash and irritate skin or eyes</td></tr>
+<tr><th>Precaution</th><td id="precautionRow">wear goggles, use small volumes, stand up during practical work</td></tr>
+</table>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Write a full safety sentence.</p>
+<textarea id="safetySentence" placeholder="Example: Acid is a hazard because it could splash into eyes. Wear goggles to reduce the risk."></textarea>
+<button class="green" onclick="checkSafetySentence()">Check sentence</button>
+<div id="safetySentenceF" class="feedback"></div>
+</div>
+</section>
+
+<section id="planning">
+<h2>4. Planning a Fair Test</h2>
+<div class="task">
+<p><span class="step">Learn</span> A good investigation is valid, reliable and accurate.</p>
+<table>
+<tr><th>Keyword</th><th>Meaning</th><th>How to improve it</th></tr>
+<tr><td>Valid</td><td>The method tests what it is supposed to test.</td><td>Keep control variables the same.</td></tr>
+<tr><td>Reliable</td><td>Repeats give similar results.</td><td>Repeat and calculate a mean.</td></tr>
+<tr><td>Accurate</td><td>A measurement is close to the true value.</td><td>Use suitable equipment and read scales carefully.</td></tr>
+<tr><td>Precise</td><td>Measurements are close together or have small intervals.</td><td>Use equipment with smaller divisions.</td></tr>
+</table>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Use the investigation to complete the planning checklist.</p>
+<div class="controls">
+<div class="control">Investigation<strong id="planTitle">temperature and dissolving</strong><button class="blue" onclick="setPlan('dissolve')">Dissolving</button><button class="green" onclick="setPlan('plant')">Plant</button><button class="orange" onclick="setPlan('spring')">Spring</button><button class="ghost" onclick="resetPlan()">Reset</button></div>
+<div class="control">Reliability<strong>repeat 3 times</strong></div>
+<div class="control">Validity<strong>control variables</strong></div>
+</div>
+<table>
+<tr><th>Planning prompt</th><th>Example answer</th></tr>
+<tr><td>Independent variable</td><td id="planIV">temperature of water</td></tr>
+<tr><td>Dependent variable</td><td id="planDV">time taken to dissolve</td></tr>
+<tr><td>Control variables</td><td id="planCV">mass of sugar, volume of water, stirring method</td></tr>
+<tr><td>How to improve reliability</td><td id="planReliability">repeat each temperature three times and calculate a mean</td></tr>
+</table>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Explain why only one variable should be changed.</p>
+<textarea id="validitySentence"></textarea>
+<button class="green" onclick="checkAny('validitySentence','validitySentenceF',['valid','fair','effect','cause'],'Good: you linked one changed variable to validity/fair testing.','Model answer: Only one variable should be changed so the test is valid and fair. This means any change in the dependent variable is likely to be caused by the independent variable.')">Check</button>
+<div id="validitySentenceF" class="feedback"></div>
+</div>
+</section>
+
+<section id="data">
+<h2>5. Data Analysis: Tables, Means, Anomalies and Evidence</h2>
+<div class="task">
+<p><span class="step">Learn</span> A good data table includes headings, units and repeated results. An anomaly is a result that does not fit the pattern.</p>
+<table>
+<tr><th>Temperature / °C</th><th>Repeat 1 / s</th><th>Repeat 2 / s</th><th>Repeat 3 / s</th><th>Mean / s</th></tr>
+<tr><td>20</td><td>90</td><td>92</td><td>91</td><td>91</td></tr>
+<tr><td>40</td><td>65</td><td>64</td><td>66</td><td>65</td></tr>
+<tr><td>60</td><td>42</td><td>43</td><td>88</td><td>43 if anomaly ignored</td></tr>
+<tr><td>80</td><td>25</td><td>26</td><td>24</td><td>25</td></tr>
+</table>
+<div class="warn">The 88 s result is likely anomalous because it is far from 42 s and 43 s and does not fit the pattern.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Try it</span> Use the repeat results to calculate a mean and identify possible anomalies.</p>
+<div class="controls">
+<div class="control">Repeat 1<input id="rep1" type="range" min="0" max="100" value="42" oninput="updateMean()"><strong id="rep1T">42</strong></div>
+<div class="control">Repeat 2<input id="rep2" type="range" min="0" max="100" value="43" oninput="updateMean()"><strong id="rep2T">43</strong></div>
+<div class="control">Repeat 3<input id="rep3" type="range" min="0" max="100" value="88" oninput="updateMean()"><strong id="rep3T">88</strong><button class="ghost" onclick="resetMean()">Reset</button></div>
+</div>
+<div class="success" id="meanInfo">Mean including all repeats = 57.7. Possible anomaly detected.</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Analyse the dissolving data.</p>
+<div class="two">
+<div>
+<table>
+<tr><th>Temperature / °C</th><th>Mean dissolving time / s</th></tr>
+<tr><td>20</td><td>91</td></tr>
+<tr><td>40</td><td>65</td></tr>
+<tr><td>60</td><td>43</td></tr>
+<tr><td>80</td><td>25</td></tr>
+</table>
+<p><b>Q1:</b> Calculate the range of mean dissolving times.</p>
+<input type="number" id="rangeAns"><button class="green" onclick="checkCalc('rangeAns',66,'rangeF','Correct: range = highest − lowest = 91 − 25 = 66 s.')">Check</button>
+<div id="rangeF" class="feedback"></div>
+<p><b>Q2:</b> Use evidence to describe the trend.</p>
+<textarea id="evidenceSentence"></textarea>
+<button class="green" onclick="checkAny('evidenceSentence','evidenceF',['91','25','temperature','decrease'],'Good: you used numerical evidence and described the trend.','Model answer: As temperature increased, dissolving time decreased. At 20 °C the mean time was 91 s, but at 80 °C it was 25 s.')">Check</button>
+<div id="evidenceF" class="feedback"></div>
+</div>
+<svg viewBox="0 0 520 390" aria-label="dissolving graph">
+<line x1="70" y1="330" x2="470" y2="330" stroke="#172554" stroke-width="4"/>
+<line x1="70" y1="330" x2="70" y2="55" stroke="#172554" stroke-width="4"/>
+<text x="270" y="370" text-anchor="middle" class="label">Temperature / °C</text>
+<text x="22" y="205" class="label" transform="rotate(-90 22 205)">Mean time / s</text>
+<text x="58" y="335" class="small">0</text><text x="48" y="270" class="small">25</text><text x="48" y="205" class="small">50</text><text x="48" y="140" class="small">75</text><text x="42" y="75" class="small">100</text>
+<text x="110" y="350" class="small">20</text><text x="210" y="350" class="small">40</text><text x="310" y="350" class="small">60</text><text x="410" y="350" class="small">80</text>
+<polyline points="120,93 220,161 320,218 420,265" stroke="#2563eb" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="120" cy="93" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="220" cy="161" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="320" cy="218" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+<circle cx="420" cy="265" r="8" fill="#ef4444" stroke="#172554" stroke-width="3"/>
+</svg>
+</div>
+</div>
+</section>
+
+<section id="conclusions">
+<h2>6. Conclusions and Evaluations</h2>
+<div class="task">
+<p><span class="step">Learn</span> A strong conclusion uses the trend and evidence. A strong evaluation explains reliability, validity and improvements.</p>
+<div class="two">
+<div class="card"><h3>Conclusion builder</h3><p>1. State the trend/correlation.</p><p>2. Use numerical evidence.</p><p>3. Link back to the investigation question.</p></div>
+<div class="card"><h3>Evaluation builder</h3><p>1. Identify anomalies or reliability issues.</p><p>2. Comment on control variables.</p><p>3. Suggest a precise improvement.</p></div>
+</div>
+</div>
+
+<div class="task">
+<p><span class="step">Check</span> Write a conclusion using the dissolving data.</p>
+<textarea id="conclusionText"></textarea>
+<button class="green" onclick="checkAny('conclusionText','conclusionF',['91','25','temperature','decreased'],'Good: you used evidence and described the trend.','Model answer: The results show a negative correlation because as temperature increased, dissolving time decreased. At 20 °C it took 91 s, but at 80 °C it took 25 s.')">Check</button>
+<div id="conclusionF" class="feedback"></div>
+<p><b>Now evaluate:</b> suggest one improvement.</p>
+<textarea id="evaluationText"></textarea>
+<button class="green" onclick="checkAny('evaluationText','evaluationF',['repeat','control','same','mean'],'Good: this is a suitable evaluation improvement.','Model answer: Repeat each temperature three times, calculate a mean and keep control variables such as volume of water and mass of sugar the same.')">Check</button>
+<div id="evaluationF" class="feedback"></div>
+</div>
+</section>
+
+<section id="quiz">
+<h2>7. Final CFU: 20 Questions</h2>
+<div class="quiz-band secure"><h3>Secure It</h3>
+<div class="quiz-card"><p>1. The variable deliberately changed is the...</p><button class="choice" onclick="quiz(this,true,'q1','Correct: independent variable.','Model answer: The independent variable is deliberately changed.')">independent variable</button><button class="choice" onclick="quiz(this,false,'q1','Correct: independent variable.','Model answer: The independent variable is deliberately changed.')">dependent variable</button><div id="q1" class="feedback"></div></div>
+<div class="quiz-card"><p>2. The variable measured is the...</p><button class="choice" onclick="quiz(this,true,'q2','Correct: dependent variable.','Model answer: The dependent variable is measured or recorded.')">dependent variable</button><button class="choice" onclick="quiz(this,false,'q2','Correct: dependent variable.','Model answer: The dependent variable is measured or recorded.')">control variable</button><div id="q2" class="feedback"></div></div>
+<div class="quiz-card"><p>3. Control variables are kept the same to make the test...</p><button class="choice" onclick="quiz(this,true,'q3','Correct: fair and valid.','Model answer: Control variables are kept the same to make the test fair and valid.')">fair and valid</button><button class="choice" onclick="quiz(this,false,'q3','Correct: fair and valid.','Model answer: Control variables are kept the same to make the test fair and valid.')">look colourful</button><div id="q3" class="feedback"></div></div>
+<div class="quiz-card"><p>4. A hazard is...</p><button class="choice" onclick="quiz(this,true,'q4','Correct: something that could cause harm.','Model answer: A hazard is something that could cause harm.')">something that could cause harm</button><button class="choice" onclick="quiz(this,false,'q4','Correct: something that could cause harm.','Model answer: A hazard is something that could cause harm.')">a repeated result</button><div id="q4" class="feedback"></div></div>
+<div class="quiz-card"><p>5. A risk is...</p><button class="choice" onclick="quiz(this,true,'q5','Correct: chance of harm happening.','Model answer: Risk is the chance of harm happening and how serious it could be.')">chance of harm happening</button><button class="choice" onclick="quiz(this,false,'q5','Correct: chance of harm happening.','Model answer: Risk is the chance of harm happening and how serious it could be.')">the graph title</button><div id="q5" class="feedback"></div></div>
+<div class="quiz-card"><p>6. A result that does not fit the pattern is called...</p><button class="choice" onclick="quiz(this,true,'q6','Correct: anomaly.','Model answer: An anomaly is a result that does not fit the pattern.')">anomaly</button><button class="choice" onclick="quiz(this,false,'q6','Correct: anomaly.','Model answer: An anomaly is a result that does not fit the pattern.')">axis</button><div id="q6" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band build"><h3>Build It</h3>
+<div class="quiz-card"><p>7. In an investigation testing how temperature affects dissolving time, what is the independent variable?</p><textarea id="stretch7"></textarea><button class="green" onclick="checkAny('stretch7','q7',['temperature'],'Good: temperature is the independent variable.','Model answer: The independent variable is temperature because it is changed.')">Check</button><div id="q7" class="feedback"></div></div>
+<div class="quiz-card"><p>8. In the same investigation, what is the dependent variable?</p><textarea id="stretch8"></textarea><button class="green" onclick="checkAny('stretch8','q8',['time','dissolving'],'Good: dissolving time is measured.','Model answer: The dependent variable is the time taken to dissolve because it is measured.')">Check</button><div id="q8" class="feedback"></div></div>
+<div class="quiz-card"><p>9. Name one control variable for the dissolving investigation.</p><textarea id="stretch9"></textarea><button class="green" onclick="checkAny('stretch9','q9',['mass','volume','stir','sugar'],'Good: this is a suitable control variable.','Model answer: A suitable control variable is the mass of sugar, volume of water, type of sugar or stirring method.')">Check</button><div id="q9" class="feedback"></div></div>
+<div class="quiz-card"><p>10. Calculate the mean of 8, 10 and 12.</p><input type="number" id="calc10"><button class="green" onclick="checkCalc('calc10',10,'q10','Correct: mean = (8 + 10 + 12) ÷ 3 = 10.')">Check</button><div id="q10" class="feedback"></div></div>
+<div class="quiz-card"><p>11. Calculate the mean of 20, 22 and 24.</p><input type="number" id="calc11"><button class="green" onclick="checkCalc('calc11',22,'q11','Correct: mean = (20 + 22 + 24) ÷ 3 = 22.')">Check</button><div id="q11" class="feedback"></div></div>
+<div class="quiz-card"><p>12. Which result is anomalous: 15, 16, 48, 14?</p><input type="number" id="calc12"><button class="green" onclick="checkCalc('calc12',48,'q12','Correct: 48 is anomalous because it is far away from the other results.')">Check</button><div id="q12" class="feedback"></div></div>
+</div>
+
+<div class="quiz-band stretch"><h3>Stretch It</h3>
+<div class="quiz-card"><p>13. Explain what a positive correlation means.</p><textarea id="stretch13"></textarea><button class="green" onclick="checkText('stretch13','q13',['increases','increases'],'Good: both variables increase together.','Model answer: A positive correlation means that as one variable increases, the other variable also increases.')">Check</button><div id="q13" class="feedback"></div></div>
+<div class="quiz-card"><p>14. Explain what a negative correlation means.</p><textarea id="stretch14"></textarea><button class="green" onclick="checkText('stretch14','q14',['increases','decreases'],'Good: one increases while the other decreases.','Model answer: A negative correlation means that as one variable increases, the other variable decreases.')">Check</button><div id="q14" class="feedback"></div></div>
+<div class="quiz-card"><p>15. Explain the difference between hazard and risk.</p><textarea id="stretch15"></textarea><button class="green" onclick="checkText('stretch15','q15',['hazard','risk'],'Good: you used both key words.','Model answer: A hazard is something that could cause harm. A risk is the chance of harm happening and how serious it could be.')">Check</button><div id="q15" class="feedback"></div></div>
+<div class="quiz-card"><p>16. Write a safety statement for using acid.</p><textarea id="stretch16"></textarea><button class="green" onclick="checkAny('stretch16','q16',['goggles','small','eyes','skin'],'Good: you linked acid to a safety precaution.','Model answer: Acid is a hazard because it could splash onto skin or into eyes. Wear goggles and use small volumes to reduce the risk.')">Check</button><div id="q16" class="feedback"></div></div>
+<div class="quiz-card"><p>17. Explain how repeats improve reliability.</p><textarea id="stretch17"></textarea><button class="green" onclick="checkText('stretch17','q17',['repeat','mean'],'Good: repeats allow a mean to be calculated.','Model answer: Repeats improve reliability because you can check whether results are similar, identify anomalies and calculate a mean.')">Check</button><div id="q17" class="feedback"></div></div>
+<div class="quiz-card"><p>18. Explain why units are needed on graph axes.</p><textarea id="stretch18"></textarea><button class="green" onclick="checkAny('stretch18','q18',['units','measure'],'Good: units show what is being measured.','Model answer: Units are needed so the reader knows exactly what quantity was measured, such as time in seconds or temperature in degrees Celsius.')">Check</button><div id="q18" class="feedback"></div></div>
+<div class="quiz-card"><p>19. Write a conclusion sentence for this pattern: as temperature increases, dissolving time decreases.</p><textarea id="stretch19"></textarea><button class="green" onclick="checkText('stretch19','q19',['temperature','decreases'],'Good: you described the trend clearly.','Model answer: The results show a negative correlation because as temperature increases, the time taken to dissolve decreases.')">Check</button><div id="q19" class="feedback"></div></div>
+<div class="quiz-card"><p>20. Suggest one improvement if an anomalous result is found.</p><textarea id="stretch20"></textarea><button class="green" onclick="checkAny('stretch20','q20',['repeat','again','remove','mean'],'Good: repeating is a sensible improvement.','Model answer: The anomalous result should be repeated. If it is still unusual, it can be investigated or excluded from the mean with a reason.')">Check</button><div id="q20" class="feedback"></div></div>
+</div>
+<div class="quiz-score">Score: <span id="quizScore">0</span>/20</div>
+</section>
+
+<script>
+let quizScore=0;
+let answered={};
+let varScenario='dissolve';
+let varsShown=false;
+let graphType='positive';
+let safety='acid';
+let plan='dissolve';
+
+function el(id){return document.getElementById(id);}
+
+const varData={
+dissolve:{
+title:'Temperature and dissolving',
+scenario:'A student investigates how the temperature of water affects the time taken for a sugar cube to dissolve. They place 100 cm³ of water into a beaker and heat it to different temperatures: 20 °C, 40 °C, 60 °C and 80 °C. For each temperature, they add one sugar cube and start a stopwatch. They record the time taken for the sugar cube to fully dissolve. They use the same volume of water, the same type and mass of sugar cube, and stir the mixture in the same way each time.',
+context:'A student investigates how the temperature of water affects the time taken for a sugar cube to dissolve. They use 100 cm³ of water, one sugar cube, and the same stirring method each time. They test water at 20 °C, 40 °C, 60 °C and 80 °C, then record the dissolving time.',
+options:['temperature of water','time taken to dissolve','volume of water','type/mass of sugar cube','stirring method'],
+iv:'temperature of water',
+dv:'time taken to dissolve',
+cv:'volume of water; type/mass of sugar cube; stirring method',
+cvAccepted:['volume of water','type/mass of sugar cube','stirring method'],
+ivWhy:'This is changed by the student.',
+dvWhy:'This is measured with a stopwatch.',
+cvWhy:'These are kept the same to make the test fair.',
+explain:'Temperature is changed to see how it affects dissolving time.'
+},
+plant:{
+title:'Light and plant growth',
+scenario:'A student investigates how the amount of light affects plant growth. They place identical seedlings at different distances from a lamp: 10 cm, 20 cm, 30 cm and 40 cm. After seven days, they measure the height of each plant in centimetres. They use the same type of plant, the same type and mass of soil, the same volume of water each day and the same growing time.',
+context:'A student investigates how light affects plant growth. They place identical seedlings at different distances from a lamp: 10 cm, 20 cm, 30 cm and 40 cm. After seven days, they measure the height of each plant. They use the same type of plant, soil, water volume and growing time.',
+options:['distance from the lamp / amount of light','height of plant after seven days','volume of water','type of plant','growing time','type/mass of soil'],
+iv:'distance from the lamp / amount of light',
+dv:'height of plant after seven days',
+cv:'type of plant; type/mass of soil; volume of water; growing time',
+cvAccepted:['volume of water','type of plant','growing time','type/mass of soil'],
+ivWhy:'This is changed to alter the amount of light.',
+dvWhy:'This is measured after seven days.',
+cvWhy:'These are kept the same so light is the only factor being tested.',
+explain:'Light level is changed to see how it affects plant height.'
+},
+spring:{
+title:'Force and spring extension',
+scenario:'A student investigates how force affects the extension of a spring. They hang different masses from the spring and calculate the force in newtons. For each force, they measure the new length of the spring using a ruler and calculate the extension. They use the same spring, the same ruler position and make sure the spring is not stretched beyond its elastic limit.',
+context:'A student investigates how force affects the extension of a spring. They add different masses to the spring and calculate the force in newtons. For each force, they measure the new length using a ruler and calculate the extension. They use the same spring and ruler position each time.',
+options:['force added to the spring','extension of the spring','same spring','same ruler position','do not exceed elastic limit','mass added'],
+iv:'force added to the spring',
+dv:'extension of the spring',
+cv:'same spring; same ruler position; do not exceed elastic limit',
+cvAccepted:['same spring','same ruler position','do not exceed elastic limit'],
+ivWhy:'This is changed by adding different masses/forces.',
+dvWhy:'This is measured by finding the change in spring length.',
+cvWhy:'These are kept the same so the force is the only factor being tested.',
+explain:'Force is changed to see how it affects spring extension.'
+}
+};
+
+function fillSelect(id, options){
+let s=el(id);
+s.innerHTML='<option value="">Select an answer</option>';
+options.forEach(o=>{
+let opt=document.createElement('option');
+opt.value=o;
+opt.textContent=o;
+s.appendChild(opt);
+});
+}
+function setVarScenario(s){varScenario=s;varsShown=false;updateVariables();}
+function revealVariables(){varsShown=true;updateVariables();}
+function resetVariables(){varScenario='dissolve';varsShown=false;updateVariables();}
+function updateVariables(){
+let d=varData[varScenario];
+el('varScenarioTitle').textContent=d.title;
+el('scenarioText').textContent=d.scenario;
+el('contextTitle').textContent='Context: '+d.title;
+el('contextScenario').textContent=d.context;
+el('varStatus').textContent=varsShown?'revealed':'answers hidden';
+el('varIV').textContent=varsShown?d.iv:'hidden';
+el('varDV').textContent=varsShown?d.dv:'hidden';
+el('varCV').textContent=varsShown?d.cv:'hidden';
+el('varIVWhy').textContent=varsShown?d.ivWhy:'hidden';
+el('varDVWhy').textContent=varsShown?d.dvWhy:'hidden';
+el('varCVWhy').textContent=varsShown?d.cvWhy:'hidden';
+['varIV','varDV','varCV','varIVWhy','varDVWhy','varCVWhy'].forEach(id=>{el(id).className=varsShown?'':'hiddenAns';});
+el('varExplain').textContent=varsShown?d.explain:'Choose answers from the dropdowns, then check.';
+['ivSelect','dvSelect','cvSelect','classSelect1','classSelect2','classSelect3'].forEach(id=>fillSelect(id,d.options));
+['ivFeedback','dvFeedback','cvFeedback','classF1','classF2','classF3','varSentenceF'].forEach(id=>{el(id).textContent=''; el(id).className='feedback';});
+el('varSentence').value='';
+}
+function checkVarSelect(type){
+let d=varData[varScenario];
+let selectId=type+'Select';
+let feedbackId=type+'Feedback';
+let ans=el(selectId).value;
+if(!ans){el(feedbackId).textContent='Select an answer first.'; el(feedbackId).className='feedback no'; return;}
+let correct=type==='cv'?d.cvAccepted:d[type];
+let ok=type==='cv'?correct.includes(ans):ans===correct;
+let label=type==='iv'?'independent variable':type==='dv'?'dependent variable':'control variable';
+let model=type==='cv'?d.cv:d[type];
+el(feedbackId).textContent=ok?'Correct.':'Model answer: The '+label+' is '+model+'.';
+el(feedbackId).className='feedback '+(ok?'ok':'no');
+}
+function checkClassQuestion(n){
+let d=varData[varScenario];
+let selectId='classSelect'+n;
+let feedbackId='classF'+n;
+let ans=el(selectId).value;
+if(!ans){el(feedbackId).textContent='Select an answer first.'; el(feedbackId).className='feedback no'; return;}
+let correct=n===1?d.iv:n===2?d.dv:d.cvAccepted;
+let ok=n===3?correct.includes(ans):ans===correct;
+let model=n===1?'This is what the student changes.':n===2?'This is what the student measures.':'These are kept the same to make the test fair.';
+let answerText=n===3?d.cv:correct;
+el(feedbackId).textContent=ok?'Correct. '+model:'Model answer: '+answerText+'. '+model;
+el(feedbackId).className='feedback '+(ok?'ok':'no');
+}
+function checkVarSentence(){
+let d=varData[varScenario];
+let t=el('varSentence').value.toLowerCase();
+let ok=(t.includes('change')||t.includes('changes'))&&(t.includes('measure')||t.includes('measures'))&&(t.includes('same')||t.includes('control'));
+el('varSentenceF').textContent=ok?'Good: you used the change/measure/keep the same structure.':'Model answer: The student changes '+d.iv+', measures '+d.dv+', and keeps '+d.cv+' the same.';
+el('varSentenceF').className='feedback '+(ok?'ok':'no');
+}
+
+function setGraph(g){graphType=g;updateGraph();}
+function resetGraph(){graphType='positive';updateGraph();}
+function updateGraph(){
+let points={positive:[[105,305],[165,270],[225,230],[295,195],[365,155],[425,120],[475,100]],negative:[[105,100],[165,125],[225,160],[295,200],[365,235],[425,275],[475,315]],none:[[105,230],[165,120],[225,285],[295,165],[365,250],[425,105],[475,275]]}[graphType];
+let g=el('graphPoints');g.innerHTML='';
+points.forEach(p=>{let c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',p[0]);c.setAttribute('cy',p[1]);c.setAttribute('r','8');c.setAttribute('fill','#ef4444');c.setAttribute('stroke','#172554');c.setAttribute('stroke-width','3');g.appendChild(c);});
+if(graphType==='positive'){el('graphLine').setAttribute('d','M105 305 L475 100');el('graphLine').setAttribute('stroke','#22c55e');el('graphPattern').textContent='positive correlation';}
+if(graphType==='negative'){el('graphLine').setAttribute('d','M105 100 L475 315');el('graphLine').setAttribute('stroke','#ef4444');el('graphPattern').textContent='negative correlation';}
+if(graphType==='none'){el('graphLine').setAttribute('d','M105 205 L475 205');el('graphLine').setAttribute('stroke','#64748b');el('graphPattern').textContent='no correlation';}
+el('graphTrend').textContent='answer hidden';
+el('graphBest').textContent='answer hidden';
+el('graphExplain').textContent='Select an answer and press check.';
+clearGraphChecks();
+}
+function clearGraphChecks(){
+['axisF','corrSelectF','graphSentenceF'].forEach(id=>{el(id).textContent='';el(id).className='feedback';});
+['axisSelect','corrSelect','graphSentenceSelect'].forEach(id=>{el(id).value='';});
+}
+function checkAxisSelect(){
+let ans=el('axisSelect').value;
+if(!ans){el('axisF').textContent='Select an answer first.';el('axisF').className='feedback no';return;}
+let ok=ans==='x';
+el('axisF').textContent=ok?'Correct: the independent variable usually goes on the x-axis.':'Model answer: The independent variable usually goes on the x-axis.';
+el('axisF').className='feedback '+(ok?'ok':'no');
+}
+function checkCorrelationSelect(){
+let ans=el('corrSelect').value;
+let correct=graphType==='positive'?'positive correlation':graphType==='negative'?'negative correlation':'no correlation';
+let trend=graphType==='positive'?'as x increases, y increases':graphType==='negative'?'as x increases, y decreases':'no clear pattern';
+let best=graphType==='positive'?'positive':graphType==='negative'?'negative':'none';
+if(!ans){el('corrSelectF').textContent='Select an answer first.';el('corrSelectF').className='feedback no';return;}
+let ok=ans===correct;
+el('graphTrend').textContent=trend;
+el('graphBest').textContent=best;
+el('graphExplain').textContent='This graph shows '+correct+'.';
+el('corrSelectF').textContent=ok?'Correct.':'Model answer: This graph shows '+correct+'.';
+el('corrSelectF').className='feedback '+(ok?'ok':'no');
+}
+function checkGraphSentenceSelect(){
+let ans=el('graphSentenceSelect').value;
+if(ans===''){el('graphSentenceF').textContent='Select an answer first.';el('graphSentenceF').className='feedback no';return;}
+let correct=graphType==='positive'?'0':graphType==='negative'?'1':'2';
+let ok=ans===correct;
+let model=correct==='0'?'As x increases, y increases.':correct==='1'?'As x increases, y decreases.':'There is no clear pattern.';
+el('graphSentenceF').textContent=ok?'Correct.':'Model answer: '+model;
+el('graphSentenceF').className='feedback '+(ok?'ok':'no');
+}
+function resetChallengeGraph(){
+for(let i=1;i<=4;i++){el('g2Select'+i).value='';el('g2q'+i).textContent='';el('g2q'+i).className='feedback';}
+}
+function checkG2(n){
+let ans=el('g2Select'+n).value;
+let correct={1:'fertiliser',2:'height',3:'positive',4:'good'}[n];
+let model={1:'The independent variable is fertiliser added because it is on the x-axis and is changed.',2:'Plant height is the dependent variable because it is measured.',3:'This is a positive correlation because as fertiliser added increases, plant height increases.',4:'As fertiliser added increases, plant height increases. This is the best conclusion because it describes the trend.'}[n];
+if(!ans){el('g2q'+n).textContent='Select an answer first.';el('g2q'+n).className='feedback no';return;}
+let ok=ans===correct;
+el('g2q'+n).textContent=ok?'Correct. '+model:'Model answer: '+model;
+el('g2q'+n).className='feedback '+(ok?'ok':'no');
+}
+
+const safetyData={acid:['acid practical','acid','wear goggles','acid','acid could splash and irritate skin or eyes','wear goggles, use small volumes, stand up during practical work'],flame:['Bunsen burner','Bunsen flame','tie hair back','Bunsen flame','flame could burn skin, hair or clothing','tie hair back, stand up, keep flammable materials away'],glass:['glassware','glass beaker','keep away from bench edge','glass beaker','glass could break and cut skin','carry carefully, keep away from bench edge, report breakages']};
+function setSafety(s){safety=s;updateSafety();}
+function resetSafety(){safety='acid';updateSafety();}
+function updateSafety(){let d=safetyData[safety];el('safetyTitle').textContent=d[0];el('hazardShort').textContent=d[1];el('precautionShort').textContent=d[2];el('hazardRow').textContent=d[3];el('riskRow').textContent=d[4];el('precautionRow').textContent=d[5];}
+function checkSafetySentence(){
+let t=el('safetySentence').value.toLowerCase();
+let ok=t.includes('hazard')||t.includes('risk')||t.includes('goggles')||t.includes('burn')||t.includes('cut');
+el('safetySentenceF').textContent=ok?'Good: you linked hazard, risk and/or precaution.':'Model answer: The hazard is acid/flame/glass because it could harm skin or eyes. Use goggles, careful handling or tie hair back to reduce the risk.';
+el('safetySentenceF').className='feedback '+(ok?'ok':'no');
+}
+
+const planData={dissolve:['temperature and dissolving','temperature of water','time taken to dissolve','mass of sugar, volume of water, stirring method','repeat each temperature three times and calculate a mean'],plant:['light and plant growth','amount of light','height of plant after one week','type of plant, volume of water, soil, time','repeat with several plants and calculate a mean height'],spring:['force and spring extension','force added to spring','extension of the spring','same spring, same ruler position, avoid going past elastic limit','repeat each force three times and calculate a mean extension']};
+function setPlan(p){plan=p;updatePlan();}
+function resetPlan(){plan='dissolve';updatePlan();}
+function updatePlan(){let d=planData[plan];el('planTitle').textContent=d[0];el('planIV').textContent=d[1];el('planDV').textContent=d[2];el('planCV').textContent=d[3];el('planReliability').textContent=d[4];}
+
+function updateMean(){
+let a=Number(el('rep1').value),b=Number(el('rep2').value),c=Number(el('rep3').value);
+el('rep1T').textContent=a;el('rep2T').textContent=b;el('rep3T').textContent=c;
+let mean=((a+b+c)/3).toFixed(1);
+let vals=[a,b,c].sort((x,y)=>x-y);
+let anomaly=(vals[2]-vals[1]>20)||(vals[1]-vals[0]>20);
+el('meanInfo').textContent=anomaly?'Mean including all repeats = '+mean+'. Possible anomaly detected because one value is far from the others.':'Mean = '+mean+'. Repeats are close together, so the results look reliable.';
+}
+function resetMean(){el('rep1').value=42;el('rep2').value=43;el('rep3').value=88;updateMean();}
+
+function quiz(btn,c,fid,correctMsg,model){
+if(answered[fid])return;
+answered[fid]=true;
+let p=btn.closest('.quiz-card');
+p.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));
+btn.classList.add(c?'correct':'wrong');
+el(fid).textContent=c?correctMsg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c)quizScore++;
+el('quizScore').textContent=quizScore;
+}
+function checkCalc(inputId,ans,fid,msg){
+if(answered[fid])return;
+let v=Number(el(inputId).value);
+let c=Math.abs(v-ans)<0.01;
+el(fid).textContent=c?msg:'Not quite. Correct method: '+msg.replace('Correct: ','');
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+function checkText(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.every(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+function checkAny(inputId,fid,words,msg,model){
+if(answered[fid])return;
+let t=el(inputId).value.toLowerCase();
+let c=words.some(w=>t.includes(w));
+el(fid).textContent=c?msg:model;
+el(fid).className='feedback '+(c?'ok':'no');
+if(c){answered[fid]=true;quizScore++;el('quizScore').textContent=quizScore;}
+}
+
+window.onload=function(){updateVariables();updateGraph();updateSafety();updatePlan();updateMean();};
+</script>
+</body>
+</html>
